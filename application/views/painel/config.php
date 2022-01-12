@@ -2,7 +2,7 @@
 
     <div class="coluna col3">&nbsp;</div>
         <div class="coluna col6">
-            <h2><? php echo $h2; ?></h2>
+            <h2><?php echo $h2; ?></h2>
 
             <?php 
                 if($msg = get_msg()):
