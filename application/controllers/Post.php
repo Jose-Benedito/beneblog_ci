@@ -23,6 +23,7 @@ class Post extends CI_Controller{
         $dados['titulo'] = 'BNTH - Listagem de posts';
         $dados['h2'] = 'Listagem de posts';
         $dados['tela'] = 'listar'; //para carregar qual o tipo da view
+        $dados['posts'] = $this->post->get();
         $this->load->view('painel/posts', $dados);
     }
     public function cadastrar(){
@@ -43,7 +44,19 @@ class Post extends CI_Controller{
                 //upload foi efetuado
                 $dados_upload = $this->upload->data();
                 $dados_form = $this->input->post();
-               //dedug var_dump($dados_upload);
+
+                var_dump($dados_upload);
+               $dados_insert['titulo'] = $dados_form['titulo'];
+               $dados_insert['conteudo'] = $dados_form['conteudo'];
+               $dados_insert['imagem'] = $dados_upload['file_name'];
+               //salvar no banco de dados
+               if($id = $this->post->salvar($dados_insert)):
+                    set_msg('<p>Post cadastrado com sucesso!</p>');
+                    redirect('post/listar', 'refresh');
+               else:
+                    set_msg('<p> Erro! Post não foi cadastrado.</p>');
+               endif;
+
             else:
                 //erro no upload
                 $msg = $this->upload->display_errors();

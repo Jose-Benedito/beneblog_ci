@@ -10,5 +10,33 @@ class Post_model extends CI_Model {
        
         
     }
+    public function salvar($dados){
+        if(isset($dados['id']) && $dados['id']> 0):
+            //post já existe, devo editar
+        else:
+            //post não existe , devo inserir
+            $this->db->insert('posts', $dados);
+            return $this->db->insert_id();
+        endif;
+    }
+    public function get($limit=0, $offset=0){
+        if($limit == 0):
+            $this->db->order_by('id', 'desc');
+            $query = $this->db->get('posts');
+            if($query->num_rows() > 0):
+                return $query->result();
+            else:
+                return NULL;
+            endif;
+        else:
+            $this->db->order_by('id', 'desc');
+            $query = $this->db->get('posts', $limit);
+            if($query->num_rows() > 0):
+                return $query->result();
+            else:
+                return NULL;
+            endif;
+        endif;
+    }
 
 }

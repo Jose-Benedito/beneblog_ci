@@ -28,7 +28,7 @@
                                 foreach ($posts as $linha):
                                     ?>
                                     <tr>
-                                        <td class="titulo-post"><?php $linha->titulo; ?></td>
+                                        <td class="titulo-post"><?php echo $linha->titulo; ?></td>
                                         <td align="right" class="acoes"><?php echo anchor('post/editar/'.$linha->id, 'Editar'); ?> | 
                                         <?php echo anchor('post/excluir/'.$linha->id, 'Excluir');?> |
                                         <?php echo anchor('postagem/'.$linha->id, 'Ver', array('target'=>'_blank')); ?> </td>

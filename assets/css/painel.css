@@ -33,3 +33,14 @@ input.botao{
 .login{
 	margin-top: 350px;
 }
+table td{
+	padding: 0;
+}
+table tbody tr:hover{
+	background: #f1f2ea;
+	color: #727272;
+}
+img.thumb-edicao{
+	width: 200px;
+	height: auto;
+}
