@@ -2,8 +2,8 @@
 
 <div class="coluna col2">
     <ul class="sem-marcador sem-padding">
-        <li><a href="<?php echo base_url('post/cadastrar'); ?>">INSERIR</a></li>
-        <li><a href="<?php echo base_url('post/listar')  ?>">LISTAR</a></li>
+        <li><a href="<?php echo base_url('index.php/post/cadastrar'); ?>">INSERIR</a></li>
+        <li><a href="<?php echo base_url('index.php/post/listar')  ?>">LISTAR</a></li>
 
 </div>
     <div class="coluna col10">
@@ -16,10 +16,46 @@
 
             switch ($tela):
                 case 'listar':
-                    echo 'tela de listagem';
+                    if(isset($posts) && sizeof($posts) > 0):
+                        ?>
+                        <table>
+                            <thead>
+                                <th align="left">Título</th>
+                                <th align="right">Ações</th>
+                            </thead>
+                            <tbody>
+                                <?php
+                                foreach ($posts as $linha):
+                                    ?>
+                                    <tr>
+                                        <td class="titulo-post"><?php $linha->titulo; ?></td>
+                                        <td align="right" class="acoes"><?php echo anchor('post/editar/'.$linha->id, 'Editar'); ?> | 
+                                        <?php echo anchor('post/excluir/'.$linha->id, 'Excluir');?> |
+                                        <?php echo anchor('postagem/'.$linha->id, 'Ver', array('target'=>'_blank')); ?> </td>
+
+                                    </tr>
+                                    <?php
+                                endforeach;    
+
+                                ?>
+                            </tbody>
+                        </table>
+                        <?php
+                    else:
+                       echo '<div class="msg-box"><p>Nenhum post cadastrado!</p></div>';
+                    endif; 
                 break;
                 case 'cadastrar':
-                    echo 'tela de cadastro';
+                    echo form_open_multipart();
+                    echo form_label('Título:', 'titulo');
+                    echo form_input('titulo', set_value('titulo'));
+                    echo form_label('Conteúdo:', 'conteudo');
+                    echo form_textarea('conteudo', set_value('conteudo'));
+                    echo form_label('Imagem do post (thumbnail):', 'imagem');
+                    echo form_upload('imagem');
+                    echo form_submit('enviar', 'Salvar post', array('class'=>'botao'));
+                    echo form_close();
+
                 break;
                 case 'editar':
                     echo 'tela de alteração';
@@ -29,17 +65,7 @@
                 break;
             endswitch;
 
-            echo form_open();
-            echo form_label('Nome para login', 'login');
-            echo form_input('login', set_value('login'), array('autofocus' => 'autofocus'));
-            echo form_label('Email do administrador do site:', 'email');
-            echo form_input('email', set_value('email'));
-            echo form_label('Senha: ', 'senha');
-            echo form_password('senha');
-            echo form_label('Repita a senha: ', 'senha2');
-            echo form_password('senha2');
-            echo form_submit('enviar',  'Salvar dados', array('class'=> 'botao'));
-            echo form_close();
+        
 
 
 

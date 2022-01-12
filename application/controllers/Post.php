@@ -22,7 +22,32 @@ class Post extends CI_Controller{
         //carrega a view
         $dados['titulo'] = 'BNTH - Listagem de posts';
         $dados['h2'] = 'Listagem de posts';
-        $dados['tela'] = 'litar'; //para carregar qual o tipo da view
+        $dados['tela'] = 'listar'; //para carregar qual o tipo da view
+        $this->load->view('painel/posts', $dados);
+    }
+    public function cadastrar(){
+        //verifica se o usuário está logado
+        verifica_login();
+
+        //regras de validação
+        $this->form_validation->set_rules('titulo', 'Título', 'trim|required');
+        $this->form_validation->set_rules('conteudo', 'Conteúdo', 'trim|required');
+        //verifica a validação
+        if($this->form_validation->run() == FALSE):
+            if(validation_errors()):
+                set_msg(validation_errors());
+            endif;
+        else:
+            $this->load->library('upload', $config);
+
+        endif;
+
+
+
+        //carrega a view
+        $dados['titulo'] = 'BNTH - Cadastro de posts';
+        $dados['h2'] = 'Cadastro de posts';
+        $dados['tela'] = 'cadastrar'; //para carregar qual o tipo da view
         $this->load->view('painel/posts', $dados);
     }
 }
