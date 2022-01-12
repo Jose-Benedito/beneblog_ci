@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/cover.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/servico.css'); ?>">
      <link rel="stylesheet" href="<?php echo base_url('assets/css/painel.css'); ?>">
+     <link rel="stylesheet" href="<?php echo base_url('assets/css/jquery-te-1.4.0.css'); ?>">
+     <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-te-3.6.0.min.js') ?>"></script>
+     <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-te-1.4.0.min.js') ?>"></script>
     
     <title><?php echo $titulo ; ?></title>
 </head>
