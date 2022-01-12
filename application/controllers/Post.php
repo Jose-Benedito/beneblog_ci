@@ -38,8 +38,18 @@ class Post extends CI_Controller{
                 set_msg(validation_errors());
             endif;
         else:
-            $this->load->library('upload', $config);
-
+            $this->load->library('upload', config_upload());
+            if($this->upload->do_upload('imagem')):
+                //upload foi efetuado
+                $dados_upload = $this->upload->data();
+                $dados_form = $this->input->post();
+               //dedug var_dump($dados_upload);
+            else:
+                //erro no upload
+                $msg = $this->upload->display_errors();
+                $msg .= '<p>São permitidas arquivos JPG e PNG de até 512KB.</p>';
+                set_msg($msg);
+            endif;
         endif;
 
 
