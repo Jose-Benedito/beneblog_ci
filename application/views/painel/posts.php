@@ -50,7 +50,7 @@
                     echo form_label('Título:', 'titulo');
                     echo form_input('titulo', set_value('titulo'));
                     echo form_label('Conteúdo:', 'conteudo');
-                    echo form_textarea('conteudo', set_value('conteudo'));
+                    echo form_textarea('conteudo', set_value('conteudo'), array('class'=>'editor'));
                     echo form_label('Imagem do post (thumbnail):', 'imagem');
                     echo form_upload('imagem');
                     echo form_submit('enviar', 'Salvar post', array('class'=>'botao'));

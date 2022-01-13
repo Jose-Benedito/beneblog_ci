@@ -31,3 +31,7 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /tests/results/
 
 jquery-3.6.0.min.js
+jquery-te.js
+jquery-te.css
+jquery-te.png
+jquery.js
