@@ -83,9 +83,34 @@ class Post extends CI_Controller{
         $id = $this->uri->segment(3);
         if($id > 0):
             //id informado, continuar com a exclusão
+            if($postagem = $this->post->get_single($id)):
+                $dados['posts'] = $postagem;
+            else:
+                set_msg('<p>Post inexistente! Escolha um post para excluir</p>');
+                redirect('post/listar', 'refresh');
+            endif;
         else:
             set_msg('<p>Você deve escolher um post para excluir</P>');
             redirect('post/listar', 'refresh');
+        endif;
+
+        //regras de validação
+        $this->form_validation->set_rules('enviar', 'ENVIAR', 'trim|required');
+
+        //verifica a validação
+        if($this->form_validation->run() == FALSE):
+            if(validation_errors()):
+                set_msg(validation_errors());
+            endif;
+        else:
+            $imagem = 'uploads/'.$postagem->imagem; // concactenado com a imagem vinda do banco de dados
+            if($this->post->excluir($id)):
+                unlink($imagem); // deletar a imagem na pasta
+                set_msg('<p>Post excluído com sucesso!</p>');
+                redirect('post/listar', 'refresh');
+            else:
+                set_msg('<p>Erro! Post não excluído!</p>');
+            endif;
         endif;
 
 

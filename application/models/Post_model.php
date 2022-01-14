@@ -49,4 +49,10 @@ class Post_model extends CI_Model {
         endif;
     }
 
+    public function excluir($id=0){
+        $this->db->where('id', $id);
+        $this->db->delete('posts');  // nome da tabela
+        return $this->db->affected_rows();
+    }
+
 }
