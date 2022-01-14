@@ -46,8 +46,8 @@ class Post extends CI_Controller{
                 $dados_form = $this->input->post();
 
                 var_dump($dados_upload);
-               $dados_insert['titulo'] = $dados_form['titulo'];
-               $dados_insert['conteudo'] = $dados_form['conteudo'];
+               $dados_insert['titulo'] = to_bd($dados_form['titulo']);
+               $dados_insert['conteudo'] = to_bd($dados_form['conteudo']);
                $dados_insert['imagem'] = $dados_upload['file_name'];
                //salvar no banco de dados
                if($id = $this->post->salvar($dados_insert)):
@@ -74,5 +74,27 @@ class Post extends CI_Controller{
         $dados['tela'] = 'cadastrar'; //para carregar qual o tipo da view
         $this->load->view('painel/posts', $dados);
     
+    }
+    public function excluir(){
+        //verfica se o usuário está logado
+        verifica_login();
+
+        //verifica se foi passado o id do post
+        $id = $this->uri->segment(3);
+        if($id > 0):
+            //id informado, continuar com a exclusão
+        else:
+            set_msg('<p>Você deve escolher um post para excluir</P>');
+            redirect('post/listar', 'refresh');
+        endif;
+
+
+        //carrega a view
+
+        $dados['titulo'] = 'BNTH - Exclusão de posts';
+        $dados['h2'] = 'Exclusão de posts';
+        $dados['tela'] = 'excluir'; //para carregar qual o tipo da view
+        $this->load->view('painel/posts', $dados);
+
     }
 }

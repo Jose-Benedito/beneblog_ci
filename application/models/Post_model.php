@@ -38,5 +38,15 @@ class Post_model extends CI_Model {
             endif;
         endif;
     }
+    public function get_single($id=0){
+        $this->db->where('id', $id);
+        $query = $this->db->get('posts', 1);
+        if($query->num_rows() == 1):
+            $row = $query->row();
+            return $row;
+        else:
+            return NULL;
+        endif;
+    }
 
 }
