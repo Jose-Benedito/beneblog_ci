@@ -68,9 +68,11 @@ class Post extends CI_Controller{
 
 
         //carrega a view
+
         $dados['titulo'] = 'BNTH - Cadastro de posts';
         $dados['h2'] = 'Cadastro de posts';
         $dados['tela'] = 'cadastrar'; //para carregar qual o tipo da view
         $this->load->view('painel/posts', $dados);
+    
     }
 }
