@@ -58,7 +58,19 @@
 
                 break;
                 case 'editar':
-                    echo 'tela de alteração';
+                    echo form_open_multipart();
+                    echo form_label('Título:', 'titulo');
+                    echo form_input('titulo', set_value('titulo', to_html($posts->titulo)));
+                    echo form_label('Conteúdo:', 'conteudo');
+                    echo form_textarea('conteudo', to_html(set_value('conteudo', to_html($posts->conteudo))), array('class'=>'editorhtml'));
+                    echo form_label('Imagem do post (thumbnail):', 'imagem');
+                    echo form_upload('imagem');
+                    // miniatura da imagem recuperada do BD
+                    echo '<p><small>Imagem atual:</small><br /><img src=" '.base_url('uploads/'.$posts->imagem).'" class="thumb-edicao"/></p>';
+                    
+             
+                    echo form_submit('enviar', 'Salvar post', array('class'=>'botao'));
+                    echo form_close();
                 break;
                 case 'excluir':
                     echo form_open_multipart();

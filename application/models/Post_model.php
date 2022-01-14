@@ -13,6 +13,11 @@ class Post_model extends CI_Model {
     public function salvar($dados){
         if(isset($dados['id']) && $dados['id']> 0):
             //post já existe, devo editar
+            $this->db->where('id', $dados['id']);
+            unset($dados['id']); //para que o id não seja alterado
+            $this->db->update('posts', $dados); // atualiza todos os campos
+            return $this->db->affected_rows(); //retorna todos dados alterados
+
         else:
             //post não existe , devo inserir
             $this->db->insert('posts', $dados);
