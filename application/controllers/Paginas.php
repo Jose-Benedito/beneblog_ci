@@ -7,7 +7,10 @@ class Paginas extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        //carrega os módulos e classes
         $this->load->helper('url');
+        $this->load->model('options_model', 'option');
+        $this->load->model('post_model', 'post');
        // $this->output->cache(1440); //corrensponde a 24 horas até o  cache ser atualizado
         
     }
@@ -116,6 +119,26 @@ class Paginas extends CI_Controller {
         else
             return false;
 
+    }
+    public function postagem(){
+        if(($id = $this->uri->segment(2))> 0): //segment(2)= refêre-se a posição da rota chamada pós barra da url  no navegador
+            if($postagem = $this->post->get_single($id)):
+                $dados['titulo'] =  to_html($postagem->titulo).' - BNTH';
+                $dados['post_titulo'] = to_html(($postagem->titulo));
+                $dados['post_conteudo'] = to_html($postagem->conteudo);
+                $dados['post_imagem'] = $postagem->imagem;
+            else:
+                $dados['titulo'] = 'Página não encontrada - BNTH';
+                $dados['post_titulo'] = 'Postagem não encontrada';
+                $dados['post_conteudo'] = '<p>Nenhum post foi encontrado com base nos parâmetros fornecidos</p>';
+                $dados['post_imagem'] = '';
+
+            endif;
+        else:
+            redirect(base_url(), 'refresh');
+
+        endif;
+        $this->load->view('painel/postagem', $dados);
     }
     
 }
