@@ -88,15 +88,15 @@ class Video extends CI_Controller{
         $id = $this->uri->segment(3);
         if($id > 0):
             //id informado, continuar com a exclusão
-            if($postagem = $this->post->get_single($id)):
-                $dados['posts'] = $postagem;
+            if($postagem = $this->video->get_single($id)): // método do model
+                $dados['videos'] = $postagem;
             else:
-                set_msg('<p>Post inexistente! Escolha um post para excluir</p>');
-                redirect('post/listar', 'refresh');
+                set_msg('<p>Vídeo inexistente! Escolha um  para excluir</p>');
+                redirect('video/listar', 'refresh');
             endif;
         else:
-            set_msg('<p>Você deve escolher um post para excluir</P>');
-            redirect('post/listar', 'refresh');
+            set_msg('<p>Você deve escolher um vídeo para excluir</P>');
+            redirect('video/listar', 'refresh');
         endif;
 
         //regras de validação
@@ -109,22 +109,22 @@ class Video extends CI_Controller{
             endif;
         else:
             $imagem = 'uploads/'.$postagem->imagem; // concactenado com a imagem vinda do banco de dados
-            if($this->post->excluir($id)):
+            if($this->video->excluir($id)): //excluido no bd
                 unlink($imagem); // deletar a imagem na pasta
-                set_msg('<p>Post excluído com sucesso!</p>');
-                redirect('post/listar', 'refresh');
+                set_msg('<p>Vídeo excluído com sucesso!</p>');
+                redirect('video/listar', 'refresh');
             else:
-                set_msg('<p>Erro! Post não excluído!</p>');
+                set_msg('<p>Erro! Vídeo não excluído!</p>');
             endif;
         endif;
 
 
         //carrega a view
 
-        $dados['titulo'] = 'BNTH - Exclusão de posts';
-        $dados['h2'] = 'Exclusão de posts';
+        $dados['titulo'] = 'BNTH - Exclusão de vídeos';
+        $dados['h2'] = 'Exclusão de vídeos';
         $dados['tela'] = 'excluir'; //para carregar qual o tipo da view
-        $this->load->view('painel/posts', $dados);
+        $this->load->view('painel/videos', $dados);
 
     }
     public function editar(){
