@@ -1,4 +1,4 @@
-<?php $this->load->view('painel/header') ?>
+<?php $this->load->view('commons/header') ?>
 
 <main role="main" class="inner cover">
 <div>
@@ -23,4 +23,4 @@
     
 </main>
 
-<?php $this->load->view('painel/footer') ?>
+<?php $this->load->view('commons/footer') ?>
