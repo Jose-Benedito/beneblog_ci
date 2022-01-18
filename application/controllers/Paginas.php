@@ -18,7 +18,7 @@ class Paginas extends CI_Controller {
     public function index()
     {
      //debug:  echo 'página home';
-     $data['title'] = "BNTH | Home";
+     $data['titulo'] = "BNTH | Home";
     $data['desc'] = "Exercício de exemplo do capítulo 5 do livro Codeigniter";
     
         $this->load->view('home', $data);
