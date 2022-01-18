@@ -28,7 +28,7 @@
                                 foreach ($posts as $linha):
                                     ?>
                                     <tr>
-                                        <td class="titulo-post"><?php echo $linha->titulo; ?></td>
+                                        <td class="titulo-post"><?php echo $linha->titulo; ?>    |</td>
                                         <td align="right" class="acoes"><?php echo anchor('post/editar/'.$linha->id, 'Editar'); ?> | 
                                         <?php echo anchor('post/excluir/'.$linha->id, 'Excluir');?> |
                                         <?php echo anchor('postagem/'.$linha->id, 'Ver', array('target'=>'_blank')); ?> </td>
@@ -53,6 +53,8 @@
                     echo form_textarea('conteudo', to_html(set_value('conteudo')), array('class'=>'editorhtml'));
                     echo form_label('Imagem do post (thumbnail):', 'imagem');
                     echo form_upload('imagem');
+                    echo form_label('Data:', 'data');
+                    echo form_input('data', set_value('data'));
                     echo form_submit('enviar', 'Salvar post', array('class'=>'botao'));
                     echo form_close();
 
@@ -68,7 +70,8 @@
                     // miniatura da imagem recuperada do BD
                     echo '<p><small>Imagem atual:</small><br /><img src=" '.base_url('uploads/'.$posts->imagem).'" class="thumb-edicao"/></p>';
                     
-             
+                    echo form_label('Data:', 'data');
+                    echo form_input('data', set_value('data', to_html($posts->data)));
                     echo form_submit('enviar', 'Salvar post', array('class'=>'botao'));
                     echo form_close();
                 break;
@@ -80,7 +83,8 @@
                     echo form_textarea('conteudo', to_html(set_value('conteudo', to_html($posts->conteudo))), array('class'=>'editorhtml'));
                     // miniatura da imagem recuperada do BD
                     echo '<p><small>Imagem:</small><br /><img src=" '.base_url('uploads/'.$posts->imagem).'" class="thumb-edicao"/></p>';
-                    
+                    echo form_label('Data:', 'data');
+                    echo form_input('data', set_value('data', to_html($posts->data)));
              
                     echo form_submit('enviar', 'Excluir post', array('class'=>'botao'));
                     echo form_close();

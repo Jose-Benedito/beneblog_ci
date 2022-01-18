@@ -10,11 +10,11 @@
         </div>
         <div class="sem-marcador">
           <h3>Dados do post</h3>
-            <img src="<?php echo base_url('uploads/'.$post_imagem);?>" alt="<?php echo $post_titulo; ?>" />
+            <img style="width: 400px; height: 200px;" src="<?php echo base_url('uploads/'.$post_imagem);?>" alt="<?php echo $post_titulo; ?>" />
                        
             <ul>
-                <li>Publicada em: </li>
-                <li>Autor: </li>
+                <li>Publicada em: <?php echo $post_data; ?> </li>
+                
             </ul>
         </div>
     </div>

@@ -33,6 +33,7 @@ class Post extends CI_Controller{
         //regras de validação
         $this->form_validation->set_rules('titulo', 'Título', 'trim|required');
         $this->form_validation->set_rules('conteudo', 'Conteúdo', 'trim|required');
+        $this->form_validation->set_rules('data', 'Data', 'trim|required');
         //verifica a validação
         if($this->form_validation->run() == FALSE):
             if(validation_errors()):
@@ -49,6 +50,7 @@ class Post extends CI_Controller{
                $dados_insert['titulo'] = to_bd($dados_form['titulo']);
                $dados_insert['conteudo'] = to_bd($dados_form['conteudo']);
                $dados_insert['imagem'] = $dados_upload['file_name'];
+               $dados_insert['data'] = to_bd($dados_form['data']);
                //salvar no banco de dados
                if($id = $this->post->salvar($dados_insert)):
                     set_msg('<p>Post cadastrado com sucesso!</p>');
@@ -145,6 +147,7 @@ class Post extends CI_Controller{
         //regras de validação
         $this->form_validation->set_rules('titulo', 'Título', 'trim|required');
         $this->form_validation->set_rules('conteudo', 'Conteúdo', 'trim|required');
+        $this->form_validation->set_rules('data', 'Data', 'trim|required');
 
         //verifica a validação
         if($this->form_validation->run() == FALSE):
@@ -164,6 +167,7 @@ class Post extends CI_Controller{
                     $dados_update['titulo'] = to_bd($dados_form['titulo']);
                     $dados_update['conteudo'] = to_bd($dados_form['conteudo']);
                     $dados_update['imagem'] = $dados_upload['file_name'];
+                    $dados_update['data'] = to_bd($dados_form['data']);
                     if($this->post->salvar($dados_update)):
                         unlink($imagem_antiga); //deleta a imagem anterior
                         set_msg('<p>Post alterado com sucesso!</p>');
@@ -182,6 +186,7 @@ class Post extends CI_Controller{
                 $dados_form = $this->input->post();
                 $dados_update['titulo'] = to_bd($dados_form['titulo']);
                 $dados_update['conteudo'] = to_bd($dados_form['conteudo']);
+                $dados_update['data'] = to_bd($dados_form['data']);
                 if($this->post->salvar($dados_update)):
                     set_msg('<p>Post alterado com sucesso!</p>');
                 else:

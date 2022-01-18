@@ -11,7 +11,7 @@ $route['empresa'] = 'Paginas/empresa';
 
 $route['video'] = 'Video';     // Requer parámetros 9caso não tenha, carrega a home)
 $route['video/(:num)'] = 'Paginas/videoaula/$1'; 
-$route['video'] = 'Paginas/video';
+$route['videos'] = 'Video/video';
 
 $route['faleconosco'] = 'Paginas/faleconosco';
 $route['trabalheconosco'] = 'Paginas/trabalheconosco';

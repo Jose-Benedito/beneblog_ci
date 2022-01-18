@@ -128,6 +128,7 @@ class Paginas extends CI_Controller {
                 $dados['post_titulo'] = to_html(($postagem->titulo));
                 $dados['post_conteudo'] = to_html($postagem->conteudo);
                 $dados['post_imagem'] = $postagem->imagem;
+                $dados['post_data'] = $postagem->data;
             else:
                 $dados['titulo'] = 'Página não encontrada - BNTH';
                 $dados['post_titulo'] = 'Postagem não encontrada';

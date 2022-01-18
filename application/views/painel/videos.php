@@ -31,7 +31,7 @@
                                         <td class="titulo-post"><?php echo $linha->titulo; ?> **** | </td>
                                         <td align="right" class="acoes"><?php echo anchor('video/editar/'.$linha->id, 'Editar'); ?> | 
                                         <?php echo anchor('video/excluir/'.$linha->id, 'Excluir');?> |
-                                        <?php echo anchor('videoaulas/'.$linha->id, 'Ver', array('target'=>'_blank')); ?> </td>
+                                        <?php echo anchor('video/'.$linha->id, 'Ver', array('target'=>'_blank')); ?> </td>
 
                                     </tr>
                                     <?php
