@@ -11,6 +11,7 @@ class Paginas extends CI_Controller {
         $this->load->helper('url');
         $this->load->model('options_model', 'option');
         $this->load->model('post_model', 'post');
+        $this->load->model('video_model', 'video');
        // $this->output->cache(1440); //corrensponde a 24 horas até o  cache ser atualizado
         
     }
@@ -27,16 +28,16 @@ class Paginas extends CI_Controller {
     public function empresa(){
 
        //debug: echo 'página empresa';
-        $data['title'] = "BNTH | A Empresa";
+        $data['titulo'] = "BNTH | A Empresa";
         $data['description'] = "Informações sobre a empresa";
         $this->load->view('empresa', $data);
     
     }
-    public function servicos(){
-        $data['title'] = "BNTH | Serviços";
+    public function video(){
+        $data['titulo'] = "BNTH | Serviços";
         $data['description'] = "Informações sobre os serviços prestados";
         $this->load->view('commons/header', $data);
-        $this->load->view('servicos');
+        $this->load->view('videoaulas');
         $this->load->view('commons/footer');
     }
     public function faleconosco()
@@ -45,7 +46,7 @@ class Paginas extends CI_Controller {
         $this->load->helper('url');
         $this->load->library (array('form_validation', 'email'));
         $this->load->helper('form');
-        $data['title'] = "BNTH | Fale Conosco";
+        $data['titulo'] = "BNTH | Fale Conosco";
        $data['description'] = "Exercício de exemplo do capítulo 5 do livro CodeIgniter da casa do código";
         
         // Regras de validação do formulário
@@ -84,7 +85,7 @@ class Paginas extends CI_Controller {
         $this->load->helper('url');
         $this->load->library ('form_validation');
         $this->load->helper('form');
-        $data['title'] = 'BNTH | Trabalhe Conosco';
+        $data['titulo'] = 'BNTH | Trabalhe Conosco';
         $data['description'] = "Exercício de exemplo docapítulo 5 do livro Codeigniter";
 
         
@@ -139,6 +140,27 @@ class Paginas extends CI_Controller {
 
         endif;
         $this->load->view('painel/postagem', $dados);
+    }
+    public function videoaula(){
+        if(($id = $this->uri->segment(2))> 0): //segment(2)= refêre-se a posição da rota chamada pós barra da url  no navegador
+            if($videoaula = $this->video->get_single($id)): //método do model
+                $dados['titulo'] =  to_html($videoaula->titulo).' - BNTH';
+                $dados['video_titulo'] = to_html(($videoaula->titulo));
+                $dados['video_descricao'] = to_html($videoaula->descricao);
+                $dados['video_link'] = $videoaula->link;
+                $dados['video_imagem'] = $videoaula->imagem;
+            else:
+                $dados['titulo'] = 'Página não encontrada - BNTH';
+                $dados['video_titulo'] = 'Videoaula não encontrada';
+                $dados['video_descricao'] = '<p>Nenhum video foi encontrado com base nos parâmetros fornecidos</p>';
+                $dados['video_imagem'] = '';
+
+            endif;
+        else:
+            redirect(base_url(), 'refresh');
+
+        endif;
+        $this->load->view('videoaulas', $dados);
     }
     
 }

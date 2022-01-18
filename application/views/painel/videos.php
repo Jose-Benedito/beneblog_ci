@@ -68,9 +68,9 @@
                     echo form_label('Descrição:', 'descricao');
                     echo form_textarea('descricao', to_html(set_value('descricao', to_html($videos->descricao))), array('class'=>'editorhtml'));
                     echo form_label('link', 'link');
-                    echo form_input('link', set_value('link'));
+                    echo form_input('link', set_value('link', $videos->link));
                     echo form_label('data', 'data');
-                    echo form_input('data', set_value('data'));
+                    echo form_input('data', set_value('data', $videos->data));
                     echo form_label('Imagem do post (thumbnail):', 'imagem');
                     echo form_upload('imagem');
                     // miniatura da imagem recuperada do BD

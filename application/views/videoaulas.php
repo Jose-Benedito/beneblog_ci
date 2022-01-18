@@ -1,3 +1,6 @@
+
+<?php $this->load->view('commons/header') ?>
+
 <nav class="site-header sticky-top py-1">
       <div class="container d-flex flex-column flex-md-row justify-content-between">
         <a class="py-2" href="#">
@@ -26,11 +29,14 @@
     <div class="d-md-flex flex-md-equal w-80 my-md-3 pl-md-3">
       <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
         <div class="my-3 py-3">
-          <h2 class="display-5">Videoaula 1</h2>
-          <p class="lead">Variedades linguísticas.</p>
+          <h2 class="display-5"><?php echo $video_titulo; ?></h2>
+          <p class="lead"><?php echo $video_descricao; ?></p>
+          
+                
+    
         </div>
         <div class="bg-light box-shadow mx-auto" style="width: 100%; height: 500px; border-radius: 21px; margin-bottom:52px; ">
-        <iframe width="95%" height="100%" frameborder="10px" src="https://mega.nz/embed/VIdwgL6L#4Er_Z-_noCobh_K1izeNvjeRZoZdDlS8DoiP44wCIrY" allowfullscreen ></iframe>
+        <iframe width="95%" height="100%" frameborder="10px" src="<?php echo $video_link; ?>" allowfullscreen ></iframe>
       </div>
       </div>
     </div>

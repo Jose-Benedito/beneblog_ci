@@ -150,7 +150,7 @@ class Video extends CI_Controller{
         //regras de validação
         $this->form_validation->set_rules('titulo', 'Título', 'trim|required');
         $this->form_validation->set_rules('descricao', 'descricao', 'trim|required');
-        //$this->form_validation->set_rules('link', 'link', 'trim|required');
+        $this->form_validation->set_rules('link', 'link', 'trim|required');
         $this->form_validation->set_rules('data', 'data', 'trim|required');
 
         //verifica a validação
@@ -213,4 +213,5 @@ class Video extends CI_Controller{
         $this->load->view('painel/videos', $dados);
 
     }
+    
 }

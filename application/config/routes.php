@@ -8,7 +8,10 @@ $route['translate_uri_dashes'] = FALSE;
 
 
 $route['empresa'] = 'Paginas/empresa';
-$route['servicos'] = 'Paginas/servicos';
+
+$route['video'] = 'Video';     // Requer parámetros 9caso não tenha, carrega a home)
+$route['video/(:num)'] = 'Paginas/videoaula/$1'; 
+$route['video'] = 'Paginas/video';
 
 $route['faleconosco'] = 'Paginas/faleconosco';
 $route['trabalheconosco'] = 'Paginas/trabalheconosco';

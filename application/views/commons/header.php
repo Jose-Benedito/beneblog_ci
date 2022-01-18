@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/servico.css'); ?>">
      <link rel="stylesheet" href="<?php echo base_url('assets/css/painel.css'); ?>">
     
-    <title><?php echo $title ; ?></title>
+    <title><?php echo $titulo ; ?></title>
 </head>
 
 <body>
