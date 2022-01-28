@@ -1,8 +1,9 @@
 <?php $this->load->view('commons/header'); ?>
 
+<main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-md-4">
 <div class="container">
     <div class="page-header">
-        <h1>Fale Conosco</h1>
+        <h1>Controle de livros</h1>
     </div>
     <hr>
     <div class="row">
@@ -48,4 +49,3 @@
 
 </div>
 
-<?php $this->load->view('commons/footer'); ?>

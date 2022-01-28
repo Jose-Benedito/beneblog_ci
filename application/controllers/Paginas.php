@@ -40,13 +40,13 @@ class Paginas extends CI_Controller {
         $this->load->view('videoaulas');
         $this->load->view('commons/footer');
     }
-    public function faleconosco()
+    public function controle_livros()
     {
     
         $this->load->helper('url');
         $this->load->library (array('form_validation', 'email'));
         $this->load->helper('form');
-        $data['titulo'] = "BNTH | Fale Conosco";
+        $data['titulo'] = "BNTH | Controle de livros";
        $data['description'] = "Exercício de exemplo do capítulo 5 do livro CodeIgniter da casa do código";
         
         // Regras de validação do formulário
@@ -75,21 +75,21 @@ class Paginas extends CI_Controller {
         
         }
 
-        $this->load->view('faleconosco', $data);
+        $this->load->view('controle_livros', $data);
     
     }
 
 
-    public function trabalheconosco()
+    public function cadastro_livros()
     {
         $this->load->helper('url');
         $this->load->library ('form_validation');
         $this->load->helper('form');
-        $data['titulo'] = 'BNTH | Trabalhe Conosco';
+        $data['titulo'] = 'BNTH | Cadastro de livros';
         $data['description'] = "Exercício de exemplo docapítulo 5 do livro Codeigniter";
 
         
-      $this->load->view('trabalheconosco', $data);
+      $this->load->view('cadastro_livros', $data);
     }
     // confgurações para o disparo de emails
     Private function SendEmailToAdmin($from, $fromName, $to, $toName, $subject, $message, $reply = null, $replyName = null)

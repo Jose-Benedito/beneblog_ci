@@ -13,8 +13,8 @@ $route['video'] = 'Video';     // Requer parámetros 9caso não tenha, carrega a
 $route['video/(:num)'] = 'Paginas/videoaula/$1'; 
 $route['videos'] = 'Video/video';
 
-$route['faleconosco'] = 'Paginas/faleconosco';
-$route['trabalheconosco'] = 'Paginas/trabalheconosco';
+$route['controle_livros'] = 'Paginas/controle_livros';
+$route['cadastro_livros'] = 'Paginas/cadastro_livros';
 
 //para gerar o página post (que será alimentada pelo banco de dados)
 $route['post'] = 'Post';     // Requer parámetros 9caso não tenha, carrega a home)
