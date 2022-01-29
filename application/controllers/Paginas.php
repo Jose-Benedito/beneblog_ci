@@ -34,13 +34,13 @@ class Paginas extends CI_Controller {
     
     }
     public function video(){
-        $data['titulo'] = "BNTH | Serviços";
-        $data['description'] = "Informações sobre os serviços prestados";
+        $data['titulo'] = "BNTH | cadastro de usuarios";
+        $data['description'] = "cadastro de usuários";
         $this->load->view('commons/header', $data);
         $this->load->view('videoaulas');
         $this->load->view('commons/footer');
     }
-    public function controle_livros()
+    public function cadastro_users()
     {
     
         $this->load->helper('url');
@@ -75,7 +75,7 @@ class Paginas extends CI_Controller {
         
         }
 
-        $this->load->view('controle_livros', $data);
+        $this->load->view('cadastro_users', $data);
     
     }
 

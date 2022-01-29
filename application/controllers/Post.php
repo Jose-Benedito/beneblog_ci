@@ -20,8 +20,8 @@ class Post extends CI_Controller{
         verifica_login();
 
         //carrega a view
-        $dados['titulo'] = 'BNTH - Listagem de posts';
-        $dados['h2'] = 'Listagem de posts';
+        $dados['titulo'] = 'BNTH - controle de livros';
+        $dados['h2'] = 'Controle de livros emprestados';
         $dados['tela'] = 'listar'; //para carregar qual o tipo da view
         $dados['posts'] = $this->post->get();
         $this->load->view('painel/posts', $dados);
@@ -71,8 +71,8 @@ class Post extends CI_Controller{
 
         //carrega a view
 
-        $dados['titulo'] = 'BNTH - Cadastro de posts';
-        $dados['h2'] = 'Cadastro de posts';
+        $dados['titulo'] = 'BNTH - Retirada de livro';
+        $dados['h2'] = 'Nova retirada de livro';
         $dados['tela'] = 'cadastrar'; //para carregar qual o tipo da view
         $this->load->view('painel/posts', $dados);
     

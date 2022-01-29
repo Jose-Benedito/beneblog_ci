@@ -1,22 +1,17 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<?php $this->load->view('commons/header'); ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/cover.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/servico.css'); ?>">
-      <link rel="stylesheet" href="<?php echo base_url('assets/css/painel.css'); ?>">
-    
-    <title><?php echo $titulo ; ?></title>
+
+<title><?php echo $titulo ; ?></title>
 </head>
-
-<body >
-    <div class="coluna col4">&nbsp;</div>
-        <div class="coluna col4 login">
-            <h2><? php echo $h2; ?></h2>
+<main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-md-4">
+<div class="container">
+    <div class="page-header">
+        <h1>Login</h1>
+    </div>
+    <hr>
+  <div class="coluna col3">&nbsp;</div>
+        <div class="coluna col4">
+        
 
             <?php 
                 if($msg = get_msg()):
@@ -36,6 +31,5 @@
             ?>
             
         </div>
-    <div class="coluna col4">&nbsp;</div>
-</body>
-</html>
+    
+</div>

@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-8"> 
                   <!--Informa a action e methodo do formulário (helper) da validação -->
-                  <?php echo form_open(('home/trabalheconosco')); 
+                  <?php echo form_open(); 
                   echo form_close();
                   echo form_open_multipart();
                   echo form_label('Título:', 'titulo');
@@ -19,15 +19,15 @@
                   echo form_input('editora', set_value('editora'));
                   echo form_label('Gênero:', 'genero');
                   echo form_input('genero', set_value('genero'));
-                  echo form_label('descrição:', 'descricao');
+                  echo form_label('Descrição:', 'descricao');
                   echo form_textarea('descricao', to_html(set_value('descricao')), array('class'=>'editorhtml'));
-                  echo form_label('unidade', 'unidade');
+                  echo form_label('Quantidade:', 'unidade');
                   echo form_input('unidade', set_value('unidade'));
                   echo form_label('data: ', 'data');
                   echo form_input('data ', set_value('data'));
                   echo form_label('Imagem do post (thumbnail):', 'imagem');
                   echo form_upload('imagem');
-                  echo form_submit('enviar', 'Salvar post', array('class'=>'botao'));
+                  echo form_submit('enviar', 'Salvar', array('class'=>'botao'));
                   echo form_close();?>
                 <!--Informa a mensagem  da validação -->
         </div>

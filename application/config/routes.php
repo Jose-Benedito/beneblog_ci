@@ -13,7 +13,7 @@ $route['video'] = 'Video';     // Requer parámetros 9caso não tenha, carrega a
 $route['video/(:num)'] = 'Paginas/videoaula/$1'; 
 $route['videos'] = 'Video/video';
 
-$route['controle_livros'] = 'Paginas/controle_livros';
+$route['cadastro_users'] = 'Paginas/cadastro_users';
 $route['cadastro_livros'] = 'Paginas/cadastro_livros';
 
 //para gerar o página post (que será alimentada pelo banco de dados)
