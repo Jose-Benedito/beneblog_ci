@@ -7,6 +7,12 @@
     </div>
     <div class="row">
         <div class="col-md-8"> 
+        <?php 
+            if($msg = get_msg()):
+                echo '<div class="msg-box">'.$msg.'</div>';
+            endif;
+
+            ?>
                   <!--Informa a action e methodo do formulário (helper) da validação -->
                   <?php echo form_open(); 
                   echo form_close();
@@ -23,24 +29,23 @@
                   echo form_textarea('descricao', to_html(set_value('descricao')), array('class'=>'editorhtml'));
                   echo form_label('Quantidade:', 'unidade');
                   echo form_input('unidade', set_value('unidade'));
-                  echo form_label('data: ', 'data');
-                  echo form_input('data ', set_value('data'));
+                
                   echo form_label('Imagem do post (thumbnail):', 'imagem');
                   echo form_upload('imagem');
                   echo form_submit('enviar', 'Salvar', array('class'=>'botao'));
-                  echo form_close();?>
+                  echo form_close(); ?>
                 <!--Informa a mensagem  da validação -->
         </div>
     <div class="col-md-4">     
         <?php 
-    if($videoaula = $this->video->get(3)):
-        foreach($videoaula as $linha):
+    if($livros = $this->livro->get(3)):
+        foreach($livros as $linha):
             ?>
             <li>
                 <img style="width: 200px; height: 300px;" src="<?php echo base_url('uploads/'.$linha->imagem);?>" alt=""/>
                 <h4><?php echo to_html($linha->titulo); ?></h4>
                 <p><?php echo resumo_post($linha->descricao); ?>...
-            <a href="<?php echo base_url('index.php/video/'.$linha->id); ?>">veja o vídeo &raquo;</a></p>
+            <a href="<?php echo base_url('index.php/livros/'.$linha->id); ?>">veja o vídeo &raquo;</a></p>
             </li>
             <?php
         endforeach;

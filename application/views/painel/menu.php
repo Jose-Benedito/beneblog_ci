@@ -55,7 +55,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="<?php echo base_url('index.php/listar'); ?>">
             <span data-feather="users"></span>
             Pesquisar livros
           </a>
@@ -88,7 +88,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('index.php/post/listar'); ?>">
+          <a class="nav-link" href="<?php echo base_url('index.php/controle_livros/listar'); ?>">
             <span data-feather="bar-chart-2"></span>
             Controle de livros
           </a>

@@ -10,8 +10,8 @@ class Paginas extends CI_Controller {
         //carrega os módulos e classes
         $this->load->helper('url');
         $this->load->model('options_model', 'option');
-        $this->load->model('post_model', 'post');
-        $this->load->model('video_model', 'video');
+        $this->load->model('clivros_model', 'post');
+        $this->load->model('livros_model', 'livro');
        // $this->output->cache(1440); //corrensponde a 24 horas até o  cache ser atualizado
         
     }
@@ -92,7 +92,7 @@ class Paginas extends CI_Controller {
       $this->load->view('cadastro_livros', $data);
     }
     // confgurações para o disparo de emails
-    Private function SendEmailToAdmin($from, $fromName, $to, $toName, $subject, $message, $reply = null, $replyName = null)
+   /* Private function SendEmailToAdmin($from, $fromName, $to, $toName, $subject, $message, $reply = null, $replyName = null)
     {
         $this->load->library('email');
 
@@ -141,7 +141,7 @@ class Paginas extends CI_Controller {
 
         endif;
         $this->load->view('painel/postagem', $dados);
-    }
+    } */
     public function videoaula(){
         if(($id = $this->uri->segment(2))> 0): //segment(2)= refêre-se a posição da rota chamada pós barra da url  no navegador
             if($videoaula = $this->video->get_single($id)): //método do model

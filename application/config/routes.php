@@ -9,16 +9,16 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['empresa'] = 'Paginas/empresa';
 
-$route['video'] = 'Video';     // Requer parámetros 9caso não tenha, carrega a home)
-$route['video/(:num)'] = 'Paginas/videoaula/$1'; 
-$route['videos'] = 'Video/video';
+$route['c'] = 'Livro/cadastrar';     // Requer parámetros 9caso não tenha, carrega a home)
+$route['livro/(:num)'] = 'Paginas/videoaula/$1'; 
+$route['livro'] = 'Livro';
 
 $route['cadastro_users'] = 'Paginas/cadastro_users';
-$route['cadastro_livros'] = 'Paginas/cadastro_livros';
+$route['cadastro_livros'] = 'Livro/cadastro_users';
 
 //para gerar o página post (que será alimentada pelo banco de dados)
-$route['post'] = 'Post';     // Requer parámetros 9caso não tenha, carrega a home)
-$route['post/(:num)'] = 'Paginas/postagem/$1';  // carrega a página com parâmetros
+$route['controle_livros'] = 'Controle_livros';     // Requer parámetros 9caso não tenha, carrega a home)
+$route['controle_livros/(:num)'] = 'Paginas/postagem/$1';  // carrega a página com parâmetros
 
 //carrega a página de login do sistema
 $route['login'] = 'Setup/login';

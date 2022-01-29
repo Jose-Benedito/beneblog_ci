@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-class Video_model extends CI_Model {
+class Clivros_model extends CI_Model {
    
     public function __construct()
     {
@@ -15,27 +15,27 @@ class Video_model extends CI_Model {
             //post já existe, devo editar
             $this->db->where('id', $dados['id']);
             unset($dados['id']); //para que o id não seja alterado
-            $this->db->update('videos', $dados); // atualiza todos os campos
+            $this->db->update('posts', $dados); // atualiza todos os campos
             return $this->db->affected_rows(); //retorna todos dados alterados
 
         else:
             //post não existe , devo inserir
-            $this->db->insert('videos', $dados);
+            $this->db->insert('posts', $dados);
             return $this->db->insert_id();
         endif;
     }
     public function get($limit=0, $offset=0){
         if($limit == 0):
-            $this->db->order_by('id', 'desc'); //pega os dados em ordem descrecente
-            $query = $this->db->get('videos');
-            if($query->num_rows() > 0): //verifica se as linhas foram alteradas
-                return $query->result(); //retorna os resultados da consulta
+            $this->db->order_by('id', 'desc');
+            $query = $this->db->get('posts');
+            if($query->num_rows() > 0):
+                return $query->result();
             else:
                 return NULL;
             endif;
         else:
             $this->db->order_by('id', 'desc');
-            $query = $this->db->get('videos', $limit);
+            $query = $this->db->get('posts', $limit);
             if($query->num_rows() > 0):
                 return $query->result();
             else:
@@ -44,8 +44,8 @@ class Video_model extends CI_Model {
         endif;
     }
     public function get_single($id=0){
-        $this->db->where('id', $id); // retorna dados pelo id escolhido
-        $query = $this->db->get('videos', 1);
+        $this->db->where('id', $id);
+        $query = $this->db->get('posts', 1);
         if($query->num_rows() == 1):
             $row = $query->row();
             return $row;
@@ -55,8 +55,8 @@ class Video_model extends CI_Model {
     }
 
     public function excluir($id=0){
-        $this->db->where('id', $id);// retorna dados pelo id escolhido
-        $this->db->delete('videos');  // nome da tabela (deleta o id indicado)
+        $this->db->where('id', $id);
+        $this->db->delete('posts');  // nome da tabela
         return $this->db->affected_rows();
     }
 
