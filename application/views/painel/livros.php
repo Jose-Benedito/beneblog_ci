@@ -5,7 +5,7 @@
         <h2><?php echo $h2; ?></h2>
         <div class="coluna col2">
             <ul class="sem-marcador sem-padding">
-                <li><a href="<?php echo base_url('index.php/livro/cadastro_livros'); ?>">CADASTRAR NOVO LIVRO</a></li>
+                
                 <li><a href="<?php echo base_url('index.php/livro/listar')  ?>">LISTAR LIVROS</a></li>
             </ul>
     

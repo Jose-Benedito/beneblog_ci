@@ -191,12 +191,15 @@ class Livro extends CI_Controller{
                     $dados_upload = $this->upload->data();
                     $dados_form = $this->input->post();
                     $dados_update['titulo'] = to_bd($dados_form['titulo']);
+                    $dados_update['autor'] = to_bd($dados_form['autor']);
+                    $dados_update['editora'] = to_bd($dados_form['editora']);
+                    $dados_update['genero'] = to_bd($dados_form['genero']);
                     $dados_update['descricao'] = to_bd($dados_form['descricao']);
-                    $dados_update['link'] = to_bd($dados_form['link']);
-                    $dados_update['data'] = to_bd($dados_form['data']);
+                    $dados_update['unidade'] = to_bd($dados_form['unidade']);
+                    
                     $dados_update['imagem'] = $dados_upload['file_name'];
 
-                    if($this->video->salvar($dados_update)): //atualiza no bd
+                    if($this->livro->salvar($dados_update)): //atualiza no bd
                         unlink($imagem_antiga); //deleta a imagem anterior
                         set_msg('<p>Dados alterados com sucesso!</p>');
                         $dados['videos']->imagem = $dados_update['imagem'];
