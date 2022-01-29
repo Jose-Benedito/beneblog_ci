@@ -56,6 +56,47 @@
                     echo '<div class="msg-box"><p>Nenhum post cadastrado!</p></div>';
                 endif;
                 break;
+
+            case 'pesquisar':
+                if (isset($livros) && sizeof($livros) > 0) :
+                    ?>
+                                <table>
+                                    <thead>
+                                        <th align="left">Título</th>
+                                        <th align="right">Ações</th>
+                                    </thead>
+            
+                                </table>
+                                <div class="col-md-4">
+                                    <?php
+                                    if ($livros = $this->livro->get(5)) :
+                                        foreach ($livros as $linha) :
+                                    ?>
+                                            <li>
+                                                <img style="width: 100px; height: 150px;" src="<?php echo base_url('uploads/' . $linha->imagem); ?>" alt="" />
+                                                <h4><?php echo to_html($linha->titulo); ?></h4>
+                                                <p><?php echo ($linha->genero); ?>
+            
+                                                    <td align="right" class="acoes"><?php echo anchor('livro/editar/' . $linha->id, 'Editar'); ?> |
+                                                        <?php echo anchor('livro/excluir/' . $linha->id, 'Excluir'); ?> |
+                                                        <?php echo anchor('livro/' . $linha->id, 'Ver', array('target' => '_blank')); ?> </td>
+                                            </li>
+                                    <?php
+                                        endforeach;
+                                    else :
+                                        echo '<p>Nenhum post cadastrado!</p>';
+                                    endif;
+            
+            
+                                    ?>
+            
+                                </div>
+                    <?php
+                            else :
+                                echo '<div class="msg-box"><p>Nenhum post cadastrado!</p></div>';
+                            endif;
+                            break;
+
             case 'cadastro_livros':
                 echo form_open_multipart();
                 echo form_label('Título:', 'titulo');

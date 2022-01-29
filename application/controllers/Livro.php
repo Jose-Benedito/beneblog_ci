@@ -22,8 +22,21 @@ class Livro extends CI_Controller{
         //carrega a view
         $dados['titulo'] = 'BNTH - Listagem de livros';
         $dados['h2'] = 'Listagem e edição de livros cadastrados';
+
         $dados['tela'] = 'listar'; //para carregar qual o tipo da view
         $dados['livros'] = $this->livro->get();
+        $this->load->view('painel/livros', $dados);
+    }
+    public function pesquisar(){
+        //verifica se o usuário está logado
+        verifica_login();
+
+        //carrega a view
+        $dados['titulo'] = 'BNTH - Listagem de livros';
+        
+        $dados['h2'] = 'Buscar livro';
+        $dados['tela'] = 'pesquisar'; //para carregar qual o tipo da view
+        $dados['livros'] = $this->livro->busca();
         $this->load->view('painel/livros', $dados);
     }
     public function cadastro_livros(){

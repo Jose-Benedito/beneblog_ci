@@ -43,6 +43,7 @@ class Livros_model extends CI_Model {
             endif;
         endif;
     }
+
     public function get_single($id=0){
         $this->db->where('id', $id); // retorna dados pelo id escolhido
         $query = $this->db->get('livros', 1);
@@ -52,6 +53,32 @@ class Livros_model extends CI_Model {
         else:
             return NULL;
         endif;
+    }
+
+    
+
+   public function busca($limit=0, $offset=0){
+
+
+        
+       if($limit == 0):
+            $this->db->where('titulo', 0); //pega os dados em ordem descrecente
+            $query = $this->db->get('livros',0);
+            if($query->num_rows() > 0): //verifica se as linhas foram alteradas
+                return $query->result(); //retorna os resultados da consulta
+            else:
+                return NULL;
+            endif;
+        else:
+            $this->db->where('titulo', 'desc');
+            $query = $this->db->where('livros', $limit);
+            if($query->num_rows() > 0):
+                return $query->result();
+            else:
+                return NULL;
+            endif;
+        endif;
+        
     }
 
     public function excluir($id=0){
