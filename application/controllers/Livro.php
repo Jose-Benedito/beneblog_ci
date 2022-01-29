@@ -20,13 +20,13 @@ class Livro extends CI_Controller{
         verifica_login();
 
         //carrega a view
-        $dados['titulo'] = 'BNTH - Listagem de vídeos';
-        $dados['h2'] = 'Listagem de vídeos';
+        $dados['titulo'] = 'BNTH - Listagem de livros';
+        $dados['h2'] = 'Listagem e edição de livros cadastrados';
         $dados['tela'] = 'listar'; //para carregar qual o tipo da view
         $dados['livros'] = $this->livro->get();
         $this->load->view('painel/livros', $dados);
     }
-    public function cadastro_users(){
+    public function cadastro_livros(){
         //verifica se o usuário está logado
         verifica_login();
 
@@ -94,10 +94,10 @@ class Livro extends CI_Controller{
         $id = $this->uri->segment(3);
         if($id > 0):
             //id informado, continuar com a exclusão
-            if($postagem = $this->video->get_single($id)): // método do model
-                $dados['videos'] = $postagem;
+            if($postagem = $this->livro->get_single($id)): // método do model
+                $dados['livros'] = $postagem;
             else:
-                set_msg('<p>Vídeo inexistente! Escolha um  para excluir</p>');
+                set_msg('<p>Livro inexistente! Escolha um  para excluir</p>');
                 redirect('video/listar', 'refresh');
             endif;
         else:
@@ -115,12 +115,12 @@ class Livro extends CI_Controller{
             endif;
         else:
             $imagem = 'uploads/'.$postagem->imagem; // concactenado com a imagem vinda do banco de dados
-            if($this->video->excluir($id)): //excluido no bd
+            if($this->livro->excluir($id)): //excluido no bd
                 unlink($imagem); // deletar a imagem na pasta
-                set_msg('<p>Vídeo excluído com sucesso!</p>');
+                set_msg('<p>Dados excluídos com sucesso!</p>');
                 redirect('livro/listar', 'refresh');
             else:
-                set_msg('<p>Erro! Vídeo não excluído!</p>');
+                set_msg('<p>Erro! Dados não excluídos!</p>');
             endif;
         endif;
 
@@ -130,7 +130,7 @@ class Livro extends CI_Controller{
         $dados['titulo'] = 'BNTH - Exclusão de vídeos';
         $dados['h2'] = 'Exclusão de vídeos';
         $dados['tela'] = 'excluir'; //para carregar qual o tipo da view
-        $this->load->view('painel/videos', $dados);
+        $this->load->view('painel/livros', $dados);
 
     }
     public function editar(){
@@ -142,22 +142,25 @@ class Livro extends CI_Controller{
         if($id > 0):
             //id informado, continuar com a edição
             if($postagem = $this->livro->get_single($id)): // método da model
-                $dados['videos'] = $postagem;
+                $dados['livros'] = $postagem;
                 $dados_update['id'] = $postagem->id;
             else:
                 set_msg('<p>Vídeo inexistente! Escolha um vídeo para editar.</p>');
-                redirect('post/listar', 'refresh');
+                redirect('livro/listar', 'refresh');
             endif;
         else:
             set_msg('<p>Você deve escolher um post para editar!</P>');
-            redirect('video/listar', 'refresh');
+            redirect('livro/listar', 'refresh');
         endif;
 
         //regras de validação
         $this->form_validation->set_rules('titulo', 'Título', 'trim|required');
+        $this->form_validation->set_rules('autor', 'Autor', 'trim|required');
+        $this->form_validation->set_rules('editora', 'Editora', 'trim|required');
+        $this->form_validation->set_rules('genero', 'Genero', 'trim|required');
         $this->form_validation->set_rules('descricao', 'descricao', 'trim|required');
-        $this->form_validation->set_rules('link', 'link', 'trim|required');
-        $this->form_validation->set_rules('data', 'data', 'trim|required');
+        $this->form_validation->set_rules('unidade', 'unidade', 'trim|required');
+     
 
         //verifica a validação
         if($this->form_validation->run() == FALSE):
@@ -182,7 +185,7 @@ class Livro extends CI_Controller{
 
                     if($this->video->salvar($dados_update)): //atualiza no bd
                         unlink($imagem_antiga); //deleta a imagem anterior
-                        set_msg('<p>Vídeo alterado com sucesso!</p>');
+                        set_msg('<p>Dados alterados com sucesso!</p>');
                         $dados['videos']->imagem = $dados_update['imagem'];
                     else:
                         set_msg('<p>Erro! Nenhuma alteração foi salva.</p>');
@@ -197,12 +200,15 @@ class Livro extends CI_Controller{
                 //não foi enviada uma imagem pelo form
                 $dados_form = $this->input->post();
                 $dados_update['titulo'] = to_bd($dados_form['titulo']);
+                $dados_update['autor'] = to_bd($dados_form['autor']);
+                $dados_update['editora'] = to_bd($dados_form['editora']);
+                $dados_update['genero'] = to_bd($dados_form['genero']);
                 $dados_update['descricao'] = to_bd($dados_form['descricao']);
-                $dados_update['link'] = to_bd($dados_form['link']);
-                $dados_update['data'] = to_bd($dados_form['data']);
+                $dados_update['unidade'] = to_bd($dados_form['unidade']);
+            
                 
-                if($this->video->salvar($dados_update)):
-                    set_msg('<p>Vídeo alterado com sucesso!</p>');
+                if($this->livro->salvar($dados_update)):
+                    set_msg('<p>Dados alterados com sucesso!</p>');
                 else:
                     set_msg('<p>Erro! Nenhuma alteração foi salva.</p>');
                 endif;
@@ -216,7 +222,7 @@ class Livro extends CI_Controller{
         $dados['titulo'] = 'BNTH - Alteração de vídeos';
         $dados['h2'] = 'Alteração de vídeos';
         $dados['tela'] = 'editar'; //para carregar qual o tipo da view
-        $this->load->view('painel/videos', $dados);
+        $this->load->view('painel/livros', $dados);
 
     }
     

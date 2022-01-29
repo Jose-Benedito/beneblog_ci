@@ -15,7 +15,7 @@ class Livros_model extends CI_Model {
             //post já existe, devo editar
             $this->db->where('id', $dados['id']);
             unset($dados['id']); //para que o id não seja alterado
-            $this->db->update('videos', $dados); // atualiza todos os campos
+            $this->db->update('livros', $dados); // atualiza todos os campos
             return $this->db->affected_rows(); //retorna todos dados alterados
 
         else:

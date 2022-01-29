@@ -55,12 +55,6 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('index.php/listar'); ?>">
-            <span data-feather="users"></span>
-            Pesquisar livros
-          </a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="<?php echo base_url('index.php/post'); ?>">
             <span data-feather="bar-chart-2"></span>
             Controle de livros
@@ -73,7 +67,7 @@
           </a>
         </li>
       </ul>
-
+      
       <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
         <span>Administrativo</span>
         <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
@@ -85,6 +79,12 @@
           <a class="nav-link" href="#">
             <span data-feather="file-text"></span>
             Controle de acesso da sala de leitura
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo base_url('index.php/listar'); ?>">
+            <span data-feather="users"></span>
+            Editar dados de livros
           </a>
         </li>
         <li class="nav-item">
