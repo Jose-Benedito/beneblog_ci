@@ -58,6 +58,14 @@
                 break;
 
             case 'pesquisar':
+      
+                    echo form_open_multipart();
+                    echo form_input('pesquisar', set_value('pesquisar'));
+                    echo form_submit('enviar', 'Pesquisar', array('class' => 'botao'));
+                    echo form_close();
+                
+                
+            
                 if (isset($livros) && sizeof($livros) > 0) :
                     ?>
                                 <table>
@@ -69,7 +77,7 @@
                                 </table>
                                 <div class="col-md-4">
                                     <?php
-                                    if ($livros = $this->livro->get(5)) :
+                                    if ($livros = $this->livro->busca()) :
                                         foreach ($livros as $linha) :
                                     ?>
                                             <li>

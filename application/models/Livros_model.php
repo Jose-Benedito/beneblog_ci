@@ -57,28 +57,15 @@ class Livros_model extends CI_Model {
 
     
 
-   public function busca($limit=0, $offset=0){
-
-
-        
-       if($limit == 0):
-            $this->db->where('titulo', 0); //pega os dados em ordem descrecente
-            $query = $this->db->get('livros',0);
-            if($query->num_rows() > 0): //verifica se as linhas foram alteradas
-                return $query->result(); //retorna os resultados da consulta
-            else:
-                return NULL;
-            endif;
-        else:
-            $this->db->where('titulo', 'desc');
-            $query = $this->db->where('livros', $limit);
-            if($query->num_rows() > 0):
-                return $query->result();
-            else:
-                return NULL;
-            endif;
-        endif;
-        
+   public function busca(){
+    
+       $termo = $this->input->post('pesquisar');
+       $this->db->select('*');
+        $this->db->like('titulo',$termo);
+       $query = $this->db->get('livros');
+   
+     return $query->result(); //retorna os resultados da consulta
+     
     }
 
     public function excluir($id=0){
