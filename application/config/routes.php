@@ -14,7 +14,13 @@ $route['pesquisar'] = 'Livro/pesquisar';
 $route['livro/(:num)'] = 'Paginas/videoaula/$1'; 
 $route['livro'] = 'Livro';
 
-$route['cadastro_users'] = 'Paginas/cadastro_users';
+$route['listar'] = 'User/listar';     // Requer parámetros 9caso não tenha, carrega a home)
+$route['pesquisar'] = 'User/pesquisar';
+$route['user/(:num)'] = 'User/editar/$1'; 
+$route['livro'] = 'Livro';
+
+$route['user'] = 'User';  
+$route['cadastrar'] = 'User/cadastrar';
 $route['cadastro_livros'] = 'Livro/cadastro_livros';
 
 //para gerar o página post (que será alimentada pelo banco de dados)

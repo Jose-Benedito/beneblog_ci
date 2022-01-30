@@ -27,7 +27,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('index.php/cadastro_users'); ?>">
+          <a class="nav-link" href="<?php echo base_url('index.php/cadastrar'); ?>">
             <span data-feather="file-text"></span>
             Cadastro de usuário
           </a>

@@ -43,6 +43,12 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="<?php echo base_url('index.php/cadastrar'); ?>">
+            <span data-feather="shopping-cart"></span>
+            Cadastrar usuários
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="#">
             <span data-feather="file"></span>
             Todos os livros
