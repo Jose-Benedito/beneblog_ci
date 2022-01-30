@@ -15,7 +15,7 @@ $route['livro/(:num)'] = 'Paginas/videoaula/$1';
 $route['livro'] = 'Livro';
 
 $route['listar'] = 'User/listar';     // Requer parámetros 9caso não tenha, carrega a home)
-$route['pesquisar'] = 'User/pesquisar';
+$route['busca_user'] = 'User/buscar_user';
 $route['user/(:num)'] = 'User/editar/$1'; 
 $route['livro'] = 'Livro';
 

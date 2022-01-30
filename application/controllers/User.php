@@ -27,7 +27,7 @@ class User extends CI_Controller{
         $dados['users'] = $this->user->get();
         $this->load->view('painel/users', $dados);
     }
-    public function pesquisar(){
+    public function busca_users(){
         //verifica se o usuário está logado
         verifica_login();
 
