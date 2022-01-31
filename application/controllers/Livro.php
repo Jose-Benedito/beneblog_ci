@@ -249,6 +249,8 @@ class Livro extends CI_Controller{
                 $dados['livro_titulo'] = to_html(($descLivro->titulo));
                 $dados['livro_autor'] = to_html($descLivro->autor);
                 $dados['livro_genero'] = $descLivro->genero;
+                $dados['livro_desc'] = $descLivro->descricao;
+                $dados['livro_unidade'] = $descLivro->unidade;
                 $dados['livro_imagem'] = $descLivro->imagem;
             else:
                 $dados['titulo'] = 'Página não encontrada - BNTH';

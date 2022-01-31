@@ -143,3 +143,4 @@ class Paginas extends CI_Controller {
         $this->load->view('painel/postagem', $dados);
     } */
    
+}

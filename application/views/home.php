@@ -53,8 +53,8 @@
     ?>
  
 </ul>
-    </div>
 -->
+</div>
 </main>
 
 <?php $this->load->view('commons/footer') ?>
