@@ -142,26 +142,4 @@ class Paginas extends CI_Controller {
         endif;
         $this->load->view('painel/postagem', $dados);
     } */
-    public function videoaula(){
-        if(($id = $this->uri->segment(2))> 0): //segment(2)= refêre-se a posição da rota chamada pós barra da url  no navegador
-            if($videoaula = $this->video->get_single($id)): //método do model
-                $dados['titulo'] =  to_html($videoaula->titulo).' - BNTH';
-                $dados['video_titulo'] = to_html(($videoaula->titulo));
-                $dados['video_descricao'] = to_html($videoaula->descricao);
-                $dados['video_link'] = $videoaula->link;
-                $dados['video_imagem'] = $videoaula->imagem;
-            else:
-                $dados['titulo'] = 'Página não encontrada - BNTH';
-                $dados['video_titulo'] = 'Videoaula não encontrada';
-                $dados['video_descricao'] = '<p>Nenhum video foi encontrado com base nos parâmetros fornecidos</p>';
-                $dados['video_imagem'] = '';
-
-            endif;
-        else:
-            redirect(base_url(), 'refresh');
-
-        endif;
-        $this->load->view('videoaulas', $dados);
-    }
-    
-}
+   

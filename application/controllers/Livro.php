@@ -242,4 +242,26 @@ class Livro extends CI_Controller{
 
     }
     
-}
+    public function emprestarLivro(){
+        if(($id = $this->uri->segment(2))> 0): //segment(2)= refêre-se a posição da rota chamada pós barra da url  no navegador
+            if($descLivro = $this->livro->get_single($id)): //método do model
+                $dados['titulo'] =  to_html($descLivro->titulo).' - BNTH';
+                $dados['livro_titulo'] = to_html(($descLivro->titulo));
+                $dados['livro_autor'] = to_html($descLivro->autor);
+                $dados['livro_genero'] = $descLivro->genero;
+                $dados['livro_imagem'] = $descLivro->imagem;
+            else:
+                $dados['titulo'] = 'Página não encontrada - BNTH';
+                $dados['livro_titulo'] = 'livro não encontrado';
+                $dados['livro_autor'] = '<p>Nenhum livro foi encontrado com base nos parâmetros fornecidos</p>';
+                $dados['livro_imagem'] = '';
+    
+            endif;
+        else:
+            redirect(base_url(), 'refresh');
+    
+        endif;
+        $this->load->view('emprestar_livro', $dados);
+    }
+    
+    }
