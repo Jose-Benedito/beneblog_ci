@@ -210,6 +210,8 @@
                 echo form_input('telefone', set_value('telefone', to_html($users->user_telefone)));
                 echo form_submit('excluir', 'Excluir >>', array('class'=> 'botao')); 
                 echo form_close();
+
+             
                 break;
                
         endswitch;

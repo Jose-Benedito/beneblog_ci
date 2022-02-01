@@ -4,6 +4,7 @@
     <div class="coluna col10">
         <h2><?php echo $h2; ?></h2>
         <div class="coluna col2">
+            
             <ul class="sem-marcador sem-padding">
                 
                 <li><a href="<?php echo base_url('index.php/livro/listar')  ?>">LISTAR LIVROS</a></li>
@@ -39,7 +40,7 @@
 
                                 <td align="right" class="acoes"><?php echo anchor('livro/editar/' . $linha->id, 'Editar'); ?> |
                                 <?php echo anchor('livro/excluir/' . $linha->id, 'Excluir'); ?> |
-                                <?php echo anchor('livro/' . $linha->id, 'Retirar', array('target' => '_blank')); ?> </td>
+                                <?php echo anchor('livro/emprestarLivro/' . $linha->id, 'Retirar', array('target' => '_blank')); ?> </td>
                             </li>
                         <?php
                             endforeach;
@@ -87,7 +88,7 @@
 
                                     <td align="right" class="acoes"><?php echo anchor('livro/editar/' . $linha->id, 'Editar'); ?> |
                                     <?php echo anchor('livro/excluir/' . $linha->id, 'Excluir'); ?> |
-                                    <?php echo anchor('livro/' . $linha->id, 'Retirar', array('target' => '_blank')); ?> </td>
+                                    <?php echo anchor('livro/emprestarLivro/' . $linha->id, 'Retirar', array('target' => '_blank')); ?> </td>
                                 </li>
                         <?php
                             endforeach;
@@ -143,7 +144,7 @@
             case 'editar':
                 echo form_open_multipart();
                 echo form_label('Título:', 'titulo');
-                echo form_input('titulo', set_value('titulo', to_html($livros->titulo)));
+              //  echo form_input('titulo', set_value('titulo', to_html($livros->titulo)));
                 echo form_label('Autor:', 'autor');
                 echo form_input('autor', set_value('autor', to_html($livros->autor)));
                 echo form_label('Descrição:', 'descricao');
@@ -202,6 +203,34 @@
                 echo form_submit('enviar', 'Excluir ', array('class' => 'botao'));
                 echo form_close();
                 break;
+           case 'emprestarLivro':
+              
+            echo form_open_multipart();
+            echo form_label('Nome:', 'titulo');
+            echo form_input('nome', set_value('user_nome'));
+            echo form_label('RA:', 'ra');
+            echo form_input('ra', set_value('user_ra'));
+            echo form_label('Turma:', 'turma');
+            echo form_input('turma', set_value('user_turma'));
+            echo form_label('Livro:', 'id');
+            echo form_input('id', set_value('id',to_html($livros->id)));
+          
+            echo form_submit('enviar', 'Salvar', array('class' => 'botao'));
+            echo form_close();
+
+            ?>
+            <div class="col-md-4">
+            <h2 class="display-5"><?php echo $livros->titulo; ?></h2>
+            <p class="lead"><?php echo $livros->autor; ?></p>
+            <p class="lead"><?php echo $livros->genero; ?></p>    
+      
+            <img style="width: 200px; height: 260px;" src="<?php echo base_url('uploads/'.$livros->imagem);?>" alt=""/>
+            <p class="lead"><?php echo $livros->descricao; ?></p>
+            
+            </div>
+            <?php
+                break; 
+
         endswitch;
 
 

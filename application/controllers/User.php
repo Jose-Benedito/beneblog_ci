@@ -10,6 +10,7 @@ class User extends CI_Controller{
         $this->load->library('form_validation');
         $this->load->model('options_model', 'option');
         $this->load->model('Usuario_model', 'user');
+        $this->load->model('Livros_model', 'livros');
     }
 
     public function index(){
@@ -39,11 +40,29 @@ class User extends CI_Controller{
         $dados['usuarios'] = $this->user->busca();
         $this->load->view('painel/livros', $dados);
     }
-    public function cadastrar(){
+    public function emprestarLivro(){
         //verifica se o usuário está logado
         verifica_login();
+        //verifica se foi passado o id do post
+        $id = $this->uri->segment(3);
+        if($id > 0):
+            //id informado, continuar com a edição
+            if($postagem = $this->user->get_single($id)): // método da model
+                $dados['livros'] = $postagem;
+                $dados_update['id'] = $postagem->id;
+            else:
+                set_msg('<p>LIVRO inexistente! Escolha um vídeo para editar.</p>');
+                redirect('livro/listar', 'refresh');
+            endif;
+        else:
+            set_msg('<p>Você deve escolher um post para editar!</P>');
+            redirect('livro/listar', 'refresh');
+        endif;
+
 
         //regras de validação
+        $this->form_validation->set_rules('titulo', 'titulo', 'trim|required');
+        $this->form_validation->set_rules('ra', 'RA', 'trim|required');
         $this->form_validation->set_rules('nome', 'Nome', 'trim|required');
         $this->form_validation->set_rules('ra', 'RA', 'trim|required');
         $this->form_validation->set_rules('turma', 'Turma', 'trim|required');
@@ -85,8 +104,8 @@ class User extends CI_Controller{
 
         $dados['titulo'] = 'BNTH - Cadastro de Usuarios';
         $dados['h2'] = 'Cadastro de usuários';
-        $dados['tela'] = 'cadastrar'; //para carregar qual o tipo da view
-        $this->load->view('painel/users', $dados);
+        //$dados['tela'] = 'cadastrar'; //para carregar qual o tipo da view
+        $this->load->view('/emprestar_livro', $dados);
     
     }
     public function excluir(){

@@ -10,6 +10,7 @@ class Livro extends CI_Controller{
         $this->load->library('form_validation');
         $this->load->model('options_model', 'option');
         $this->load->model('livros_model', 'livro');
+        $this->load->model('Usuario_model', 'user');
     }
 
     public function index(){
@@ -202,7 +203,7 @@ class Livro extends CI_Controller{
                     if($this->livro->salvar($dados_update)): //atualiza no bd
                         unlink($imagem_antiga); //deleta a imagem anterior
                         set_msg('<p>Dados alterados com sucesso!</p>');
-                        $dados['videos']->imagem = $dados_update['imagem'];
+                        $dados['livros']->imagem = $dados_update['imagem'];
                     else:
                         set_msg('<p>Erro! Nenhuma alteração foi salva.</p>');
                     endif;
@@ -243,27 +244,87 @@ class Livro extends CI_Controller{
     }
     
     public function emprestarLivro(){
-        if(($id = $this->uri->segment(2))> 0): //segment(2)= refêre-se a posição da rota chamada pós barra da url  no navegador
-            if($descLivro = $this->livro->get_single($id)): //método do model
-                $dados['titulo'] =  to_html($descLivro->titulo).' - BNTH';
-                $dados['livro_titulo'] = to_html(($descLivro->titulo));
-                $dados['livro_autor'] = to_html($descLivro->autor);
-                $dados['livro_genero'] = $descLivro->genero;
-                $dados['livro_desc'] = $descLivro->descricao;
-                $dados['livro_unidade'] = $descLivro->unidade;
-                $dados['livro_imagem'] = $descLivro->imagem;
+        if(($id = $this->uri->segment(3))> 0): //segment(2)= refêre-se a posição da rota chamada pós barra da url  no navegador
+            if($descLivro= $this->livro->get_single($id)): // método da model
+                $dados['livros'] = $descLivro;
+              //  $dados_update['id'] = $$descLivro->id;
             else:
-                $dados['titulo'] = 'Página não encontrada - BNTH';
-                $dados['livro_titulo'] = 'livro não encontrado';
-                $dados['livro_autor'] = '<p>Nenhum livro foi encontrado com base nos parâmetros fornecidos</p>';
-                $dados['livro_imagem'] = '';
-    
+                set_msg('<p>Vídeo inexistente! Escolha um vídeo para editar.</p>');
+                redirect('livro/listar', 'refresh');
             endif;
         else:
-            redirect(base_url(), 'refresh');
-    
+            set_msg('<p>Você deve escolher um post para editar!</P>');
+            redirect('livro/listar', 'refresh');
         endif;
-        $this->load->view('emprestar_livro', $dados);
-    }
+        
+        
+        
+        //regras de validação
+        $this->form_validation->set_rules('nome', 'nome', 'trim|required');
+        $this->form_validation->set_rules('ra', 'Ra', 'trim|required');
+        $this->form_validation->set_rules('turma', 'Turma', 'trim|required');
+        $this->form_validation->set_rules('id', 'id', 'trim|required');
+        
+        //verifica a validação
+        if($this->form_validation->run() == FALSE):
+            if(validation_errors()):
+                set_msg(validation_errors());
+            endif;
+        else:
+            
+            
+            
+            $dados_form = $this->input->post();
+            
+            $dados_insert['user_nome'] = to_bd($dados_form['nome']);
+            $dados_insert['user_ra'] = to_bd($dados_form['ra']);
+            $dados_insert['user_turma'] = to_bd($dados_form['turma']);
+            $dados_insert['livro_id'] = to_bd($dados_form['id']);
+            
+            
+            
+            if($this->user->salvar($dados_insert)): //atualiza no bd
+                
+                set_msg('<p>Dados alterados com sucesso!</p>');
+                
+            else:
+                set_msg('<p>Erro! Nenhuma alteração foi salva.</p>');
+            endif;
+            
+        endif;
+        
+        
+        
+        
+        
+                        $dados['titulo'] =  to_html($descLivro->titulo).' - BNTH';
+                        $dados['livro_id'] = to_html(($descLivro->id));
+                        $dados['livro_titulo'] = to_html(($descLivro->titulo));
+                        $dados['livro_autor'] = to_html($descLivro->autor);
+                        $dados['livro_genero'] = $descLivro->genero;
+                        $dados['livro_desc'] = $descLivro->descricao;
+                        $dados['livro_unidade'] = $descLivro->unidade;
+                        $dados['livro_imagem'] = $descLivro->imagem;
+                    
+                        $dados['titulo'] = 'Página não encontrada - BNTH';
+                        $dados['livro_titulo'] = 'livro não encontrado';
+                        $dados['livro_autor'] = '<p>Nenhum livro foi encontrado com base nos parâmetros fornecidos</p>';
+                        $dados['livro_imagem'] = '';
+                        
+       /*             
+        $dados['titulo'] = 'BNTH - Cadastrar de vídeos';
+        $dados['h2'] = 'Fazer retirada';
+        $dados['usuario']= $this->user->get();
+        $this->load->view('emprestarlivro', $dados); */
+
+        $dados['titulo'] = 'BNTH - Alteração de vídeos';
+        $dados['h2'] = 'Alteração de vídeos';
+        $dados['tela'] = 'emprestarLivro'; //para carregar qual o tipo da view
+        $this->load->view('painel/livros', $dados);
+        
+    
+   
+
     
     }
+}
