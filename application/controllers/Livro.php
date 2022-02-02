@@ -286,6 +286,7 @@ class Livro extends CI_Controller{
             if($this->user->salvar($dados_insert)): //atualiza no bd
                 
                 set_msg('<p>Dados alterados com sucesso!</p>');
+              //  redirect('user/emprestar_livro');
                 
             else:
                 set_msg('<p>Erro! Nenhuma alteração foi salva.</p>');
@@ -311,14 +312,10 @@ class Livro extends CI_Controller{
                         $dados['livro_autor'] = '<p>Nenhum livro foi encontrado com base nos parâmetros fornecidos</p>';
                         $dados['livro_imagem'] = '';
                         
-       /*             
-        $dados['titulo'] = 'BNTH - Cadastrar de vídeos';
-        $dados['h2'] = 'Fazer retirada';
-        $dados['usuario']= $this->user->get();
-        $this->load->view('emprestarlivro', $dados); */
+      
 
         $dados['titulo'] = 'BNTH - Alteração de vídeos';
-        $dados['h2'] = 'Alteração de vídeos';
+        $dados['h2'] = 'Empréstimo de livro';
         $dados['tela'] = 'emprestarLivro'; //para carregar qual o tipo da view
         $this->load->view('painel/livros', $dados);
         

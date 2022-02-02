@@ -49,9 +49,9 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <span data-feather="file"></span>
-            Todos os livros
+          <a class="nav-link" href="<?php echo base_url('index.php/pesquisar'); ?>">
+            <span data-feather="users"></span>
+            Pesquisar livro
           </a>
         </li>
         <li class="nav-item">

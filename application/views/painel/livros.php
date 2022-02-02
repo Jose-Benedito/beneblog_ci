@@ -204,22 +204,8 @@
                 echo form_close();
                 break;
            case 'emprestarLivro':
-              
-            echo form_open_multipart();
-            echo form_label('Nome:', 'titulo');
-            echo form_input('nome', set_value('user_nome'));
-            echo form_label('RA:', 'ra');
-            echo form_input('ra', set_value('user_ra'));
-            echo form_label('Turma:', 'turma');
-            echo form_input('turma', set_value('user_turma'));
-            echo form_label('Livro:', 'id');
-            echo form_input('id', set_value('id',to_html($livros->id)));
-          
-            echo form_submit('enviar', 'Salvar', array('class' => 'botao'));
-            echo form_close();
-
             ?>
-            <div class="col-md-4">
+            <div class="col-md-4" align="right">
             <h2 class="display-5"><?php echo $livros->titulo; ?></h2>
             <p class="lead"><?php echo $livros->autor; ?></p>
             <p class="lead"><?php echo $livros->genero; ?></p>    
@@ -229,6 +215,22 @@
             
             </div>
             <?php
+              
+            echo form_open_multipart();
+            echo form_label('Nome:', 'titulo');
+            echo form_input('nome', set_value('user_nome'));
+            echo form_label('RA:', 'ra');
+            echo form_input('ra', set_value('user_ra'));
+         
+            echo form_label('Turma:', 'turma');
+            echo form_input('turma', set_value('turma'));
+            echo form_label('Livro:', 'id');
+            echo form_input('id', set_value('id',to_html($livros->id)));
+          
+            echo form_submit('enviar', 'Salvar', array('class' => 'botao'));
+            echo form_close();
+
+           
                 break; 
 
         endswitch;

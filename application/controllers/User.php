@@ -40,72 +40,20 @@ class User extends CI_Controller{
         $dados['usuarios'] = $this->user->busca();
         $this->load->view('painel/livros', $dados);
     }
-    public function emprestarLivro(){
-        //verifica se o usuário está logado
-        verifica_login();
-        //verifica se foi passado o id do post
-        $id = $this->uri->segment(3);
-        if($id > 0):
-            //id informado, continuar com a edição
-            if($postagem = $this->user->get_single($id)): // método da model
-                $dados['livros'] = $postagem;
-                $dados_update['id'] = $postagem->id;
-            else:
-                set_msg('<p>LIVRO inexistente! Escolha um vídeo para editar.</p>');
-                redirect('livro/listar', 'refresh');
-            endif;
-        else:
-            set_msg('<p>Você deve escolher um post para editar!</P>');
-            redirect('livro/listar', 'refresh');
-        endif;
+    public function emprestar_Livro(){
+       
+        $dados['h2'] = 'Buscar livro';
+       // $dados['tela'] = 'pesquisar'; //para carregar qual o tipo da view
+        $descLivro = $this->user->get();
+        //$dados['usuario'] = $descLivro;
 
-
-        //regras de validação
-        $this->form_validation->set_rules('titulo', 'titulo', 'trim|required');
-        $this->form_validation->set_rules('ra', 'RA', 'trim|required');
-        $this->form_validation->set_rules('nome', 'Nome', 'trim|required');
-        $this->form_validation->set_rules('ra', 'RA', 'trim|required');
-        $this->form_validation->set_rules('turma', 'Turma', 'trim|required');
-        $this->form_validation->set_rules('telefone', 'Telefone', 'trim|required');
-        
-     
-        //verifica a validação
-        if($this->form_validation->run() == FALSE):
-            if(validation_errors()):
-                set_msg(validation_errors());
-            endif;
-        else:
-            
-                $dados_form = $this->input->post();
-
-              //  var_dump($dados_upload);
-               $dados_insert['user_nome'] = to_bd($dados_form['nome']);
-               $dados_insert['user_ra'] = to_bd($dados_form['ra']);
-               $dados_insert['user_turma'] = to_bd($dados_form['turma']);
-               $dados_insert['user_telefone'] = to_bd($dados_form['telefone']);
-        
-
-               
-               //salvar no banco de dados
-               if($id = $this->user->salvar($dados_insert)):
-                    set_msg('<p>Dados cadastrado com sucesso!</p>');
-                    redirect('User/cadastrar/'.$id, 'refresh');
-               else:
-                    set_msg('<p> Erro! Livro não foi cadastrado.</p>');
-               endif;
-
-            
-      
-        endif;
-
-
-
-        //carrega a view
-
-        $dados['titulo'] = 'BNTH - Cadastro de Usuarios';
-        $dados['h2'] = 'Cadastro de usuários';
-        //$dados['tela'] = 'cadastrar'; //para carregar qual o tipo da view
+       $dados['user_nome'] = $descLivro->user_nome;
+        $dados['userra'] = $descLivro->user_ra;
+        $dados['userturma'] = $descLivro->user_turma;
+        $dados['userlivro'] = $descLivro->livro_id;
+        $dados['userdata'] = $descLivro->data; 
         $this->load->view('/emprestar_livro', $dados);
+     
     
     }
     public function excluir(){

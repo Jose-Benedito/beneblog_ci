@@ -7,11 +7,11 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 
-$route['empresa'] = 'Paginas/empresa';
+$route['/'] = 'Paginas';
 
 $route['listar'] = 'Livro/listar';     // Requer parámetros 9caso não tenha, carrega a home)
 $route['pesquisar'] = 'Livro/pesquisar';
-$route['livro/(:num)'] = 'Livro/emprestarLivro/$1'; 
+$route['user'] = 'User/emprestar_Livro'; 
 $route['livro'] = 'Livro';
 
 $route['listar'] = 'User/listar';     // Requer parámetros 9caso não tenha, carrega a home)
