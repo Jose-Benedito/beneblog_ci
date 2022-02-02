@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Post extends CI_Controller{
+class Controle_livros extends CI_Controller{
 
     function __construct(){
         parent::__construct();
@@ -9,22 +9,22 @@ class Post extends CI_Controller{
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->model('options_model', 'option');
-        $this->load->model('post_model', 'post');
+        $this->load->model('clivros_model', 'post');
     }
 
     public function index(){
-        redirect('post/listar', 'refresh');
+        redirect('controle_livros/listar', 'refresh');
     }
     public function listar(){
         //verifica se o usuário está logado
         verifica_login();
 
         //carrega a view
-        $dados['titulo'] = 'BNTH - Listagem de posts';
-        $dados['h2'] = 'Listagem de posts';
+        $dados['titulo'] = 'BNTH - controle de livros';
+        $dados['h2'] = 'Controle de livros emprestados';
         $dados['tela'] = 'listar'; //para carregar qual o tipo da view
         $dados['posts'] = $this->post->get();
-        $this->load->view('painel/posts', $dados);
+        $this->load->view('painel/controle_livros', $dados);
     }
     public function cadastrar(){
         //verifica se o usuário está logado
@@ -71,10 +71,10 @@ class Post extends CI_Controller{
 
         //carrega a view
 
-        $dados['titulo'] = 'BNTH - Cadastro de posts';
-        $dados['h2'] = 'Cadastro de posts';
+        $dados['titulo'] = 'BNTH - Retirada de livro';
+        $dados['h2'] = 'Nova retirada de livro';
         $dados['tela'] = 'cadastrar'; //para carregar qual o tipo da view
-        $this->load->view('painel/posts', $dados);
+        $this->load->view('painel/controle_livros', $dados);
     
     }
     public function excluir(){
@@ -109,7 +109,7 @@ class Post extends CI_Controller{
             if($this->post->excluir($id)):
                 unlink($imagem); // deletar a imagem na pasta
                 set_msg('<p>Post excluído com sucesso!</p>');
-                redirect('post/listar', 'refresh');
+                redirect('controle_livros/listar', 'refresh');
             else:
                 set_msg('<p>Erro! Post não excluído!</p>');
             endif;
@@ -121,7 +121,7 @@ class Post extends CI_Controller{
         $dados['titulo'] = 'BNTH - Exclusão de posts';
         $dados['h2'] = 'Exclusão de posts';
         $dados['tela'] = 'excluir'; //para carregar qual o tipo da view
-        $this->load->view('painel/posts', $dados);
+        $this->load->view('painel/controle_livros', $dados);
 
     }
     public function editar(){
@@ -202,7 +202,7 @@ class Post extends CI_Controller{
         $dados['titulo'] = 'BNTH - Alteração de posts';
         $dados['h2'] = 'Alteração de posts';
         $dados['tela'] = 'editar'; //para carregar qual o tipo da view
-        $this->load->view('painel/posts', $dados);
+        $this->load->view('painel/controle_livros', $dados);
 
     }
 }

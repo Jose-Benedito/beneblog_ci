@@ -10,8 +10,8 @@ class Paginas extends CI_Controller {
         //carrega os módulos e classes
         $this->load->helper('url');
         $this->load->model('options_model', 'option');
-        $this->load->model('post_model', 'post');
-        $this->load->model('video_model', 'video');
+        $this->load->model('clivros_model', 'post');
+        $this->load->model('livros_model', 'livro');
        // $this->output->cache(1440); //corrensponde a 24 horas até o  cache ser atualizado
         
     }
@@ -34,19 +34,19 @@ class Paginas extends CI_Controller {
     
     }
     public function video(){
-        $data['titulo'] = "BNTH | Serviços";
-        $data['description'] = "Informações sobre os serviços prestados";
+        $data['titulo'] = "BNTH | cadastro de usuarios";
+        $data['description'] = "cadastro de usuários";
         $this->load->view('commons/header', $data);
         $this->load->view('videoaulas');
         $this->load->view('commons/footer');
     }
-    public function faleconosco()
+    public function cadastro_users()
     {
     
         $this->load->helper('url');
         $this->load->library (array('form_validation', 'email'));
         $this->load->helper('form');
-        $data['titulo'] = "BNTH | Fale Conosco";
+        $data['titulo'] = "BNTH | Controle de livros";
        $data['description'] = "Exercício de exemplo do capítulo 5 do livro CodeIgniter da casa do código";
         
         // Regras de validação do formulário
@@ -75,24 +75,24 @@ class Paginas extends CI_Controller {
         
         }
 
-        $this->load->view('faleconosco', $data);
+        $this->load->view('cadastro_users', $data);
     
     }
 
 
-    public function trabalheconosco()
+    public function cadastro_livros()
     {
         $this->load->helper('url');
         $this->load->library ('form_validation');
         $this->load->helper('form');
-        $data['titulo'] = 'BNTH | Trabalhe Conosco';
+        $data['titulo'] = 'BNTH | Cadastro de livros';
         $data['description'] = "Exercício de exemplo docapítulo 5 do livro Codeigniter";
 
         
-      $this->load->view('trabalheconosco', $data);
+      $this->load->view('cadastro_livros', $data);
     }
     // confgurações para o disparo de emails
-    Private function SendEmailToAdmin($from, $fromName, $to, $toName, $subject, $message, $reply = null, $replyName = null)
+   /* Private function SendEmailToAdmin($from, $fromName, $to, $toName, $subject, $message, $reply = null, $replyName = null)
     {
         $this->load->library('email');
 
@@ -141,27 +141,6 @@ class Paginas extends CI_Controller {
 
         endif;
         $this->load->view('painel/postagem', $dados);
-    }
-    public function videoaula(){
-        if(($id = $this->uri->segment(2))> 0): //segment(2)= refêre-se a posição da rota chamada pós barra da url  no navegador
-            if($videoaula = $this->video->get_single($id)): //método do model
-                $dados['titulo'] =  to_html($videoaula->titulo).' - BNTH';
-                $dados['video_titulo'] = to_html(($videoaula->titulo));
-                $dados['video_descricao'] = to_html($videoaula->descricao);
-                $dados['video_link'] = $videoaula->link;
-                $dados['video_imagem'] = $videoaula->imagem;
-            else:
-                $dados['titulo'] = 'Página não encontrada - BNTH';
-                $dados['video_titulo'] = 'Videoaula não encontrada';
-                $dados['video_descricao'] = '<p>Nenhum video foi encontrado com base nos parâmetros fornecidos</p>';
-                $dados['video_imagem'] = '';
-
-            endif;
-        else:
-            redirect(base_url(), 'refresh');
-
-        endif;
-        $this->load->view('videoaulas', $dados);
-    }
-    
+    } */
+   
 }

@@ -1,5 +1,7 @@
     <?php $this->load->view('painel/header'); ?>
 
+    <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-md-4">
+
     <div class="coluna col3">&nbsp;</div>
         <div class="coluna col6">
             <h2><?php echo $h2; ?></h2>

@@ -1,9 +1,10 @@
 <?php $this->load->view('painel/header'); ?>
 
+<main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-md-4">
 <div class="coluna col2">
     <ul class="sem-marcador sem-padding">
-        <li><a href="<?php echo base_url('index.php/post/cadastrar'); ?>">INSERIR</a></li>
-        <li><a href="<?php echo base_url('index.php/post/listar')  ?>">LISTAR</a></li>
+        <li><a href="<?php echo base_url('index.php/controle_livros/cadastrar'); ?>">RETIRAR LIVRO</a></li>
+        <li><a href="<?php echo base_url('index.php/controle_livros/listar')  ?>">LISTAR EMPRÉSTIMOS</a></li>
 
 </div>
     <div class="coluna col10">
@@ -29,8 +30,8 @@
                                     ?>
                                     <tr>
                                         <td class="titulo-post"><?php echo $linha->titulo; ?>    |</td>
-                                        <td align="right" class="acoes"><?php echo anchor('post/editar/'.$linha->id, 'Editar'); ?> | 
-                                        <?php echo anchor('post/excluir/'.$linha->id, 'Excluir');?> |
+                                        <td align="right" class="acoes"><?php echo anchor('controle_livros/editar/'.$linha->id, 'Editar'); ?> | 
+                                        <?php echo anchor('controle_livros/excluir/'.$linha->id, 'Excluir');?> |
                                         <?php echo anchor('postagem/'.$linha->id, 'Ver', array('target'=>'_blank')); ?> </td>
 
                                     </tr>
@@ -98,6 +99,8 @@
         ?>
         
     </div>
+
+</main>
 <div class="coluna col3">&nbsp;</div>
 
 <?php $this->load->view('painel/footer'); ?>

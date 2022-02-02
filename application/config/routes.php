@@ -7,18 +7,25 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 
-$route['empresa'] = 'Paginas/empresa';
+$route['/'] = 'Paginas';
 
-$route['video'] = 'Video';     // Requer parámetros 9caso não tenha, carrega a home)
-$route['video/(:num)'] = 'Paginas/videoaula/$1'; 
-$route['videos'] = 'Video/video';
+$route['listar'] = 'Livro/listar';     // Requer parámetros 9caso não tenha, carrega a home)
+$route['pesquisar'] = 'Livro/pesquisar';
+$route['user'] = 'User/emprestar_Livro'; 
+$route['livro'] = 'Livro';
 
-$route['faleconosco'] = 'Paginas/faleconosco';
-$route['trabalheconosco'] = 'Paginas/trabalheconosco';
+$route['listar'] = 'User/listar';     // Requer parámetros 9caso não tenha, carrega a home)
+$route['busca_user'] = 'User/buscar_user';
+$route['user/(:num)'] = 'User/editar/$1'; 
+$route['livro'] = 'Livro';
+
+$route['user'] = 'User';  
+$route['cadastrar'] = 'User/cadastrar';
+$route['cadastro_livros'] = 'Livro/cadastro_livros';
 
 //para gerar o página post (que será alimentada pelo banco de dados)
-$route['post'] = 'Post';     // Requer parámetros 9caso não tenha, carrega a home)
-$route['post/(:num)'] = 'Paginas/postagem/$1';  // carrega a página com parâmetros
+$route['controle_livros'] = 'Controle_livros';     // Requer parámetros 9caso não tenha, carrega a home)
+$route['controle_livros/(:num)'] = 'Paginas/postagem/$1';  // carrega a página com parâmetros
 
 //carrega a página de login do sistema
 $route['login'] = 'Setup/login';
