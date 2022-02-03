@@ -212,7 +212,7 @@
       
             <img style="width: 200px; height: 260px;" src="<?php echo base_url('uploads/'.$livros->imagem);?>" alt=""/>
             <p class="lead"><?php echo $livros->descricao; ?></p>
-            
+            <input type="date">
             </div>
             <?php
               
@@ -223,10 +223,16 @@
             echo form_input('ra', set_value('user_ra'));
          
             echo form_label('Turma:', 'turma');
-            echo form_input('turma', set_value('turma'));
+            echo form_input('turma', set_value('user_turma'));
             echo form_label('Livro:', 'id');
             echo form_input('id', set_value('id',to_html($livros->id)));
-          
+            echo form_label('Titulo do livro');
+            echo form_input('titulo', set_value('titulo',to_html($livros->titulo)));
+            ?>
+            <label for="Data de entrega">Data de devolução</label>
+               <input id="date" type="date" name="data_entrega" value="2022-02-01">
+               <?php
+               // echo form_input('data_entrega', set_value('idata_entrega'));
             echo form_submit('enviar', 'Salvar', array('class' => 'botao'));
             echo form_close();
 

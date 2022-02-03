@@ -54,6 +54,16 @@ class Usuario_model extends CI_Model {
             return NULL;
         endif;
     }
+    public function get_livro($id=0){
+        $this->db->where('livro_id', $id); // retorna dados pelo id escolhido
+        $query = $this->db->get('usuarios', 1);
+        if($query->num_rows() == 1):
+            $row = $query->row();
+            return $row;
+        else:
+            return NULL;
+        endif;
+    }
 
     
 

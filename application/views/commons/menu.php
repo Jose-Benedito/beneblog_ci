@@ -72,6 +72,12 @@
             Controle de acesso da sala de leitura
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo base_url('index.php/user/emprestar_livro'); ?>">
+            <span data-feather="bar-chart-2"></span>
+            Controle de Retirada
+          </a>
+        </li>
         
         <li class="nav-item">
           <a class="nav-link" href="#">

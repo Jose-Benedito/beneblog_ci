@@ -41,17 +41,18 @@ class User extends CI_Controller{
         $this->load->view('painel/livros', $dados);
     }
     public function emprestar_Livro(){
-       
-        $dados['h2'] = 'Buscar livro';
-       // $dados['tela'] = 'pesquisar'; //para carregar qual o tipo da view
-        $descLivro = $this->user->get();
-        //$dados['usuario'] = $descLivro;
+ 
+        $usuarioModel = $this->user->get_single();
+        $userModel = $this->user->get();
+        
+        $dados['dadosUsuario'] = $userModel;
+    
+        $dados[ 'dadoLivro'] = $this->livros->get_user($usuarioModel);
 
-       $dados['user_nome'] = $descLivro->user_nome;
-        $dados['userra'] = $descLivro->user_ra;
-        $dados['userturma'] = $descLivro->user_turma;
-        $dados['userlivro'] = $descLivro->livro_id;
-        $dados['userdata'] = $descLivro->data; 
+       
+
+
+        
         $this->load->view('/emprestar_livro', $dados);
      
     

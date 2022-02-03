@@ -280,16 +280,18 @@ class Livro extends CI_Controller{
             $dados_insert['user_ra'] = to_bd($dados_form['ra']);
             $dados_insert['user_turma'] = to_bd($dados_form['turma']);
             $dados_insert['livro_id'] = to_bd($dados_form['id']);
+            $dados_insert['titulo_livro'] = to_bd($dados_form['titulo']);
+            $dados_insert['data_entrega'] = to_bd($dados_form['data_entrega']);
             
             
             
             if($this->user->salvar($dados_insert)): //atualiza no bd
                 
-                set_msg('<p>Dados alterados com sucesso!</p>');
-              //  redirect('user/emprestar_livro');
+                set_msg('<p>Retirada registrada com sucesso!</p>');
+               redirect('user/emprestar_livro');
                 
             else:
-                set_msg('<p>Erro! Nenhuma alteração foi salva.</p>');
+                set_msg('<p>Erro! Nenhuma ação foi realizada.</p>');
             endif;
             
         endif;

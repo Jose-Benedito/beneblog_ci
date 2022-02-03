@@ -54,6 +54,16 @@ class Livros_model extends CI_Model {
             return NULL;
         endif;
     }
+    public function get_user($livro_id=0){
+        $this->db->where('id', $livro_id); // retorna dados pelo id escolhido
+        $query = $this->db->get('livros', 3);
+        if($query->num_rows() == 1):
+            $row = $query->row();
+            return $row;
+        else:
+            return NULL;
+        endif;
+    }
 
     
 

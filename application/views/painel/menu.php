@@ -94,9 +94,9 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('index.php/controle_livros/listar'); ?>">
+          <a class="nav-link" href="<?php echo base_url('index.php/user/emprestar_livro'); ?>">
             <span data-feather="bar-chart-2"></span>
-            Controle de livros
+            Controle de Retirada
           </a>
         </li>
         
