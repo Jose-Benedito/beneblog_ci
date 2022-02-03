@@ -11,6 +11,7 @@ class User extends CI_Controller{
         $this->load->model('options_model', 'option');
         $this->load->model('Usuario_model', 'user');
         $this->load->model('Livros_model', 'livros');
+        $this->load->model('Cadastro_model', 'leitor');
     }
 
     public function index(){
@@ -28,6 +29,54 @@ class User extends CI_Controller{
         $dados['users'] = $this->user->get();
         $this->load->view('painel/users', $dados);
     }
+    public function cadastrar_users(){
+        //verifica se o usuário está logado
+        verifica_login();
+
+        //regras de validação
+        $this->form_validation->set_rules('nome', 'Nome', 'trim|required');
+        $this->form_validation->set_rules('ra', 'Ra', 'trim|required');
+        $this->form_validation->set_rules('turma', 'Turma', 'trim|required');
+        $this->form_validation->set_rules('telefone', 'Telefone', 'trim|required');
+       
+     
+        //verifica a validação
+        if($this->form_validation->run() == FALSE):
+            if(validation_errors()):
+                set_msg(validation_errors());
+            endif;
+        else:
+          
+                $dados_form = $this->input->post();
+
+              //  var_dump($dados_upload);
+               $dados_insert['nome'] = to_bd($dados_form['nome']);
+               $dados_insert['ra'] = to_bd($dados_form['ra']);
+               $dados_insert['turma'] = to_bd($dados_form['turma']);
+               $dados_insert['telefone'] = to_bd($dados_form['telefone']);
+               
+
+             // salva  no Banco de dados
+               if($id = $this->leitor->salvar($dados_insert)):
+                    set_msg('<p>Usuário cadastrado com sucesso!</p>');
+                    redirect('user/listar/'.$id, 'refresh');
+               else:
+                    set_msg('<p> Erro! Livro não foi cadastrado.</p>');
+               endif;
+
+            
+        endif;
+
+
+
+        //carrega a view
+
+        $dados['titulo'] = 'BNTH - Cadastro de usuários';
+        $dados['h2'] = 'Cadastro de Usuários';
+        $dados['tela'] = 'cadastrar_users'; //para carregar qual o tipo da view
+        $this->load->view('painel/users', $dados);
+    
+    }
     public function busca_users(){
         //verifica se o usuário está logado
         verifica_login();
@@ -40,6 +89,10 @@ class User extends CI_Controller{
         $dados['usuarios'] = $this->user->busca();
         $this->load->view('painel/livros', $dados);
     }
+    
+    
+    //Faz a lista gem de livros emprestados
+    
     public function emprestar_Livro(){
  
         $usuarioModel = $this->user->get_single();

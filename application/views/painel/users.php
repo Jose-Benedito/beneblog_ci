@@ -105,7 +105,7 @@
                             endif;
                             break;
 
-            case 'cadastrar':
+            case 'cadastrar_users':
                 echo form_open();
                 echo form_label('Nome Completo:', 'nome');
                 echo form_input('nome', set_value('nome'));
@@ -113,49 +113,13 @@
                 echo form_input('ra', set_value('ra'));
                 echo form_label('Ano/Turma:', 'turma');
 
-                $options = [ 
-           
-                    '5'=> '5ª A',
-                    '5b' => '5ª B',
-                    '6a' => '6ª A',
-                    '6b' => '6ª B',
-                    '7a' => '7ª A',
-                    '7b' => '7ª B',
-                    '7c' => '7ª C',
-                    '8a' => '8ª A'
-
-                ];
-                echo form_dropdown('turma', array('turma',$options));
+                echo form_input('turma', set_value('turma'));
                 echo form_label('Telefone:', 'telefone');
                 echo form_input('telefone', set_value('telefone'));
                 echo form_submit('cadastrar', 'cadastrar >>', array('class'=> 'botao')); 
                 echo form_close();
 
-          /*      $options = [ 
-                    'genero'=> $livros->genero, 
-                    'drama'=> 'Drama',
-                    'policial' => 'Policial',
-                    'aventura' => 'Aventura',
-                    'ficção' => 'Ficção científica',
-                    'didatico' => 'Didático',
-                    'poema' => 'Poema',
-                    'terror' => 'Terror',
-                    'jornalistico' => 'jornalistico'
-
-                ];
-                echo form_label('Gênero:', 'genero');
-                echo form_dropdown('genero', array('genero', $options));
-               
-                echo form_label('Descrição:', 'descricao');
-                echo form_textarea('descricao', to_html(set_value('descricao')), array('class' => 'editorhtml'));
-                echo form_label('Quantidade:', 'unidade');
-                echo form_input('unidade', set_value('unidade'));
-                echo form_multiselect('id', set_value('id'));
-                echo form_label('Imagem do post (thumbnail):', 'imagem');
-                echo form_upload('imagem');
-                echo form_submit('enviar', 'Salvar', array('class' => 'botao'));
-                echo form_close();
-                */
+         
                 break;
             case 'editar':
                 echo form_open_multipart();
