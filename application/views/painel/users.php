@@ -39,7 +39,7 @@
 
                                         <td align="right" class="acoes"><?php echo anchor('user/editar/' . $linha->id, 'Editar'); ?> |
                                             <?php echo anchor('user/excluir/' . $linha->id, 'Excluir'); ?> |
-                                            <?php echo anchor('user/' . $linha->id, 'Ver', array('target' => '_blank')); ?> </td>
+                                            <?php echo anchor('user/emprestar_Livro/' . $linha->id, 'Ver', array('target' => '_blank')); ?> </td>
                                 </li>
                         <?php
                             endforeach;
@@ -86,8 +86,8 @@
                                                 <p><?php echo ($linha->genero); ?>
             
                                                     <td align="right" class="acoes"><?php echo anchor('livro/editar/' . $linha->id, 'Editar'); ?> |
-                                                        <?php echo anchor('livro/excluir/' . $linha->id, 'Excluir'); ?> |
-                                                        <?php echo anchor('livro/' . $linha->id, 'Ver', array('target' => '_blank')); ?> </td>
+                                                        <?php echo anchor('user/excluir/' . $linha->id, 'Excluir'); ?> |
+                                                        <?php echo anchor('user/' . $linha->id, 'Ver', array('target' => '_blank')); ?> </td>
                                             </li>
                                     <?php
                                         endforeach;

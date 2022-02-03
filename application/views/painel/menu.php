@@ -88,7 +88,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('index.php/listar'); ?>">
+          <a class="nav-link" href="<?php echo base_url('index.php/livro/listar'); ?>">
             <span data-feather="users"></span>
             Editar dados de livros
           </a>

@@ -106,6 +106,9 @@ class User extends CI_Controller{
 
 
         
+        $dados['titulo'] = 'BNTH - Retirada de livros';
+        $dados['h2'] = 'Retirada de livros';
+    
         $this->load->view('/emprestar_livro', $dados);
      
     

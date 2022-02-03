@@ -12,6 +12,7 @@ $route['/'] = 'Paginas';
 $route['listar'] = 'Livro/listar';     // Requer parámetros 9caso não tenha, carrega a home)
 $route['pesquisar'] = 'Livro/pesquisar';
 $route['user'] = 'User/emprestar_Livro'; 
+$route['user/'] = 'User/emprestar_Livro/'; 
 $route['livro'] = 'Livro';
 
 $route['listar'] = 'User/listar';     // Requer parámetros 9caso não tenha, carrega a home)

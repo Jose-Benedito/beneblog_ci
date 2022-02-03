@@ -212,9 +212,12 @@
       
             <img style="width: 200px; height: 260px;" src="<?php echo base_url('uploads/'.$livros->imagem);?>" alt=""/>
             <p class="lead"><?php echo $livros->descricao; ?></p>
-            <input type="date">
+            
             </div>
+         
+
             <?php
+            
               
             echo form_open_multipart();
             echo form_label('Nome:', 'titulo');
