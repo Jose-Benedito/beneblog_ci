@@ -20,30 +20,34 @@
         switch ($tela):
             case 'listar':
                 if (isset($livros) && sizeof($livros) > 0) :
-        ?>
-                <table>
-                    <thead>
-                        <th align="left">Título</th>
-                        <th align="right">Ações</th>
-                    </thead>
-
-                </table>
-                    <div class="col-md-4">
-                        <?php
-                        if ($livros = $this->livro->get(5)) :
-                            foreach ($livros as $linha) :
-                        ?>
-                            <li>
-                                
-                                <img style="width: 200px; height: 250px;" src="<?php echo base_url('uploads/' . $linha->imagem); ?>" alt="" />
-                                <h4 class="display-8"><?php echo to_html($linha->titulo); ?></h4>
-                                <p class="lead"><?php echo ($linha->genero); ?>
-
-                                <td  class="acoes"><?php echo anchor('livro/editar/' . $linha->id, 'Editar'); ?> |
-                                <?php echo anchor('livro/excluir/' . $linha->id, 'Excluir'); ?> |
-                                <?php echo anchor('livro/emprestarLivro/' . $linha->id, 'Retirar', array('target' => '_blank')); ?> </td>
-                            
-                            </li>
+                    
+                    if ($livros = $this->livro->get(5)) :
+                        foreach ($livros as $linha) :
+                            ?>
+                                    <table class="table">
+                                        <thead>
+                                            <th >Capa</th>
+                                            <th>Título</th>
+                                            <th>Gênero</th>
+                                            <th>Autor</th>
+                                            <th>Qte</th>
+                                            <th>Ações</th>
+                                            </thead>
+                                            <tr>
+                                                <td><img style="width: 80px; height: 100px;" src="<?php echo base_url('uploads/' . $linha->imagem); ?>" alt="" />
+                                                </td>
+                                                <td><?php echo to_html($linha->titulo); ?></td>
+                                                <td><?php echo to_html($linha->genero); ?></td>
+                                                <td><?php echo to_html($linha->autor); ?></td>
+                                                <td><?php echo to_html($linha->unidade); ?></td>
+                                                
+                                                <td><button class="btn btn-success " ><?php echo anchor('livro/editar/' . $linha->id,'EDITAR'); ?></button></td>
+                                                <td><button class="btn btn-danger"><?php echo anchor('livro/excluir/' . $linha->id, 'EXCLUIR'); ?></button></td>
+                                                <td><button class="btn btn-primary"><?php echo anchor('livro/emprestarLivro/' . $linha->id,'RETIRAR'); ?></button></td>
+                                            </tr>
+                                                
+                                             
+                                        
                         <?php
                             endforeach;
                         else :
@@ -52,7 +56,7 @@
 
 
                         ?>
-
+                    </table>
                     </div>
         <?php
                 else :
@@ -69,29 +73,32 @@
                 
                 
             
-                if (isset($livros) && sizeof($livros) > 0) :
-                    ?>
-                <table>
-                    <thead>
-                        <th align="left">Título</th>
-                        <th align="right">Ações</th>
-                    </thead>
-
-                </table>
-                    <div class="col-md-4">
+                if (isset($livros) && sizeof($livros) > 0) :?>
                         <?php
                         if ($livros = $this->livro->busca()) :
                             foreach ($livros as $linha) :
                         ?>
-                                <li>
-                                    <img style="width: 100px; height: 150px;" src="<?php echo base_url('uploads/' . $linha->imagem); ?>" alt="" />
-                                    <h4><?php echo to_html($linha->titulo); ?></h4>
-                                    <p><?php echo ($linha->genero); ?>
+                <table class="table">
+                    <thead>
+                        <th >Capa</th>
+                        <th >Título</th>
+                        <th >autor</th>
+                        <th >Gênero</th>
+                        <th >Qte</th>
 
-                                    <td align="right" class="acoes"><?php echo anchor('livro/editar/' . $linha->id, 'Editar'); ?> |
-                                    <?php echo anchor('livro/excluir/' . $linha->id, 'Excluir'); ?> |
-                                    <?php echo anchor('livro/emprestarLivro/' . $linha->id, 'Retirar', array('target' => '_blank')); ?> </td>
-                                </li>
+                    </thead>
+                    <tr>
+                    <td><img style="width: 100px; height: 150px;" src="<?php echo base_url('uploads/' . $linha->imagem); ?>" alt="" />
+                                                </td>
+                        <td><?php echo $linha->titulo ?></td>
+                        <td><?php echo $linha->autor ?></td>
+                        <td><?php echo $linha->genero ?></td>
+                        <td><?php echo $linha->unidade ?></td>
+                        <TD><button class="btn btn-success"><?php echo anchor('livro/emprestarLivro/'. $linha->id, 'RETIRAR');?></button></td>
+                    </tr>
+
+                  
+                              
                         <?php
                             endforeach;
                         else :
@@ -101,6 +108,7 @@
 
                         ?>
 
+                </table>
                     </div>
         <?php
                 else :
