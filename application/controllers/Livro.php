@@ -11,6 +11,7 @@ class Livro extends CI_Controller{
         $this->load->model('options_model', 'option');
         $this->load->model('livros_model', 'livro');
         $this->load->model('Usuario_model', 'user');
+        $this->load->model('Cadastro_model', 'leitor');
     }
 
     public function index(){
@@ -249,14 +250,19 @@ class Livro extends CI_Controller{
                 $dados['livros'] = $descLivro;
               //  $dados_update['id'] = $$descLivro->id;
             else:
-                set_msg('<p>Vídeo inexistente! Escolha um vídeo para editar.</p>');
+                set_msg('<p>Livro inexistente! Escolha um vídeo para editar.</p>');
                 redirect('livro/listar', 'refresh');
             endif;
         else:
-            set_msg('<p>Você deve escolher um post para editar!</P>');
+            set_msg('<p>Você deve escolher um Livro para retirar!</P>');
             redirect('livro/listar', 'refresh');
         endif;
         
+          
+
+            
+          
+           
         
         
         //regras de validação
@@ -271,7 +277,6 @@ class Livro extends CI_Controller{
                 set_msg(validation_errors());
             endif;
         else:
-            
             
             
             $dados_form = $this->input->post();
@@ -293,8 +298,10 @@ class Livro extends CI_Controller{
             else:
                 set_msg('<p>Erro! Nenhuma ação foi realizada.</p>');
             endif;
-            
         endif;
+
+            
+        
         
         
         
@@ -315,7 +322,7 @@ class Livro extends CI_Controller{
                         $dados['livro_imagem'] = '';
                         
       
-
+        $dados['leitor'] = $this->leitor->busca();
         $dados['titulo'] = 'BNTH - Alteração de vídeos';
         $dados['h2'] = 'Empréstimo de livro';
         $dados['tela'] = 'emprestarLivro'; //para carregar qual o tipo da view

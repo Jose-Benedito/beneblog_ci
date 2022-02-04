@@ -26,9 +26,11 @@ class User extends CI_Controller{
         $dados['h2'] = 'Listagem e edição de usuários cadastrados';
 
         $dados['tela'] = 'listar'; //para carregar qual o tipo da view
-        $dados['users'] = $this->user->get();
+        $dados['leitor'] = $this->leitor->get();
         $this->load->view('painel/users', $dados);
+
     }
+ 
     public function cadastrar_users(){
         //verifica se o usuário está logado
         verifica_login();

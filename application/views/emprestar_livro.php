@@ -18,6 +18,7 @@
           <th>Título</th>
           <th>Data de devolução</th>
           
+          
         </tr>
         <?php   if (isset($dadosUsuario) && sizeof($dadosUsuario) > 0):  ?>  
           <?php foreach ($dadosUsuario as $usuario):?>
@@ -29,7 +30,8 @@
               <td><?php echo $usuario->user_data?></td>
               <td><?php echo $usuario->titulo_livro?></td>
               <td><?php echo $usuario->data_entrega?></td>
-              
+              <td><a href="#"></a><button class="btn btn-success">Editar</button></td>
+              <td><a href="#"></a><button class="btn btn-danger">Excluir</button></td>
                 
                 
                   

@@ -34,13 +34,15 @@
                             foreach ($livros as $linha) :
                         ?>
                             <li>
-                                <img style="width: 100px; height: 150px;" src="<?php echo base_url('uploads/' . $linha->imagem); ?>" alt="" />
-                                <h4><?php echo to_html($linha->titulo); ?></h4>
-                                <p><?php echo ($linha->genero); ?>
+                                
+                                <img style="width: 200px; height: 250px;" src="<?php echo base_url('uploads/' . $linha->imagem); ?>" alt="" />
+                                <h4 class="display-8"><?php echo to_html($linha->titulo); ?></h4>
+                                <p class="lead"><?php echo ($linha->genero); ?>
 
-                                <td align="right" class="acoes"><?php echo anchor('livro/editar/' . $linha->id, 'Editar'); ?> |
+                                <td  class="acoes"><?php echo anchor('livro/editar/' . $linha->id, 'Editar'); ?> |
                                 <?php echo anchor('livro/excluir/' . $linha->id, 'Excluir'); ?> |
                                 <?php echo anchor('livro/emprestarLivro/' . $linha->id, 'Retirar', array('target' => '_blank')); ?> </td>
+                            
                             </li>
                         <?php
                             endforeach;
@@ -102,7 +104,7 @@
                     </div>
         <?php
                 else :
-                    echo '<div class="msg-box"><p>Nenhum post cadastrado!</p></div>';
+                    echo '<div class="msg-box"><p>Título inválido ou não cadastrado!</p></div>';
                 endif;
                 break;
 
@@ -205,12 +207,12 @@
                 break;
            case 'emprestarLivro':
             ?>
-            <div class="col-md-4" align="right">
+            <div class="col-md-8" align="center">
             <h2 class="display-5"><?php echo $livros->titulo; ?></h2>
             <p class="lead"><?php echo $livros->autor; ?></p>
             <p class="lead"><?php echo $livros->genero; ?></p>    
       
-            <img style="width: 200px; height: 260px;" src="<?php echo base_url('uploads/'.$livros->imagem);?>" alt=""/>
+            <img style="width: 300px; height: 260px;" src="<?php echo base_url('uploads/'.$livros->imagem);?>" alt=""/>
             <p class="lead"><?php echo $livros->descricao; ?></p>
             
             </div>
@@ -218,37 +220,66 @@
 
             <?php
             
-              
             echo form_open_multipart();
-            echo form_label('Nome:', 'titulo');
-            echo form_input('nome', set_value('user_nome'));
-            echo form_label('RA:', 'ra');
-            echo form_input('ra', set_value('user_ra'));
-         
-            echo form_label('Turma:', 'turma');
-            echo form_input('turma', set_value('user_turma'));
-            echo form_label('Livro:', 'id');
-            echo form_input('id', set_value('id',to_html($livros->id)));
-            echo form_label('Titulo do livro');
-            echo form_input('titulo', set_value('titulo',to_html($livros->titulo)));
-            ?>
-            <label for="Data de entrega">Data de devolução</label>
-               <input id="date" type="date" name="data_entrega" value="2022-02-01">
-               <?php
-               // echo form_input('data_entrega', set_value('idata_entrega'));
-            echo form_submit('enviar', 'Salvar', array('class' => 'botao'));
+            echo form_input('pesquisar', set_value('pesquisar'));
+            echo form_submit('enviar', 'Pesquisar', array('class' => 'botao'));
             echo form_close();
+            ?>
+            
+
+        <?php
+            // Busca o usuário
+            if (isset($leitor) && sizeof($leitor) > 0) :
+                if ($leitor = $this->leitor->busca()) :
+                    foreach ($leitor as $linha) :
+                    endforeach;
+                    else :
+                        echo '<p>Nenhum post cadastrado!</p>';
+                    endif;
+                        echo form_open();
+                        ?>
+        
+        
+          <label for="Nome">Nome:</label>
+          <input type="text" id="nome" name="nome" value="<?php echo $linha->nome ?>"/>
+          <label for="ra">RA:</label>
+          <input type="text" id="ra" name="ra" value="<?php echo $linha->ra ?>"/>
+          <label for="turma">Ano/Turma:</label>
+          <input type="text" id="turma" name="turma" value="<?php echo $linha->turma ?>"/>
+          <label for="codigo">Código do livro</label>
+          <input type="text" id="id" name="id" value="<?php echo $livros->id ?>"/>
+          <label for="titulo">Título</label>
+          <input type="text" id="titulo" name="titulo" value="<?php echo $livros->titulo ?>"/>
+          <label for="Data de entrega">Data de devolução</label>
+          <input id="date" type="date" name="data_entrega" value="2022-02-01">
+          <button type="submit" class="btn btn-success">Salvar</button>
+             
+            <?php
+          
+          
+          else :
+              echo '<div class="msg-box"><p>Nome de usuário inválido ou não cadastrado!</p></div>';
+          
+          
+        endif;
+        
+              
+                
+            
+            echo form_close();
+            break; 
+ 
+    endswitch;
+            ?>
+           
 
            
-                break; 
-
-        endswitch;
 
 
 
 
 
-        ?>
+    
 
     </div>
     <div class="coluna col3">&nbsp;</div>

@@ -18,7 +18,7 @@
 
         switch ($tela):
             case 'listar':
-                if (isset($users) && sizeof($users) > 0) :
+                if (isset($leitor) && sizeof($leitor) > 0) :
         ?>
                     <table>
                         <thead>
@@ -29,13 +29,14 @@
                     </table>
                     <div class="col-md-4">
                         <?php
-                        if ($users = $this->user->get(5)) :
-                            foreach ($users as $linha) :
+                        if ($leitor = $this->leitor->get(5)) :
+                            foreach ($leitor as $linha) :
                         ?>
                                 <li>
                                    
-                                    <h4><?php echo to_html($linha->user_nome); ?></h4>
-                                    <p><?php echo ($linha->user_turma); ?>
+                                    <h4><?php echo to_html($linha->nome); ?></h4>
+                                    <p>RA:<?php echo ($linha->ra); ?>
+                                    <p>Ano/Turma: <?php echo ($linha->turma); ?>
 
                                         <td align="right" class="acoes"><?php echo anchor('user/editar/' . $linha->id, 'Editar'); ?> |
                                             <?php echo anchor('user/excluir/' . $linha->id, 'Excluir'); ?> |
