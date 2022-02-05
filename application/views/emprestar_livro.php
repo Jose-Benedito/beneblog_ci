@@ -33,9 +33,9 @@
               <td><?php echo $usuario->user_data?></td>
               <td><?php echo $usuario->titulo_livro?></td>
               <td><?php echo $usuario->data_entrega?></td>
-              <td><button class="btn btn-outline-primary view_data" id="<?php echo $usuario->id?>">Editar</button></td>
+              <td><button class="btn btn-outline-primary"> <?php echo anchor('user/editar/' .$usuario->id, "Editar"); ?></button></td>
               
-              <td><button id="dataconfirm" class="btn btn-outline-danger"><?php echo anchor('user/excluir/' . $usuario->id,'Excluir'); ?></button></td>
+              <td><button class="btn btn-outline-danger"> <?php echo anchor('user/excluir/' . $usuario->id,'Excluir'); ?></button></td>
                                            
                 
                   
