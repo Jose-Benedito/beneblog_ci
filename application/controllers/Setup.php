@@ -102,7 +102,7 @@ class Setup extends CI_Controller {
         endif;
         //carrega a view
         $dados['titulo'] = 'BNTH - Setup do sistema';
-        $dados['h2'] = 'Setup do sistema';
+        $dados['h2'] = 'Login do sistema';
         $this->load->view('painel/login', $dados);
     }
     public function alterar(){

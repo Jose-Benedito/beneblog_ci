@@ -1,19 +1,9 @@
 
-     <!--     <h3 class="masthead-brand">BNTH</h3>
-          <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link active" target='_blank' href="<?php echo base_url();?>">ver site</a>
-            <a class="nav-link" href="<?php echo base_url('index.php/post'); ?>">posts</a>
-            <a class="nav-link" href="<?php echo base_url('index.php/video'); ?>">videos</a>
-            <a class="nav-link" href="<?php echo base_url('index.php/setup'); ?>">configs</a>
-            <a class="nav-link" href="<?php echo base_url('index.php/setup/logout'); ?>">sair</a>
-        
-          </nav>  -->
-    
-          <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
 
 <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Biblioteca Pedra</a>
-<a class="nav-link active" href="<?php echo base_url();?>">Home</a>
- <a class="nav-link" href="<?php echo base_url('index.php/login'); ?>">Login</a>
+
+ <a class="nav-link"  href="<?php echo base_url('index.php/login'); ?>">Login</a>
 
 <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
@@ -27,11 +17,11 @@
 </nav>
 <div class="container-fluid">
   <div class="row">
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
     <div class="sidebar-sticky pt-3">
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link active" href="#">
+          <a class="nav-link active"  href="<?php echo base_url('index.php/'); ?>">
             <span data-feather="home"></span>
             Página Inicial <span class="sr-only">(current)</span>
           </a>

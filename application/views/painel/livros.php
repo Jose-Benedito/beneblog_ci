@@ -34,7 +34,7 @@
                                             <th>Ações</th>
                                             </thead>
                                             <tr>
-                                                <td><img style="width: 80px; height: 100px;" src="<?php echo base_url('uploads/' . $linha->imagem); ?>" alt="" />
+                                                <td><img style="width: 50px; height: 80px;" src="<?php echo base_url('uploads/' . $linha->imagem); ?>" alt="" />
                                                 </td>
                                                 <td><?php echo to_html($linha->titulo); ?></td>
                                                 <td><?php echo to_html($linha->genero); ?></td>
@@ -88,13 +88,13 @@
 
                     </thead>
                     <tr>
-                    <td><img style="width: 100px; height: 150px;" src="<?php echo base_url('uploads/' . $linha->imagem); ?>" alt="" />
+                    <td><img style="width: 50px; height: 80px;" src="<?php echo base_url('uploads/' . $linha->imagem); ?>" alt="" />
                                                 </td>
                         <td><?php echo $linha->titulo ?></td>
                         <td><?php echo $linha->autor ?></td>
                         <td><?php echo $linha->genero ?></td>
                         <td><?php echo $linha->unidade ?></td>
-                        <TD><button class="btn btn-success"><?php echo anchor('livro/emprestarLivro/'. $linha->id, 'RETIRAR');?></button></td>
+                        <td><button class="btn btn-success"><?php echo anchor('livro/emprestarLivro/'. $linha->id, 'RETIRAR');?></button></td>
                     </tr>
 
                   

@@ -158,19 +158,8 @@
                 echo form_input('ra', set_value('ra', to_html(($users->user_ra))));
                 echo form_label('Ano/Turma:', 'turma', to_html($users->user_turma));
 
-                $options = [ 
-                    'atual' => $users->user_turma,
-                    '5'=> '5ª A',
-                    '5b' => '5ª B',
-                    '6a' => '6ª A',
-                    '6b' => '6ª B',
-                    '7a' => '7ª A',
-                    '7b' => '7ª B',
-                    '7c' => '7ª C',
-                    '8a' => '8ª A'
-
-                ];
-                echo form_dropdown('turma', array('turma',$options));
+                
+                echo form_input('turma', set_value('turma',to_html($users->user_turma)));
                 echo form_label('Telefone:', 'telefone');
                 echo form_input('telefone', set_value('telefone', to_html($users->user_telefone)));
                 echo form_submit('excluir', 'Excluir >>', array('class'=> 'botao')); 

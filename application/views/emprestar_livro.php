@@ -1,6 +1,8 @@
 
 <?php $this->load->view('commons/header') ?>
+
 <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-md-4">
+<div class="container">
     <div class="coluna col10">
       <h2><?php echo $h2; ?></h2> 
         <div class="coluna col2">
@@ -17,6 +19,7 @@
           <th>Data</th>
           <th>Título</th>
           <th>Data de devolução</th>
+          <th>Ações</th>
           
           
         </tr>
@@ -30,9 +33,10 @@
               <td><?php echo $usuario->user_data?></td>
               <td><?php echo $usuario->titulo_livro?></td>
               <td><?php echo $usuario->data_entrega?></td>
-              <td><a href="#"></a><button class="btn btn-success">Editar</button></td>
-              <td><a href="#"></a><button class="btn btn-danger">Excluir</button></td>
-                
+              <td><button class="btn btn-outline-primary view_data" id="<?php echo $usuario->id?>">Editar</button></td>
+              
+              <td><button id="dataconfirm" class="btn btn-outline-danger"><?php echo anchor('user/excluir/' . $usuario->id,'Excluir'); ?></button></td>
+                                           
                 
                   
               <?php endforeach; ?>
@@ -50,6 +54,7 @@
 </div>
 
 </div> 
-</main>
-  
+</div>
+
+<?php $this->load->view('commons/footer') ?>
 

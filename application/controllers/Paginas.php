@@ -17,11 +17,11 @@ class Paginas extends CI_Controller {
     }
     public function index()
     {
-     //debug:  echo 'página home';
-     $data['titulo'] = "BNTH | Home";
-    $data['desc'] = "Exercício de exemplo do capítulo 5 do livro Codeigniter";
+        $dados['titulo'] = 'BNTH - Setup do sistema';
+        $dados['h2'] = 'Biblioteca Digital Pedra Branca';
+    $dados['desc'] = "Exercício de exemplo do capítulo 5 do livro Codeigniter";
     
-        $this->load->view('home', $data);
+        $this->load->view('home', $dados);
         
     }
 
