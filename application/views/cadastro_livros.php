@@ -5,6 +5,8 @@
         <div class="page-header">
             <h1>Cadastro de Livros</h1>
         </div>
+
+        <img style="height: 200px" src="<?php echo base_url('assets/images/home/lousa.jpg')?>" class="img-fluid" alt="">
         <div class="row">
             <div class="col-md-8">
                 <?php

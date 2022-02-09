@@ -2,15 +2,18 @@
 
     <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-md-4">
 
-    <div class="coluna col3">&nbsp;</div>
-        <div class="coluna col6">
-            <h2><?php echo $h2; ?></h2>
-
-            <?php 
+    <div class="container">&nbsp;
+    <h2><?php echo $h2; ?></h2>
+    
+    <?php 
                 if($msg = get_msg()):
                     echo '<div class="msg-box">'.$msg.'</div>';
                 endif;
+                ?>
 
+                <div class="row">
+                <div class="col-md-6">
+                <?php
                 echo form_open();
                 echo form_label('Nome para login', 'login');
                 echo form_input('login', set_value('login'), array('autofocus' => 'autofocus'));
@@ -26,8 +29,10 @@
 
 
             ?>
-            
+                </div>
+                </div>
         </div>
-    <div class="coluna col3">&nbsp;</div>
+            </div>
+    </main>
 
-    <?php $this->load->view('painel/footer'); ?>
+  

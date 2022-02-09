@@ -107,6 +107,12 @@
                             break;
 
             case 'cadastrar_users':
+
+                ?>
+                <div class="container">
+
+                <img style="height: 200px" src="<?php echo base_url('assets/images/home/lousa.jpg')?>" class="img-fluid" alt="">
+                <?php
                 echo form_open();
                 echo form_label('Nome Completo:', 'nome');
                 echo form_input('nome', set_value('nome'));
@@ -138,7 +144,16 @@
                 echo form_submit('cadastrar', 'cadastrar >>', array('class'=> 'botao')); 
                 echo form_close();
                 break;
+                ?>
+                </div>
+                <?php
             case 'excluir':
+
+                ?>
+                <div class="container">
+
+                <img style="height: 200px" src="<?php echo base_url('assets/images/home/lousa.jpg')?>" class="img-fluid" alt="">
+                <?php
                 echo form_open_multipart();
                 echo form_open();
                 echo form_label('Nome Completo:', 'nome');
@@ -168,4 +183,4 @@
     </div>
     <div class="coluna col3">&nbsp;</div>
 
-    <?php $this->load->view('painel/footer'); ?>
+    

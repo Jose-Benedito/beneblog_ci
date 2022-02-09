@@ -156,8 +156,8 @@ class User extends CI_Controller{
 
         //carrega a view
 
-        $dados['titulo'] = 'BNTH - Exclusão de vídeos';
-        $dados['h2'] = 'Exclusão de vídeos';
+        $dados['titulo'] = 'BNTH - Exclusão de cadastro';
+        $dados['h2'] = 'Exclusão de cadastro';
         $dados['tela'] = 'excluir'; //para carregar qual o tipo da view
         $this->load->view('painel/users', $dados);
 

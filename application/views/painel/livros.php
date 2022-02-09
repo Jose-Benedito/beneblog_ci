@@ -291,5 +291,3 @@
 
     </div>
     <div class="coluna col3">&nbsp;</div>
-
-    <?php $this->load->view('painel/footer'); ?>

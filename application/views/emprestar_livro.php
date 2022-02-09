@@ -1,31 +1,31 @@
 
 <?php $this->load->view('commons/header') ?>
 
-<main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-md-4">
+<main class="main">
 <div class="container">
-    <div class="coluna col10">
-      <h2><?php echo $h2; ?></h2> 
-        <div class="coluna col2">
-
+  <h2><?php echo $h2; ?></h2> 
+  <div class="row">
+        
+      <div class="col">
  
   
 
-     <table class="table">
+     <table class="table table-sm-bordered">
         <tr>
-          <th>Código</th>
-          <th>Nome</th>
-          <th>Ra</th>
-          <th>Turma</th>
-          <th>Data</th>
-          <th>Título</th>
-          <th>Data de devolução</th>
-          <th>Ações</th>
+          <th scope="col">Código</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Ra</th>
+          <th scope="col">Turma</th>
+          <th scope="col">Data</th>
+          <th scope="col">Título</th>
+          <th scope="col">Data de devolução</th>
+          <th scope="col">Ações</th>
           
           
         </tr>
         <?php   if (isset($dadosUsuario) && sizeof($dadosUsuario) > 0):  ?>  
           <?php foreach ($dadosUsuario as $usuario):?>
-            <tr>
+            <tr scope="row">
               <td><?php echo $usuario->id?></td>
               <td><?php echo $usuario->user_nome?></td>
               <td><?php echo $usuario->user_ra?></td>
@@ -55,6 +55,6 @@
 
 </div> 
 </div>
+</main>
 
-<?php $this->load->view('commons/footer') ?>
 
