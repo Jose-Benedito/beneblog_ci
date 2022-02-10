@@ -210,9 +210,28 @@ class User extends CI_Controller{
         //carrega a view
 
         $dados['titulo'] = 'BNTH - edição de dados de usuario';
-        $dados['h2'] = 'edição de dados de usuario';
+        $dados['h2'] = 'Edição de dados do usuario';
         $dados['tela'] = 'editar'; //para carregar qual o tipo da view
         $this->load->view('painel/users', $dados);
+
+    }
+    public function visitante(){
+
+        //TODO: CRIAR TABELA E MODEL PARA CONTROLE DE ACESSO DA SALA DE LEITURA
+
+        $usuarioModel = $this->user->get_single();
+        $userModel = $this->user->get();
+        
+        $dados['dadosUsuario'] = $userModel;
+    
+
+        //carrega a view
+
+        $dados['titulo'] = 'BNTH - sala de leitura';
+        $dados['h2'] = 'Controle de uso da sala de  leitura';
+      //  $dados['tela'] = 'editar'; //para carregar qual o tipo da view
+        $this->load->view('/visitante', $dados);
+        
 
     }
     

@@ -1,14 +1,13 @@
 <?php $this->load->view('commons/header'); ?>
 
 
-    <div class="container">
-        <div class="page-header">
-            <h1>Cadastro de Livros</h1>
+<div class="container px-0">
+  <h2 class="jumbotron text-center"><?php echo $h2; ?></h2> 
         </div>
 
-        <img style="height: 200px" src="<?php echo base_url('assets/images/home/lousa.jpg')?>" class="img-fluid" alt="">
         <div class="row">
             <div class="col-md-8">
+        <img style="height: 200px" src="<?php echo base_url('assets/images/home/lousa.jpg')?>" class="img-fluid" alt="">
                 <?php
                 if ($msg = get_msg()) :
                     echo '<div class="msg-box">' . $msg . '</div>';

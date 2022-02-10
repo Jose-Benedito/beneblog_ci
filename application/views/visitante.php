@@ -1,8 +1,9 @@
+<?php $this->load->view('commons/header')  ?>
 
-<?php $this->load->view('commons/header') ?>
+
 
 <div class="container">
-  <h2 class=" jumbotron text-center "><?php echo $h2; ?></h2> 
+  <h2 class="jumbotron text-center"><?php echo $h2; ?></h2> 
 
   
       <table class="table table-striped table-sm">

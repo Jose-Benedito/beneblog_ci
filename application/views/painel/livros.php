@@ -121,6 +121,7 @@
                 break;
 
             case 'cadastro_livros':
+                
                 echo form_open_multipart();
                 echo form_label('Título:', 'titulo');
                 echo form_input('titulo', set_value('titulo'));
@@ -156,6 +157,9 @@
                 echo form_close();
 
                 break;
+                ?>
+                </form>
+            <?php
             case 'editar':
                 ?>
                 <form class="form">

@@ -10,7 +10,6 @@ class Paginas extends CI_Controller {
         //carrega os módulos e classes
         $this->load->helper('url');
         $this->load->model('options_model', 'option');
-        $this->load->model('clivros_model', 'post');
         $this->load->model('livros_model', 'livro');
        // $this->output->cache(1440); //corrensponde a 24 horas até o  cache ser atualizado
         

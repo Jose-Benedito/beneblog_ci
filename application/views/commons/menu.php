@@ -9,9 +9,9 @@
   <span class="navbar-toggler-icon"></span>
 </button>
 
-<ul class="navbar-nav px-3">
-  <li class="nav">
-    <a class="nav-link text-right" href="<?php echo base_url('index.php/setup/logout'); ?>">Sair</a>
+<ul class="navbar-nav-12 mr-auto ">
+  <li class="nav mr-auto">
+    <a class="nav-link mr-auto " href="<?php echo base_url('index.php/setup/logout'); ?>">Sair</a>
   </li>
 </ul>
 </nav>
@@ -67,7 +67,7 @@
       </h6>
       <ul class="nav flex-column mb-2">
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="<?php echo base_url('index.php/user/visitante'); ?>">
             <span data-feather="file-text"></span>
             Controle de acesso da sala de leitura
           </a>
@@ -88,7 +88,7 @@
         <li class="nav-item">
           <a class="nav-link" href="#">
             <span data-feather="file-text"></span>
-            Novas entradas
+            Registro de entradas
           </a>
         </li>
         <li class="nav-item">

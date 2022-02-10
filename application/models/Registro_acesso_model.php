@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-class Clivros_model extends CI_Model {
+class Registro_acesso_model extends CI_Model {
    
     public function __construct()
     {
