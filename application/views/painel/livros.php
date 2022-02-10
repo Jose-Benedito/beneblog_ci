@@ -1,12 +1,13 @@
 <?php $this->load->view('painel/header'); ?>
 
-<main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-md-4">
-    <div class="coluna col10">
-        <h2><?php echo $h2; ?></h2>
-        <div class="coluna col2">
+
+<div class="container">
+    <h2 class="jumbotron text-center"><?php echo $h2; ?></h2>
+        
+        <div class="col-4">
             
             <ul class="sem-marcador sem-padding">
-                
+                                          
                 <li><a href="<?php echo base_url('index.php/livro/listar')  ?>">LISTAR LIVROS</a></li>
             </ul>
     
@@ -31,7 +32,7 @@
                                             <th>Gênero</th>
                                             <th>Autor</th>
                                             <th>Qte</th>
-                                            <th>Ações</th>
+                                            
                                             </thead>
                                             <tr>
                                                 <td><img style="width: 50px; height: 80px;" src="<?php echo base_url('uploads/' . $linha->imagem); ?>" alt="" />
@@ -40,7 +41,8 @@
                                                 <td><?php echo to_html($linha->genero); ?></td>
                                                 <td><?php echo to_html($linha->autor); ?></td>
                                                 <td><?php echo to_html($linha->unidade); ?></td>
-                                                
+                                            </tr>
+                                            <tr>
                                                 <td><button class="btn btn-outline-success " ><?php echo anchor('livro/editar/' . $linha->id,'Editar'); ?></button></td>
                                                 <td><button class="btn btn-outline-danger"><?php echo anchor('livro/excluir/' . $linha->id, 'Excluir'); ?></button></td>
                                                 <td><button class="btn btn-outline-primary"><?php echo anchor('livro/emprestarLivro/' . $linha->id,'Retirar'); ?></button></td>
@@ -57,7 +59,7 @@
 
                         ?>
                     </table>
-                    </div>
+            </div>
         <?php
                 else :
                     echo '<div class="msg-box"><p>Nenhum post cadastrado!</p></div>';
@@ -94,7 +96,9 @@
                         <td><?php echo $linha->autor ?></td>
                         <td><?php echo $linha->genero ?></td>
                         <td><?php echo $linha->unidade ?></td>
-                        <td><button class="btn btn-success"><?php echo anchor('livro/emprestarLivro/'. $linha->id, 'RETIRAR');?></button></td>
+                    </tr>
+                    <th>
+                        <td><button class="btn btn-outline-success"><?php echo anchor('livro/emprestarLivro/'. $linha->id, 'RETIRAR');?></button></td>
                     </tr>
 
                   
@@ -109,7 +113,7 @@
                         ?>
 
                 </table>
-                    </div>
+                </div>
         <?php
                 else :
                     echo '<div class="msg-box"><p>Título inválido ou não cadastrado!</p></div>';
@@ -132,6 +136,7 @@
                     'aventura' => 'Aventura',
                     'ficção' => 'Ficção científica',
                     'didatico' => 'Didático',
+                    'hq' => 'HQ',
                     'poema' => 'Poema',
                     'terror' => 'Terror',
                     'jornalistico' => 'jornalistico'
@@ -152,6 +157,10 @@
 
                 break;
             case 'editar':
+                ?>
+                <form class="form">
+
+                <?php
                 echo form_open_multipart();
                 echo form_label('Título:', 'titulo');
               //  echo form_input('titulo', set_value('titulo', to_html($livros->titulo)));
@@ -170,6 +179,7 @@
                     'aventura' => 'Aventura',
                     'ficção' => 'Ficção científica',
                     'didatico' => 'Didático',
+                    'hq' => 'HQ',
                     'poema' => 'Poema',
                     'terror' => 'Terror',
                     'jornalistico' => 'jornalistico'
@@ -190,6 +200,9 @@
                 echo form_submit('enviar', 'Salvar ', array('class' => 'botao'));
                 echo form_close();
                 break;
+                ?>
+                </form>
+            <?php
             case 'excluir':
                 echo form_open_multipart();
                 echo form_label('Título:', 'titulo');
@@ -215,7 +228,7 @@
                 break;
            case 'emprestarLivro':
             ?>
-            <div class="col-md-8" align="center">
+            
             <h2 class="display-5"><?php echo $livros->titulo; ?></h2>
             <p class="lead"><?php echo $livros->autor; ?></p>
             <p class="lead"><?php echo $livros->genero; ?></p>    
@@ -223,7 +236,7 @@
             <img style="width: 300px; height: 260px;" src="<?php echo base_url('uploads/'.$livros->imagem);?>" alt=""/>
             <p class="lead"><?php echo $livros->descricao; ?></p>
             
-            </div>
+            
          
 
             <?php
@@ -279,15 +292,10 @@
  
     endswitch;
             ?>
-           
-
-           
-
-
-
-
-
-    
 
     </div>
-    <div class="coluna col3">&nbsp;</div>
+</div>
+
+
+
+<?php $this->load->view('commons/footer') ?>

@@ -1,5 +1,5 @@
-
-<footer id="footer">
+ </main>
+<footer id="footer" class="conteiner-fluid">
 <div class="footer-widget">
 			<div class="container">
       <div class="row">
@@ -31,7 +31,7 @@
      
       </div>
       </div>
-</div>
+</div>  
     </footer>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -1,9 +1,11 @@
 <?php $this->load->view('painel/header'); ?>
 
-<main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-md-4">
-    <div class="coluna col10">
-        <h2><?php echo $h2; ?></h2>
-        <div class="coluna col2">
+
+<div class="container">
+    <h2 class="jumbotron text-center"><?php echo $h2; ?></h2>
+        
+        <div class="col-4">
+            
             <ul class="sem-marcador sem-padding">
                 
                 <li><a href="<?php echo base_url('index.php/User/listar')  ?>">LISTAR USUÁRIOS</a></li>
@@ -174,13 +176,12 @@
                
         endswitch;
 
-
-
-
-
         ?>
 
     </div>
-    <div class="coluna col3">&nbsp;</div>
+</div>
+    
+
+    <?php $this->load->view('commons/footer') ?>
 
     

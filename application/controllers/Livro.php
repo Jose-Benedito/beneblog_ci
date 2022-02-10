@@ -95,8 +95,8 @@ class Livro extends CI_Controller{
 
         //carrega a view
 
-        $dados['titulo'] = 'BNTH - Cadastro de vídeoaulas';
-        $dados['h2'] = 'Cadastro de videoaulas';
+        $dados['titulo'] = 'BNTH - Cadastro de livros';
+        $dados['h2'] = 'Cadastro de Livro';
         $dados['tela'] = 'cadastrar'; //para carregar qual o tipo da view
         $this->load->view('/cadastro_livros', $dados);
     
@@ -142,8 +142,8 @@ class Livro extends CI_Controller{
 
         //carrega a view
 
-        $dados['titulo'] = 'BNTH - Exclusão de vídeos';
-        $dados['h2'] = 'Exclusão de vídeos';
+        $dados['titulo'] = 'BNTH - Excluir livro';
+        $dados['h2'] = 'Excluir livro';
         $dados['tela'] = 'excluir'; //para carregar qual o tipo da view
         $this->load->view('painel/livros', $dados);
 
@@ -237,8 +237,8 @@ class Livro extends CI_Controller{
 
         //carrega a view
 
-        $dados['titulo'] = 'BNTH - Alteração de vídeos';
-        $dados['h2'] = 'Alteração de vídeos';
+        $dados['titulo'] = 'BNTH - Edição de livro';
+        $dados['h2'] = 'Edição de livro cadastrado';
         $dados['tela'] = 'editar'; //para carregar qual o tipo da view
         $this->load->view('painel/livros', $dados);
 

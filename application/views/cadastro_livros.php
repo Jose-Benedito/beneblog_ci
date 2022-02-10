@@ -1,6 +1,6 @@
 <?php $this->load->view('commons/header'); ?>
 
-<main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-md-4">
+
     <div class="container">
         <div class="page-header">
             <h1>Cadastro de Livros</h1>
@@ -36,8 +36,9 @@
                     'didatico' => 'Didático',
                     'terror' => 'Terror',
                     'poema' => 'Poema',
-                    'terror' => 'Terror',
-                    'jornalistico' => 'jornalistico'
+                      'hq' => 'HQ',  
+                    'jornalistico' => 'jornalistico',
+                    'infanto-juvenil' => 'Infanto-Juvenil'
 
                 ];
                 echo form_label('Gênero:', 'genero');
@@ -81,3 +82,5 @@
         </div>
 
     </div>
+
+    <?php $this->load->view('commons/footer') ?>

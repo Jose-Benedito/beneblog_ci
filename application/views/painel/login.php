@@ -1,8 +1,6 @@
 <?php $this->load->view('commons/header'); ?>
 
 
-
-<main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-md-4">
   <div class="container">
     
       <h2><?php echo $h2; ?></h2>
@@ -39,5 +37,5 @@
   
 
   
-</main>
+<?php $this->load->view('commons/footer') ?>
 
