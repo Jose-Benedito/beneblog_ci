@@ -4,7 +4,7 @@
 <div class="container">
   <h2 class="jumbotron text-center"><?php echo $h2; ?></h2> 
 
-  <div class="table-responsive">
+  
       <table class="table table-striped table-sm">
         <tr>
           <th>Código</th>

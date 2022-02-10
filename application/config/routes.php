@@ -21,7 +21,7 @@ $route['user/(:num)'] = 'User/editar/$1';
 $route['livro'] = 'Livro';
 
 $route['user'] = 'User';  
-$route['cadastrar'] = 'User/cadastrar_users';
+$route['cadastrar_user'] = 'User/cadastrar_users';
 $route['cadastro_livros'] = 'Livro/cadastro_livros';
 
 //para gerar o página post (que será alimentada pelo banco de dados)

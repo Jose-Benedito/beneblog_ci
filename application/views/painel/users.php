@@ -6,10 +6,10 @@
         
         <div class="col-4">
             
-            <ul class="sem-marcador sem-padding">
+        <!--    <ul class="sem-marcador sem-padding">
                 
                 <li><a href="<?php echo base_url('index.php/User/listar')  ?>">LISTAR USUÁRIOS</a></li>
-            </ul>
+            </ul> -->
     
         </div>
 
@@ -111,7 +111,7 @@
             case 'cadastrar_users':
 
                 ?>
-                <div class="container">
+                
 
                 <img style="height: 200px" src="<?php echo base_url('assets/images/home/lousa.jpg')?>" class="img-fluid" alt="">
                 <?php
@@ -146,9 +146,9 @@
                 echo form_submit('cadastrar', 'cadastrar >>', array('class'=> 'botao')); 
                 echo form_close();
                 break;
-                ?>
-                </div>
-                <?php
+            
+                
+                
             case 'excluir':
 
                 ?>

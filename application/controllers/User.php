@@ -23,7 +23,7 @@ class User extends CI_Controller{
 
         //carrega a view
         $dados['titulo'] = 'BNTH - Listagem de livros';
-        $dados['h2'] = 'Listagem e edição de usuários cadastrados';
+        $dados['h2'] = 'Edição de usuários cadastrados';
 
         $dados['tela'] = 'listar'; //para carregar qual o tipo da view
         $dados['leitor'] = $this->leitor->get();
@@ -61,7 +61,7 @@ class User extends CI_Controller{
              // salva  no Banco de dados
                if($id = $this->leitor->salvar($dados_insert)):
                     set_msg('<p>Usuário cadastrado com sucesso!</p>');
-                    redirect('user/listar/'.$id, 'refresh');
+                    redirect('user/cadastrar_users/'.$id, 'refresh');
                else:
                     set_msg('<p> Erro! Livro não foi cadastrado.</p>');
                endif;
@@ -174,12 +174,12 @@ class User extends CI_Controller{
                 $dados['users'] = $postagem;
                 $dados_update['id'] = $postagem->id;
             else:
-                set_msg('<p>Vídeo inexistente! Escolha um vídeo para editar.</p>');
-                redirect('livro/listar', 'refresh');
+                set_msg('<p>Usuário inexistente! Escolha um nome para editar.</p>');
+                redirect('user/listar', 'refresh');
             endif;
         else:
             set_msg('<p>Você deve escolher um post para editar!</P>');
-            redirect('livro/listar', 'refresh');
+            redirect('user/listar', 'refresh');
         endif;
 
         //regras de validação

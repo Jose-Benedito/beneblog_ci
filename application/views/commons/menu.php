@@ -33,7 +33,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('index.php/cadastrar'); ?>">
+          <a class="nav-link" href="<?php echo base_url('index.php/cadastrar_user'); ?>">
             <span data-feather="shopping-cart"></span>
             Cadastrar usuários
           </a>
