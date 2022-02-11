@@ -17,6 +17,7 @@
 </head>
 
 <body >
+   
     <?php $this->load->view('commons/menu') ?>
     
        

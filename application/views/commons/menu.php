@@ -100,4 +100,4 @@
       </ul>
     </div>
   </nav>
-  <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-md-4">
+  <main role="main" class="col-md-12 ml-sm-12 col-lg-12 px-md-4">
