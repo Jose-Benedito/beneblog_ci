@@ -2,7 +2,7 @@
 
 
 
-  <div class="container-fluid">
+  <div class="container">
     
     <h2 class="display-4" class="jumbotron text-center"><?php echo $h2; ?></h2> 
         

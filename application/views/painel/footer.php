@@ -1,3 +1,4 @@
+</main>
 
 <footer id="footer">
 <div class="footer-widget">
