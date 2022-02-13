@@ -230,7 +230,10 @@
                 echo form_submit('enviar', 'Excluir ', array('class' => 'botao'));
                 echo form_close();
                 break;
-           case 'emprestarLivro':
+           
+           
+           
+            case 'emprestarLivro':
             ?>
             
             <h2 class="display-5"><?php echo $livros->titulo; ?></h2>
@@ -245,11 +248,12 @@
 
             <?php
             
-            echo form_open_multipart();
+          /*  echo form_open_multipart();
             echo form_input('pesquisar', set_value('pesquisar'));
-            echo form_submit('enviar', 'Pesquisar', array('class' => 'botao'));
-            echo form_close();
+            echo form_submit('enviar', 'Buscar nomes', array('class' => 'botao'));
+            echo form_close(); */
             ?>
+           
             
 
         <?php
@@ -263,6 +267,15 @@
                     endif;
                         echo form_open();
                         ?>
+
+                <form class="form my-4" action="pesquisar" method="POST">
+                <input type="text" name="pesquisar" value="<?php echo $linha->nome ?>">
+                <button type="submit" class="button btn-outline-success">Buscar nomes</button>
+
+                 </form>
+
+
+
         
         
           <label for="Nome">Nome:</label>
@@ -277,7 +290,7 @@
           <input type="text" id="titulo" name="titulo" value="<?php echo $livros->titulo ?>"/>
           <label for="Data de entrega">Data de devolução</label>
           <input id="date" type="date" name="data_entrega" value="2022-02-01">
-          <button type="submit" class="btn btn-success">Salvar</button>
+          <button type="submit" class="btn btn-success ">Salvar</button>
              
             <?php
           

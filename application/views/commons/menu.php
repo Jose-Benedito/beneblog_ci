@@ -67,7 +67,7 @@
       </h6>
       <ul class="nav flex-column mb-2">
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('index.php/user/visitante'); ?>">
+          <a class="nav-link" href="<?php echo base_url('index.php/visitantes'); ?>">
             <span data-feather="file-text"></span>
             Controle de acesso da sala de leitura
           </a>

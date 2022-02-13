@@ -12,6 +12,7 @@ class User extends CI_Controller{
         $this->load->model('Usuario_model', 'user');
         $this->load->model('Livros_model', 'livros');
         $this->load->model('Cadastro_model', 'leitor');
+        $this->load->model('Registro_acesso_model', 'visitante');
     }
 
     public function index(){
@@ -51,7 +52,7 @@ class User extends CI_Controller{
           
                 $dados_form = $this->input->post();
 
-              //  var_dump($dados_upload);
+              
                $dados_insert['nome'] = to_bd($dados_form['nome']);
                $dados_insert['ra'] = to_bd($dados_form['ra']);
                $dados_insert['turma'] = to_bd($dados_form['turma']);
@@ -93,7 +94,7 @@ class User extends CI_Controller{
     }
     
     
-    //Faz a lista gem de livros emprestados
+    //Faz a listagem de livros emprestados
     
     public function emprestar_Livro(){
  
@@ -215,24 +216,4 @@ class User extends CI_Controller{
         $this->load->view('painel/users', $dados);
 
     }
-    public function visitante(){
-
-        //TODO: CRIAR TABELA E MODEL PARA CONTROLE DE ACESSO DA SALA DE LEITURA
-
-        $usuarioModel = $this->user->get_single();
-        $userModel = $this->user->get();
-        
-        $dados['dadosUsuario'] = $userModel;
-    
-
-        //carrega a view
-
-        $dados['titulo'] = 'BNTH - sala de leitura';
-        $dados['h2'] = 'Controle de uso da sala de  leitura';
-      //  $dados['tela'] = 'editar'; //para carregar qual o tipo da view
-        $this->load->view('/visitante', $dados);
-        
-
-    }
-    
 }
