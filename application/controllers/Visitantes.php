@@ -49,7 +49,7 @@ class Visitantes extends CI_Controller {
 		$this->form_validation->set_rules('nome', 'Nome', 'trim|required');
 		$this->form_validation->set_rules('funcao', 'Funcao', 'trim|required');
 		$this->form_validation->set_rules('hora_ent', 'Hora_ent', 'trim|required');
-		$this->form_validation->set_rules('hora_saida', 'hora_saida', 'trim|required');
+	//	$this->form_validation->set_rules('hora_saida', 'hora_saida', 'trim|required');
 	   
 	   //verifica a validação
 	   if($this->form_validation->run() == FALSE):
@@ -115,11 +115,11 @@ class Visitantes extends CI_Controller {
 			$dados_update['id'] = $postagem->id;
 		else:
 			set_msg('<p>Usuário inexistente! Escolha um nome para editar.</p>');
-			redirect('user/listar', 'refresh');
+			redirect('/visitante', 'refresh');
 		endif;
 	else:
 		set_msg('<p>Você deve escolher um post para editar!</P>');
-		redirect('user/listar', 'refresh');
+		redirect('/visitante', 'refresh');
 	endif;
 
 	//regras de validação
@@ -148,11 +148,15 @@ else:
 	endif;
 
 
+	$visitante = $this->visitante->get();
+	$dados['dadosvisita'] = $visitante;
+   
+
 	//carrega a view
 
-	$dados['titulo'] = 'BNTH - edição de registro de acesso';
-	$dados['h2'] = 'Cadastro de acesso da sala de leitura';
-	$dados['usuario'] = $this->visitante->get(); //para carregar qual o tipo da view
+	$dados['titulo'] = 'BNTH - sala de leitura';
+	$dados['h2'] = 'Controle de acesso a sala de  leitura';
+  //  $dados['tela'] = 'editar'; //para carregar qual o tipo da view
 	$this->load->view('/visitante', $dados);
 
 }
