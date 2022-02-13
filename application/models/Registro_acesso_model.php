@@ -12,10 +12,14 @@ class Registro_acesso_model extends CI_Model {
     }
     public function salvar($dados){
         if(isset($dados['id']) && $dados['id']> 0):
+  
             //post já existe, devo editar
+          
             $this->db->where('id', $dados['id']);
             unset($dados['id']); //para que o id não seja alterado
-            $this->db->update('visitantes', $dados); // atualiza todos os campos
+            $this->db->set('visitantes', $dados); // atualiza todos os campos
+    
+            //$this->db->update('visitantes',$dados); 
             return $this->db->affected_rows(); //retorna todos dados alterados
 
         else:
@@ -57,6 +61,23 @@ class Registro_acesso_model extends CI_Model {
     public function excluir($id=0){
         $this->db->where('id', $id);
         $this->db->delete('visitantes');  // nome da tabela
+        return $this->db->affected_rows();
+    }
+    public function editar($dados){
+
+
+	  $id = $this->input->post('id');
+	  $nome = $this->input->post('nome');
+	  $funcao = $this->input->post('funcao');
+	  $hora_ent = $this->input->post('hora_ent');
+	  $hora_saida = $this->input->post('hora_saida');
+
+        $this->db->where('id', $dados['id']);
+        $this->db->set('nome', $nome);
+        $this->db->set('funcao', $funcao);
+        $this->db->set('hora_ent', $hora_ent);
+        $this->db->set('hora_saida', $hora_saida);
+        $this->db->update('visitantes'); 
         return $this->db->affected_rows();
     }
 
