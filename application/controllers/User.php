@@ -216,4 +216,78 @@ class User extends CI_Controller{
         $this->load->view('painel/users', $dados);
 
     }
+
+    public function editar_retirada()
+	{
+
+		$id = $this->input->post('id');
+		//tentativas
+		/*  $nome = $this->input->post('nome');
+	  $funcao = $this->input->post('funcao');
+	  $hora_ent = $this->input->post('hora_ent');
+	  $hora_saida = $this->input->post('hora_saida');
+
+	*/ // $dados_update = [$nome, $funcao, $hora_ent, $hora_saida];
+    //debug: var_dump($id);
+		$this->user->get_single($id);
+
+		if ($id > 0) :
+			//id informado, continuar com a edição
+			if ($postagem = $this->user->get_single($id)) : // método da model
+				$dados['usuario'] = $postagem;
+				$dados_update['id'] = $postagem->id;
+			else :
+				set_msg('<p>Usuário inexistente! Escolha um nome para editar.</p>');
+				redirect('/emprestar_livro', 'refresh');
+			endif;
+		else :
+			set_msg('<p>Você deve escolher um post para editar!</P>');
+			redirect('/emprestar_livro', 'refresh');
+		endif;
+
+		//regras de validação
+		$this->form_validation->set_rules('nome', 'Nome', 'trim|required');
+		$this->form_validation->set_rules('ra', 'ra', 'trim|required');
+        $this->form_validation->set_rules('turma', 'turma', 'trim|required');
+		$this->form_validation->set_rules('tlivro', 'tlivro', 'trim|required');
+		
+        $this->form_validation->set_rules('dataent', 'dataent', 'trim|required');
+		$this->form_validation->set_rules('dataret', 'dataret', 'trim|required');
+        $this->form_validation->set_rules('status', 'status', 'trim|required');
+	
+		//verifica a validação
+		if ($this->form_validation->run() == FALSE) :
+			if (validation_errors()) :
+				set_msg(validation_errors());
+			endif;
+		else :
+
+			$dados_form = $this->input->post();
+			$dados_insert['user_nome'] = to_bd($dados_form['nome']);
+			$dados_insert['user_ra'] = to_bd($dados_form['ra']);
+			$dados_insert['user_turma'] = to_bd($dados_form['turma']);
+			$dados_insert['titulo_livro'] = to_bd($dados_form['tlivro']);
+            $dados_insert['data_entrega'] = to_bd($dados_form['dataent']);
+			$dados_insert['user_data'] = to_bd($dados_form['dataret']);
+			$dados_insert['user_status'] = to_bd($dados_form['status']);
+
+
+			$this->user->editar($dados_update); //atualiza no bd
+
+		endif;
+
+
+		$usuario = $this->user->get();
+		$dados['dadosusuario'] = $usuario;
+
+
+		//carrega a view
+
+		$dados['titulo'] = 'BNTH - sala de leitura';
+		$dados['h2'] = 'Controle de acesso a sala de  leitura';
+		//  $dados['tela'] = 'editar'; //para carregar qual o tipo da view
+		$this->load->view('/emprestar_livro', $dados); 
+	}
+
+	
 }

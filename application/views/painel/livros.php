@@ -261,7 +261,7 @@
             
             echo form_open_multipart();
             echo form_input('pesquisar', set_value('pesquisar'));
-            echo form_submit('enviar', 'Buscar nomes', array('class' => 'botao'));
+            echo form_submit('enviar', 'Buscar nomes', array('class' => 'btn btn-primary btn-m'));
             echo form_close(); 
             ?>
            

@@ -83,7 +83,7 @@ class Livros_model extends CI_Model {
         $this->db->delete('livros');  // nome da tabela (deleta o id indicado)
         return $this->db->affected_rows();
     }
-    public function salvaRetirada($dados){
+ /*   public function salvaRetirada($dados){
         if(isset($dados['id']) && $dados['id']> 0):
             //post já existe, devo editar
             $this->db->where('id', $dados['id']);
@@ -96,6 +96,6 @@ class Livros_model extends CI_Model {
             $this->db->insert('retira_livro', $dados);
             return $this->db->insert_id();
         endif;
-    }
+    } */
 
 }

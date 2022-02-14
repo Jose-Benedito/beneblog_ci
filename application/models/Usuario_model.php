@@ -84,4 +84,33 @@ class Usuario_model extends CI_Model {
         return $this->db->affected_rows();
     }
 
+
+    // para edição da modal de empréstimo de livro
+    public function editar($dados){
+
+
+        $id = $this->input->post('id');
+        $nome = $this->input->post('nome');
+        $ra = $this->input->post('ra');
+        $turma = $this->input->post('turma');
+        $tlivro = $this->input->post('tlivro');
+       
+        $dataent = $this->input->post('dataent');
+        $dataret = $this->input->post('dataret');
+        $status = $this->input->post('status');
+        
+       
+  
+          $this->db->where('id', $dados['id']);
+          $this->db->set('user_nome', $nome);
+          $this->db->set('user_ra', $ra);
+          $this->db->set('user_turma', $turma);
+          $this->db->set('titulo_livro', $tlivro);
+          $this->db->set('data_entrega', $dataent);
+          $this->db->set('user_data', $dataret);
+          $this->db->set('user_status', $status);
+          $this->db->update('usuarios'); 
+          return $this->db->affected_rows();
+      }
+
 }

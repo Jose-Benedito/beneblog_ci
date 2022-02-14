@@ -18,6 +18,7 @@ $route['livro'] = 'Livro';
 $route['listar'] = 'User/listar';     // Requer parámetros 9caso não tenha, carrega a home)
 $route['busca_user'] = 'User/buscar_user';
 $route['user/(:num)'] = 'User/editar/$1'; 
+$route['user/(:num)'] = 'User/editar_retirada/$1'; 
 $router['visitantes'] = 'Visitantes';
 $router['visitantes/(:num)'] = 'Visitantes/editar/$1';
 $route['livro'] = 'Livro';

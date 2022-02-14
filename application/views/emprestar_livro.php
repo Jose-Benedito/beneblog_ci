@@ -81,7 +81,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="visitantes/editar" method="POST">
+        <form action="editar_retirada" method="POST">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Nome:</label>
             <input name="nome" type="text" class="form-control" id="recipient-name">
