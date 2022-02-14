@@ -32,7 +32,11 @@ endif;
 
 if(!function_exists('config_upload')):
 	//define as configurações para upload de imagens/arquivos
-	function config_upload($path='./uploads/', $types='jpg|png', $size=512){
+	function config_upload($path='./uploads/', $types='jpg|png', $size=1024){
+		if(!file_exists($path)):
+			mkdir($path, 0777, true);
+		
+		endif;
 		$config['upload_path']= $path;
 		$config['allowed_types'] = $types;
 		$config['max_size'] = $size;

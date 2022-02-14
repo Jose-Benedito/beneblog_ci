@@ -52,6 +52,7 @@ class Livro extends CI_Controller{
         $this->form_validation->set_rules('genero', 'Genero', 'trim|required');
         $this->form_validation->set_rules('descricao', 'descricao', 'trim|required');
         $this->form_validation->set_rules('unidade', 'unidade', 'trim|required');
+        $this->form_validation->set_rules('local', 'local', 'trim|required');
      
         //verifica a validação
         if($this->form_validation->run() == FALSE):
@@ -72,6 +73,7 @@ class Livro extends CI_Controller{
                $dados_insert['genero'] = to_bd($dados_form['genero']);
                $dados_insert['descricao'] = to_bd($dados_form['descricao']);
                $dados_insert['unidade'] = to_bd($dados_form['unidade']);
+               $dados_insert['local'] = to_bd($dados_form['local']);
             
 
                $dados_insert['imagem'] = $dados_upload['file_name'];
@@ -89,6 +91,7 @@ class Livro extends CI_Controller{
                 $msg .= '<p>São permitidas arquivos JPG e PNG de até 512KB.</p>';
                 set_msg($msg);
             endif;
+            
         endif;
 
 
@@ -175,6 +178,7 @@ class Livro extends CI_Controller{
         $this->form_validation->set_rules('genero', 'Genero', 'trim|required');
         $this->form_validation->set_rules('descricao', 'descricao', 'trim|required');
         $this->form_validation->set_rules('unidade', 'unidade', 'trim|required');
+        $this->form_validation->set_rules('local', 'local', 'trim|required');
      
 
         //verifica a validação
@@ -198,6 +202,7 @@ class Livro extends CI_Controller{
                     $dados_update['genero'] = to_bd($dados_form['genero']);
                     $dados_update['descricao'] = to_bd($dados_form['descricao']);
                     $dados_update['unidade'] = to_bd($dados_form['unidade']);
+                    $dados_update['local'] = to_bd($dados_form['local']);
                     
                     $dados_update['imagem'] = $dados_upload['file_name'];
 
@@ -223,7 +228,8 @@ class Livro extends CI_Controller{
                 $dados_update['genero'] = to_bd($dados_form['genero']);
                 $dados_update['descricao'] = to_bd($dados_form['descricao']);
                 $dados_update['unidade'] = to_bd($dados_form['unidade']);
-            
+                $dados_update['local'] = to_bd($dados_form['local']);
+                    
                 
                 if($this->livro->salvar($dados_update)):
                     set_msg('<p>Dados alterados com sucesso!</p>');

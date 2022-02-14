@@ -135,6 +135,7 @@
                     'drama'=> 'Drama',
                     'policial' => 'Policial',
                     'aventura' => 'Aventura',
+                    'romance' => 'Romance',
                     'ficção' => 'Ficção científica',
                     'didatico' => 'Didático',
                     'hq' => 'HQ',
@@ -158,16 +159,16 @@
 
                 break;
                 ?>
-                </form>
+                
             <?php
             case 'editar':
-                ?>
-                <form class="form">
+                
+             
 
-                <?php
+                echo form_open();
                 echo form_open_multipart();
                 echo form_label('Título:', 'titulo');
-              //  echo form_input('titulo', set_value('titulo', to_html($livros->titulo)));
+                echo form_input('titulo', set_value('titulo', to_html($livros->titulo)));
                 echo form_label('Autor:', 'autor');
                 echo form_input('autor', set_value('autor', to_html($livros->autor)));
                 echo form_label('Descrição:', 'descricao');
@@ -181,6 +182,7 @@
                     'drama'=> 'Drama',
                     'policial' => 'Policial',
                     'aventura' => 'Aventura',
+                    'romance' => 'Romance',
                     'ficção' => 'Ficção científica',
                     'didatico' => 'Didático',
                     'hq' => 'HQ',
@@ -195,6 +197,15 @@
                 echo form_dropdown('genero', $options);
                 echo form_label('Unidade', 'unidade');
                 echo form_input('unidade', set_value('unidade', $livros->unidade));
+                $local = [
+                    'local'=> $livros->local, 
+                    'estante1' => 'Estante 1',
+                    'estante2' => 'Estante 2',
+                    'estante3' => 'Estante 3',
+                    'estante4' => 'Estante 4',
+                ]; 
+                echo form_label('Estante', 'local');     
+                echo form_dropdown('local', $local);
                 echo form_label('Imagem do post (thumbnail):', 'imagem');
                 echo form_upload('imagem');
                 // miniatura da imagem recuperada do BD
@@ -205,7 +216,7 @@
                 echo form_close();
                 break;
                 ?>
-                </form>
+                
             <?php
             case 'excluir':
                 echo form_open_multipart();
@@ -240,7 +251,7 @@
             <p class="lead"><?php echo $livros->autor; ?></p>
             <p class="lead"><?php echo $livros->genero; ?></p>    
       
-            <img style="width: 300px; height: 260px;" src="<?php echo base_url('uploads/'.$livros->imagem);?>" alt=""/>
+            <img style="width: 210px; height: 260px;" src="<?php echo base_url('uploads/'.$livros->imagem);?>" alt=""/>
             <p class="lead"><?php echo $livros->descricao; ?></p>
             
             
@@ -248,10 +259,10 @@
 
             <?php
             
-          /*  echo form_open_multipart();
+            echo form_open_multipart();
             echo form_input('pesquisar', set_value('pesquisar'));
             echo form_submit('enviar', 'Buscar nomes', array('class' => 'botao'));
-            echo form_close(); */
+            echo form_close(); 
             ?>
            
             
@@ -263,20 +274,17 @@
                     foreach ($leitor as $linha) :
                     endforeach;
                     else :
-                        echo '<p>Nenhum post cadastrado!</p>';
+                        echo '<p>Nenhum usuário cadastrado!</p>';
                     endif;
                         echo form_open();
+                        echo form_open_multipart();
                         ?>
 
-                <form class="form my-4" action="pesquisar" method="POST">
-                <input type="text" name="pesquisar" value="<?php echo $linha->nome ?>">
-                <button type="submit" class="button btn-outline-success">Buscar nomes</button>
-
-                 </form>
+                
 
 
 
-        
+        <form class="form">
         
           <label for="Nome">Nome:</label>
           <input type="text" id="nome" name="nome" value="<?php echo $linha->nome ?>"/>
@@ -291,6 +299,7 @@
           <label for="Data de entrega">Data de devolução</label>
           <input id="date" type="date" name="data_entrega" value="2022-02-01">
           <button type="submit" class="btn btn-success ">Salvar</button>
+          </form>
              
             <?php
           
