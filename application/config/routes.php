@@ -10,6 +10,9 @@ $route['translate_uri_dashes'] = FALSE;
 $route['/'] = 'Paginas';
 
 $route['listar'] = 'Livro/listar';     // Requer parámetros 9caso não tenha, carrega a home)
+
+$route['listar/(:num)'] = 'Livro/listar/$1'; 
+
 $route['pesquisar'] = 'Livro/pesquisar';
 $route['user'] = 'User/emprestar_Livro'; 
 $route['user/'] = 'User/emprestar_Livro/'; 
@@ -20,7 +23,7 @@ $route['busca_user'] = 'User/buscar_user';
 $route['user/(:num)'] = 'User/editar/$1'; 
 $route['user/(:num)'] = 'User/editar_retirada/$1'; 
 $router['visitantes'] = 'Visitantes';
-$router['visitantes/(:num)'] = 'Visitantes/editar/$1';
+$router['visitantes/(:num)'] = 'Visitantes/$1';
 $route['livro'] = 'Livro';
 
 $route['user'] = 'User';  

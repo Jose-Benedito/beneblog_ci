@@ -83,19 +83,17 @@ class Livros_model extends CI_Model {
         $this->db->delete('livros');  // nome da tabela (deleta o id indicado)
         return $this->db->affected_rows();
     }
- /*   public function salvaRetirada($dados){
-        if(isset($dados['id']) && $dados['id']> 0):
-            //post já existe, devo editar
-            $this->db->where('id', $dados['id']);
-            unset($dados['id']); //para que o id não seja alterado
-            $this->db->update('retira_livro', $dados); // atualiza todos os campos
-            return $this->db->affected_rows(); //retorna todos dados alterados
 
-        else:
-            //post não existe , devo inserir
-            $this->db->insert('retira_livro', $dados);
-            return $this->db->insert_id();
-        endif;
-    } */
+    // Paginação de livros
+
+    public function page_livros($limit, $page){
+        $this->db->select('*');
+        $this->db->order_by('titulo', 'desc');
+        $this->db->limit($limit, $page);
+
+        return $this->db->get('livros')->result();
+
+    }
+
 
 }

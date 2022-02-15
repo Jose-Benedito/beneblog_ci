@@ -14,19 +14,54 @@ class Livro extends CI_Controller{
         $this->load->model('Cadastro_model', 'leitor');
     }
 
-    public function index(){
+    public function index($pages=0){
         redirect('livro/listar', 'refresh');
     }
-    public function listar(){
+    public function listar($pages=0){
         //verifica se o usuário está logado
         verifica_login();
+
+        /*   ***** Para a paginação ***** */
+        //Pega todos os registros
+        //$data['livros'] = $this->livro->get_all();
+
+        //quantidade por pagina
+        $limit = 3;
+
+        // pegar o total
+        $dados['total'] = count($this->livro->get());
+
+        //livros com paginação
+        $dados['livros'] = $this->livro->page_livros($limit, $pages);
+
+     /*   ***** Para a paginação ***** */
+       
+     //paginação
+     $this->load->library('pagination');
+     $config['base_url']        =  base_url('index.php/livro/listar');
+     $config['total_rows']      =  $dados['total'];
+     $config['per_page']        =  $limit;
+   /*  $config['full_tag_open']   =  '<div class="">';
+     $config['full_tag_close']  =   '</div>';
+     $config['first_link']      =  'Inicio';     
+     $config['last_link']       =   'Fim';
+     $config['next_link']       =   '&gt;';
+     $config['prev_link']       =   '&lt;';
+    */ 
+     $this->pagination->initialize($config);
+     
+
+     
+
+
+
 
         //carrega a view
         $dados['titulo'] = 'BNTH - Listagem de livros';
         $dados['h2'] = 'Listagem e edição de livros cadastrados';
 
         $dados['tela'] = 'listar'; //para carregar qual o tipo da view
-        $dados['livros'] = $this->livro->get();
+      //  $dados['livros'] = $this->livro->get();
         $this->load->view('painel/livros', $dados);
     }
     public function pesquisar(){

@@ -22,7 +22,7 @@
             case 'listar':
                 if (isset($livros) && sizeof($livros) > 0) :
                     
-                    if ($livros = $this->livro->get(5)) :
+                   // if ($livros = $this->livro->page_livros()) :
                         foreach ($livros as $linha) :
                             ?>
                                     <table class="table">
@@ -52,19 +52,25 @@
                                         
                         <?php
                             endforeach;
-                        else :
-                            echo '<p>Nenhum post cadastrado!</p>';
-                        endif;
+                      //  else :
+                        //    echo '<p>Nenhum post cadastrado!</p>';
+                       // endif;
 
 
                         ?>
                     </table>
             </div>
+            <nav aria-label="livros">
+            <ul class="pagination ">
+            <li class="page-link"><?php echo $this->pagination->create_links(); ?></li>
+            </ul>
+            </nav>
         <?php
                 else :
                     echo '<div class="msg-box"><p>Nenhum post cadastrado!</p></div>';
                 endif;
                 break;
+
 
             case 'pesquisar':
       
