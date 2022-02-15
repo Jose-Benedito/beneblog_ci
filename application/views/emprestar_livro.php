@@ -107,8 +107,8 @@
             <input name="dataent" type="date" class="form-control" id="dataent-text">
           </div>
           <div class="form-group">
-            <label for="message-text" class="col-form-label">Data de entrega:</label>
-            <select name="dataent" type="date" class="form-control" id="status-text">
+            <label for="message-text" class="col-form-label">Situação:</label>
+            <select name="status" type="date" class="form-control" id="status-text">
              <option>A devolver</option> 
              <option>Devolvido</option>
             </select>

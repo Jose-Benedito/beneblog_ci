@@ -278,7 +278,7 @@ class User extends CI_Controller{
 
 
 		$usuario = $this->user->get();
-		$dados['dadosusuario'] = $usuario;
+		$dados['dadosUsuario'] = $usuario;
 
 
 		//carrega a view
