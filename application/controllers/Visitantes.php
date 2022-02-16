@@ -32,7 +32,7 @@ class Visitantes extends CI_Controller
 		verifica_login();
 
 
-			/*   ***** Para a paginação ***** */
+	/*   ***** Para a paginação ***** */
       
 
         //quantidade por pagina
@@ -180,7 +180,7 @@ class Visitantes extends CI_Controller
 
 
 			$this->visitante->editar($dados_update); //atualiza no bd
-
+			redirect('Visitantes/listar', 'refresh');
 		endif;
 
 	

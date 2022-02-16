@@ -8,6 +8,8 @@ class User extends CI_Controller{
         //imports
         $this->load->helper('form');
         $this->load->library('form_validation');
+        $this->load->library('pagination');
+		
         $this->load->model('options_model', 'option');
         $this->load->model('Usuario_model', 'user');
         $this->load->model('Livros_model', 'livros');
@@ -15,20 +17,54 @@ class User extends CI_Controller{
         $this->load->model('Registro_acesso_model', 'visitante');
     }
 
-    public function index(){
+    public function index($pages=0){
         redirect('livro/listar', 'refresh');
     }
-    public function listar(){
+    public function listar($pages=0){
         //verifica se o usuário está logado
         verifica_login();
 
+
+        	/*   ***** Para a paginação ***** */
+      
+
+        //quantidade por pagina
+        $limit = 5;
+
+        // pegar o total
+        $dados['total'] = count($this->user->get());
+
+        //livros com paginação
+        $dados['dadosUsuario'] = $this->user->page_users($limit, $pages);
+
+
+		//paginação
+		$this->load->library('pagination');
+		$config['base_url']        =  base_url('index.php/User/listar');
+		$config['total_rows']      =  $dados['total'];
+		$config['per_page']        =  $limit;
+		$config['full_tag_open']   =  '<div class="">';
+		$config['full_tag_close']  =   '</div>';
+		$config['first_link']      =  'Inicio';     
+		$config['last_link']       =   'Fim';
+		$config['next_link']       =   '&gt;';
+		$config['prev_link']       =   '&lt;';
+		
+
+		$this->pagination->initialize($config);
+
+     /*   ***** Para a paginação ***** */
+
+
+
+
         //carrega a view
         $dados['titulo'] = 'BNTH - Listagem de livros';
-        $dados['h2'] = 'Edição de usuários cadastrados';
+        $dados['h2'] = 'Controle de empréstimo de livros';
 
         $dados['tela'] = 'listar'; //para carregar qual o tipo da view
-        $dados['leitor'] = $this->leitor->get();
-        $this->load->view('painel/users', $dados);
+     //   $dados['leitor'] = $this->user->get();
+        $this->load->view('/emprestar_livro', $dados);
 
     }
  
@@ -97,6 +133,10 @@ class User extends CI_Controller{
     //Faz a listagem de livros emprestados
     
     public function emprestar_Livro(){
+
+
+
+
  
         $usuarioModel = $this->user->get_single();
         $userModel = $this->user->get();
@@ -110,9 +150,9 @@ class User extends CI_Controller{
 
         
         $dados['titulo'] = 'BNTH - Retirada de livros';
-        $dados['h2'] = 'Retirada de livros';
+        $dados['h2'] = 'Retirada de livro';
     
-        $this->load->view('/emprestar_livro', $dados);
+        $this->load->view('user/listar', $dados);
      
     
     }
@@ -273,7 +313,8 @@ class User extends CI_Controller{
 
 
 			$this->user->editar($dados_update); //atualiza no bd
-
+            redirect('user/listar', 'refresh');
+		
 		endif;
 
 

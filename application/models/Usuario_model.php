@@ -112,5 +112,16 @@ class Usuario_model extends CI_Model {
           $this->db->update('usuarios'); 
           return $this->db->affected_rows();
       }
+        // Paginação de livros
+
+    public function page_users($limit, $page){
+        $this->db->select('*');
+        $this->db->order_by('user_nome', 'desc');
+        $this->db->limit($limit, $page);
+
+        return $this->db->get('usuarios')->result();
+
+    }
+
 
 }

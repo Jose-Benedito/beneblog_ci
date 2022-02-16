@@ -25,7 +25,7 @@
                   echo form_input('ano_turma', set_value('ano_turma'));
                   echo form_label('Telefone:', 'telefone');
                   echo form_input('telefone', set_value('telefone'));
-                  echo form_submit('cadastrar', 'cadastrar >>', array('class'=> 'botao')); 
+                  echo form_submit('cadastrar', 'cadastrar ', array('class'=> 'botao btn-success')); 
                   echo form_close();?>
             <!--Informa a mensagem  da validação -->
 

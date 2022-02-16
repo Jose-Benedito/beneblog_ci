@@ -67,7 +67,7 @@ class Livros_model extends CI_Model {
 
     
 
-   public function busca(){
+   public function busca($limit=0){
     
        $termo = $this->input->post('pesquisar');
        $this->db->select('*');

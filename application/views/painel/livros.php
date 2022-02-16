@@ -4,14 +4,7 @@
 <div class="container">
     <h2 class="jumbotron text-center"><?php echo $h2; ?></h2>
         
-        <div class="col-4">
-            
-            <ul class="sem-marcador sem-padding">
-                                          
-                <li><a href="<?php echo base_url('index.php/livro/listar')  ?>">LISTAR LIVROS</a></li>
-            </ul>
-    
-        </div>
+      
 
         <?php
         if ($msg = get_msg()) :
@@ -20,6 +13,11 @@
 
         switch ($tela):
             case 'listar':
+                ?>
+                <div >                                             
+                <button class="btn btn-outline-primary "><?php echo anchor('/livro/listar','Listar livros'); ?></button>                                         
+                </div>
+                <?php
                 if (isset($livros) && sizeof($livros) > 0) :
                     
                    // if ($livros = $this->livro->page_livros()) :
@@ -60,10 +58,10 @@
                         ?>
                     </table>
             </div>
-            <nav aria-label="livros">
-            <ul class="pagination ">
-            <li class="page-link"><?php echo $this->pagination->create_links(); ?></li>
-            </ul>
+            <nav aria-label="">
+                <ul class="pagination ">
+                    <li class="page-link"><?php echo $this->pagination->create_links(); ?></li>
+                </ul>
             </nav>
         <?php
                 else :
@@ -76,14 +74,14 @@
       
                     echo form_open_multipart();
                     echo form_input('pesquisar', set_value('pesquisar'));
-                    echo form_submit('enviar', 'Pesquisar', array('class' => 'botao'));
+                    echo form_submit('enviar', 'Pesquisar', array('class' => 'botao btn-primary'));
                     echo form_close();
                 
                 
             
                 if (isset($livros) && sizeof($livros) > 0) :?>
                         <?php
-                        if ($livros = $this->livro->busca()) :
+                        if ($livros = $this->livro->busca(2)) :
                             foreach ($livros as $linha) :
                         ?>
                 <table class="table">
@@ -119,7 +117,13 @@
                         ?>
 
                 </table>
+                <nav aria-label="">
+                <ul class="pagination ">
+                    <li class="page-link"><?php echo $this->pagination->create_links(); ?></li>
+                </ul>
+            </nav>
                 </div>
+
         <?php
                 else :
                     echo '<div class="msg-box"><p>Título inválido ou não cadastrado!</p></div>';
@@ -218,7 +222,7 @@
                 echo '<p><small>Imagem atual:</small><br /><img src=" ' . base_url('uploads/' . $livros->imagem) . '" class="thumb-edicao"/></p>';
 
 
-                echo form_submit('enviar', 'Salvar ', array('class' => 'botao'));
+                echo form_submit('enviar', 'Salvar ', array('class' => 'botao btn-success'));
                 echo form_close();
                 break;
                 ?>
@@ -244,7 +248,7 @@
                 echo '<p><small>Imagem:</small><br /><img src=" ' . base_url('uploads/' . $livros->imagem) . '" class="thumb-edicao"/></p>';
 
 
-                echo form_submit('enviar', 'Excluir ', array('class' => 'botao'));
+                echo form_submit('enviar', 'Excluir ', array('class' => 'botao btn-danger'));
                 echo form_close();
                 break;
            
@@ -258,7 +262,7 @@
             <p class="lead"><?php echo $livros->genero; ?></p>    
       
             <img style="width: 210px; height: 260px;" src="<?php echo base_url('uploads/'.$livros->imagem);?>" alt=""/>
-            <p class="lead"><?php echo $livros->descricao; ?></p>
+            <p class="lead"><?php echo resumo_post($livros->descricao); ?></p>
             
             
          
@@ -267,7 +271,7 @@
             
             echo form_open_multipart();
             echo form_input('pesquisar', set_value('pesquisar'));
-            echo form_submit('enviar', 'Buscar nomes', array('class' => 'btn btn-primary btn-m'));
+            echo form_submit('enviar', 'Buscar nomes', array('class' => 'botao btn btn-primary btn-m'));
             echo form_close(); 
             ?>
            

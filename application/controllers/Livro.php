@@ -50,11 +50,6 @@ class Livro extends CI_Controller{
      $this->pagination->initialize($config);
      
 
-     
-
-
-
-
         //carrega a view
         $dados['titulo'] = 'BNTH - Listagem de livros';
         $dados['h2'] = 'Listagem e edição de livros cadastrados';
@@ -63,10 +58,42 @@ class Livro extends CI_Controller{
       //  $dados['livros'] = $this->livro->get();
         $this->load->view('painel/livros', $dados);
     }
-    public function pesquisar(){
+    public function pesquisar($pages=0){
         //verifica se o usuário está logado
         verifica_login();
 
+            /*   ***** Para a paginação ***** */
+      
+
+        //quantidade por pagina
+        $limit = 3;
+
+        // pegar o total
+        $dados['total'] = count($this->livro->get());
+
+        //livros com paginação
+        $dados['livros'] = $this->livro->page_livros($limit, $pages);
+
+     /*   ***** Para a paginação ***** */
+       
+     //paginação
+     $this->load->library('pagination');
+     $config['base_url']        =  base_url('index.php/livro/listar');
+     $config['total_rows']      =  $dados['total'];
+     $config['per_page']        =  $limit;
+   /*  $config['full_tag_open']   =  '<div class="">';
+     $config['full_tag_close']  =   '</div>';
+     $config['first_link']      =  'Inicio';     
+     $config['last_link']       =   'Fim';
+     $config['next_link']       =   '&gt;';
+     $config['prev_link']       =   '&lt;';
+    */ 
+     $this->pagination->initialize($config);
+     
+       
+       
+       
+       
         //carrega a view
         $dados['titulo'] = 'BNTH - Listagem de livros';
         
@@ -297,15 +324,8 @@ class Livro extends CI_Controller{
             set_msg('<p>Você deve escolher um Livro para retirar!</P>');
             redirect('livro/listar', 'refresh');
         endif;
-        
-          
-
-            
-          
-           
-        
-        
-        //regras de validação
+     
+     //regras de validação
         $this->form_validation->set_rules('nome', 'nome', 'trim|required');
         $this->form_validation->set_rules('ra', 'Ra', 'trim|required');
         $this->form_validation->set_rules('turma', 'Turma', 'trim|required');
@@ -333,34 +353,29 @@ class Livro extends CI_Controller{
             if($this->user->salvar($dados_insert)): //atualiza no bd
                 
                 set_msg('<p>Retirada registrada com sucesso!</p>');
-               redirect('user/emprestar_livro');
+               redirect('user/listar');
                 
             else:
                 set_msg('<p>Erro! Nenhuma ação foi realizada.</p>');
             endif;
         endif;
 
+         
+
+                $dados['titulo'] =  to_html($descLivro->titulo).' - BNTH';
+                $dados['livro_id'] = to_html(($descLivro->id));
+                $dados['livro_titulo'] = to_html(($descLivro->titulo));
+                $dados['livro_autor'] = to_html($descLivro->autor);
+                $dados['livro_genero'] = $descLivro->genero;
+                $dados['livro_desc'] = $descLivro->descricao;
+                $dados['livro_unidade'] = $descLivro->unidade;
+                $dados['livro_imagem'] = $descLivro->imagem;
             
-        
-        
-        
-        
-        
-        
-                        $dados['titulo'] =  to_html($descLivro->titulo).' - BNTH';
-                        $dados['livro_id'] = to_html(($descLivro->id));
-                        $dados['livro_titulo'] = to_html(($descLivro->titulo));
-                        $dados['livro_autor'] = to_html($descLivro->autor);
-                        $dados['livro_genero'] = $descLivro->genero;
-                        $dados['livro_desc'] = $descLivro->descricao;
-                        $dados['livro_unidade'] = $descLivro->unidade;
-                        $dados['livro_imagem'] = $descLivro->imagem;
-                    
-                        $dados['titulo'] = 'Página não encontrada - BNTH';
-                        $dados['livro_titulo'] = 'livro não encontrado';
-                        $dados['livro_autor'] = '<p>Nenhum livro foi encontrado com base nos parâmetros fornecidos</p>';
-                        $dados['livro_imagem'] = '';
-                        
+                $dados['titulo'] = 'Página não encontrada - BNTH';
+                $dados['livro_titulo'] = 'livro não encontrado';
+                $dados['livro_autor'] = '<p>Nenhum livro foi encontrado com base nos parâmetros fornecidos</p>';
+                $dados['livro_imagem'] = '';
+                
       
         $dados['leitor'] = $this->leitor->busca();
         $dados['titulo'] = 'BNTH - Alteração de vídeos';

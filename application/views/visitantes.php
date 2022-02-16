@@ -182,10 +182,10 @@
                   
                   
 </table>
-<nav aria-label="">
-  <ul class="pagination ">
+  <nav aria-label="">
+      <ul class="pagination ">
       
-      <li class="page-item"><?php echo $this->pagination->create_links(); ?></li>
+         <li class="page-item"><?php echo $this->pagination->create_links(); ?></li>
               
       </ul>
   

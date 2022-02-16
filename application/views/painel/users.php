@@ -125,7 +125,7 @@
                 echo form_input('turma', set_value('turma'));
                 echo form_label('Telefone:', 'telefone');
                 echo form_input('telefone', set_value('telefone'));
-                echo form_submit('cadastrar', 'cadastrar >>', array('class'=> 'botao')); 
+                echo form_submit('cadastrar', 'cadastrar', array('class'=> 'botao btn-success')); 
                 echo form_close();
 
          

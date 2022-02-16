@@ -79,7 +79,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('index.php/user/emprestar_livro'); ?>">
+          <a class="nav-link" href="<?php echo base_url('index.php/user/listar'); ?>">
             <span data-feather="bar-chart-2"></span>
             Controle de Retirada
           </a>
