@@ -9,34 +9,69 @@ class Visitantes extends CI_Controller
 		//imports
 		$this->load->helper('form');
 		$this->load->library('form_validation');
+		$this->load->library('pagination');
 		$this->load->model('Registro_acesso_model', 'visitante');
 	}
 
 
 
-	public function index()
+	public function index($pages=0)
 
 	{
 
+		redirect('Visitantes/listar', 'refresh');
 
-		$dados['titulo'] = 'BNTH - sala de leitura';
-		$dados['h2'] = 'Controle de uso da sala de  leitura';
-		$dados['dadosvisita'] = $this->visitante->get();
-		//  $dados['tela'] = 'editar'; //para carregar qual o tipo da view
-		$this->load->view('/visitante', $dados);
+
+
+	
 	}
-	public function listar()
+
+	public function listar($pages=0)
 	{
 		//verifica se o usuário está logado
 		verifica_login();
+
+
+			/*   ***** Para a paginação ***** */
+      
+
+        //quantidade por pagina
+        $limit = 5;
+
+        // pegar o total
+        $dados['total'] = count($this->visitante->get());
+
+        //livros com paginação
+        $dados['dadosvisita'] = $this->visitante->page_acessos($limit, $pages);
+
+
+		//paginação
+		$this->load->library('pagination');
+		$config['base_url']        =  base_url('index.php/Visitantes/listar');
+		$config['total_rows']      =  $dados['total'];
+		$config['per_page']        =  $limit;
+		$config['full_tag_open']   =  '<div class="">';
+		$config['full_tag_close']  =   '</div>';
+		$config['first_link']      =  'Inicio';     
+		$config['last_link']       =   'Fim';
+		$config['next_link']       =   '&gt;';
+		$config['prev_link']       =   '&lt;';
+		
+
+		$this->pagination->initialize($config);
+
+     /*   ***** Para a paginação ***** */
+
+
+
 
 		//carrega a view
 		$dados['titulo'] = 'BNTH - Listagem de livros';
 		$dados['h2'] = 'Edição de usuários cadastrados';
 
 		$dados['tela'] = 'listar'; //para carregar qual o tipo da view
-		$dados['visita'] = $this->visitante->get();
-		$this->load->view('/visitante', $dados);
+	//	$dados['visita'] = $this->visitante->get();
+		$this->load->view('/visitantes', $dados);
 	}
 
 
@@ -94,7 +129,7 @@ class Visitantes extends CI_Controller
 		$dados['titulo'] = 'BNTH - sala de leitura';
 		$dados['h2'] = 'Controle de uso da sala de  leitura';
 		//  $dados['tela'] = 'editar'; //para carregar qual o tipo da view
-		$this->load->view('/visitante', $dados);
+		$this->load->view('/visitantes', $dados);
 	}
 	public function editar()
 	{
@@ -116,11 +151,11 @@ class Visitantes extends CI_Controller
 				$dados_update['id'] = $postagem->id;
 			else :
 				set_msg('<p>Usuário inexistente! Escolha um nome para editar.</p>');
-				redirect('/visitante', 'refresh');
+				redirect('/visitantes', 'refresh');
 			endif;
 		else :
 			set_msg('<p>Você deve escolher um post para editar!</P>');
-			redirect('/visitante', 'refresh');
+			redirect('/visitantes', 'refresh');
 		endif;
 
 		//regras de validação
@@ -148,7 +183,7 @@ class Visitantes extends CI_Controller
 
 		endif;
 
-
+	
 		$visitante = $this->visitante->get();
 		$dados['dadosvisita'] = $visitante;
 
@@ -158,7 +193,7 @@ class Visitantes extends CI_Controller
 		$dados['titulo'] = 'BNTH - sala de leitura';
 		$dados['h2'] = 'Controle de acesso a sala de  leitura';
 		//  $dados['tela'] = 'editar'; //para carregar qual o tipo da view
-		$this->load->view('/visitante', $dados);
+		$this->load->view('/visitantes', $dados);
 	}
 
 	

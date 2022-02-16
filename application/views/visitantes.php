@@ -182,6 +182,14 @@
                   
                   
 </table>
+<nav aria-label="">
+  <ul class="pagination ">
+      
+      <li class="page-item"><?php echo $this->pagination->create_links(); ?></li>
+              
+      </ul>
+  
+  </nav>
  <!-- Button trigger modal  salvar-->
               <div class="container ">
                 <button type="button" class="btn btn-outline-success" 
@@ -189,8 +197,9 @@
                 data-target="#visitanteModal">
                   Novo
                 </button>
-                  </div>
-  </div>
+              </div>
+            </div>
+            
 
 </div>
 
@@ -206,7 +215,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="visitantes/editar" method="POST">
+        <form action="editar" method="POST">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Nome:</label>
             <input name="nome" type="text" class="form-control" id="recipient-name">

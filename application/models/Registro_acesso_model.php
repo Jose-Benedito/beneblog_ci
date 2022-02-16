@@ -81,4 +81,15 @@ class Registro_acesso_model extends CI_Model {
         return $this->db->affected_rows();
     }
 
+     // Paginação de acessos
+
+     public function page_acessos($limit, $page){
+        $this->db->select('*');
+        $this->db->order_by('nome', 'desc');
+        $this->db->limit($limit, $page);
+
+        return $this->db->get('visitantes')->result();
+
+    }
+
 }

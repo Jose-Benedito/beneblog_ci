@@ -22,8 +22,7 @@ class Livro extends CI_Controller{
         verifica_login();
 
         /*   ***** Para a paginação ***** */
-        //Pega todos os registros
-        //$data['livros'] = $this->livro->get_all();
+      
 
         //quantidade por pagina
         $limit = 3;

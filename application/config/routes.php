@@ -23,6 +23,7 @@ $route['busca_user'] = 'User/buscar_user';
 $route['user/(:num)'] = 'User/editar/$1'; 
 $route['user/(:num)'] = 'User/editar_retirada/$1'; 
 $router['visitantes'] = 'Visitantes';
+$router['editar'] = "Visitantes/editar";
 $router['visitantes/(:num)'] = 'Visitantes/$1';
 $route['livro'] = 'Livro';
 
