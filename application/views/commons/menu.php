@@ -39,7 +39,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('index.php/pesquisar'); ?>">
+          <a class="nav-link" href="<?php echo base_url('index.php/livro/pesquisar'); ?>">
             <span data-feather="users"></span>
             Pesquisar livro
           </a>

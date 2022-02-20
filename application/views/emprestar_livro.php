@@ -3,7 +3,12 @@
 
 <div class="container">
   <h2 class=" jumbotron text-center "><?php echo $h2; ?></h2>
-  
+          <?php
+          if ($msg = get_msg()) :
+            echo '<div class="msg-box">' . $msg . '</div>';
+          endif;
+          
+          ?>
   
   <table class="table table-striped table-sm">
         <tr>

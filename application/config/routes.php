@@ -14,6 +14,7 @@ $route['listar'] = 'Livro/listar';     // Requer parámetros 9caso não tenha, c
 $route['listar/(:num)'] = 'Livro/listar/$1'; 
 
 $route['pesquisar'] = 'Livro/pesquisar';
+$route['pesquisar/(:num)'] = 'Livro/pesquisar/$1';
 $route['user'] = 'User/emprestar_Livro'; 
 $route['user/'] = 'User/emprestar_Livro/'; 
 $route['livro'] = 'Livro';

@@ -81,7 +81,7 @@
       </div>
       <!--Formulário -->
    
-      <form action="visitantes/salvar" method="POST">
+      <form action="salvar" method="POST">
       <div class="modal-body">
                     
                     <div class="form-group">

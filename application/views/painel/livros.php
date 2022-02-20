@@ -1,7 +1,7 @@
 <?php $this->load->view('painel/header'); ?>
 
 
-<div class="container">
+<div class="container ">
     <h2 class="jumbotron text-center"><?php echo $h2; ?></h2>
         
       
@@ -81,10 +81,11 @@
             
                 if (isset($livros) && sizeof($livros) > 0) :?>
                         <?php
-                        if ($livros = $this->livro->busca(2)) :
+                     if ($livros = $this->livro->busca(3)) :
                             foreach ($livros as $linha) :
                         ?>
-                <table class="table">
+      
+                <table class="table col-sm-4">
                     <thead>
                         <th >Capa</th>
                         <th >Título</th>
@@ -108,7 +109,7 @@
                   
                               
                         <?php
-                            endforeach;
+                           endforeach;
                         else :
                             echo '<p>Nenhum post cadastrado!</p>';
                         endif;
@@ -117,12 +118,9 @@
                         ?>
 
                 </table>
-                <nav aria-label="">
-                <ul class="pagination ">
-                    <li class="page-link"><?php echo $this->pagination->create_links(); ?></li>
-                </ul>
-            </nav>
+          
                 </div>
+                   
 
         <?php
                 else :
@@ -262,7 +260,7 @@
             <p class="lead"><?php echo $livros->genero; ?></p>    
       
             <img style="width: 210px; height: 260px;" src="<?php echo base_url('uploads/'.$livros->imagem);?>" alt=""/>
-            <p class="lead"><?php echo resumo_post($livros->descricao); ?></p>
+            <p class="lead"><?php echo resumo_post($livros->descricao); ?>...</p>
             
             
          
