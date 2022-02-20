@@ -3,8 +3,9 @@
 
 
   <div class="container">
+    <img class="float-left"style="width:150px; heigth: 150px;" src="<?php echo base_url('assets/img/pedrabranca.png') ;?>" alt="">
     
-    <h2 class="display-4" class="jumbotron text-center"><?php echo $h2; ?></h2> 
+    <h2 class="display-4 p-5" class="jumbotron text-center "><?php echo $h2; ?></h2> 
         
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -37,14 +38,14 @@
 
 
 
-  <h1 class="display-4">Ler para..</h1>
+  <h1 class="display-4">Ler para...</h1>
 
 
   <div class="card-deck">
   <div class="card">
     <img class="card-img-top" src="<?php echo base_url('assets/images/home/kid.png')?>" alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title">Descobrir..</h5>
+      <h5 class="card-title">Descobrir...</h5>
       <p class="card-text">A leitura é o método mais democrático de combater a ignorância</p>
       <p class="card-text"><small class="text-muted">Marcos Vinicius Romeiro</small></p>
     </div>
@@ -60,7 +61,7 @@
   <div class="card">
     <img class="card-img-top" src="<?php echo base_url('assets/images/home/teddy.jpg')?>" alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title">Sonhar..</h5>
+      <h5 class="card-title">Sonhar...</h5>
       <p class="card-text">A paixão da leitura é a mais inocente aprazível e a menos dispendiosa.</p>
       <p class="card-text"><small class="text-muted">Marquês de Maricá</small></p>
     </div>

@@ -70,7 +70,7 @@
             <div class="col-md-4">
                 <h4>Ultimos cadastrados</h4>
                 <?php
-                if ($livros = $this->livro->get(2)) :
+                if ($livros = $this->livro->get(3)) :
                     foreach ($livros as $linha) :
                 ?>
                              

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Controle_livros extends CI_Controller{
+class Pdf extends CI_Controller{
 
     function __construct(){
         parent::__construct();
@@ -9,13 +9,13 @@ class Controle_livros extends CI_Controller{
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->model('options_model', 'option');
-        $this->load->model('clivros_model', 'post');
+     //   $this->load->model('Pdf_model', 'post');
     }
 
     public function index(){
-        redirect('controle_livros/listar', 'refresh');
+        redirect('painel/pdf', 'refresh');
     }
-    public function listar(){
+    public function pdfs(){
         //verifica se o usuário está logado
         verifica_login();
 
@@ -23,8 +23,8 @@ class Controle_livros extends CI_Controller{
         $dados['titulo'] = 'BNTH - controle de livros';
         $dados['h2'] = 'Controle de livros emprestados';
         $dados['tela'] = 'listar'; //para carregar qual o tipo da view
-        $dados['posts'] = $this->post->get();
-        $this->load->view('painel/controle_livros', $dados);
+      //  $dados['posts'] = $this->post->get();
+        $this->load->view('painel/pdf', $dados);
     }
     public function cadastrar(){
         //verifica se o usuário está logado

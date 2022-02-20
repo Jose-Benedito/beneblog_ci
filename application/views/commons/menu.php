@@ -9,9 +9,11 @@
   <span class="navbar-toggler-icon"></span>
 </button>
 
-<ul class="navbar-nav-12 mr-auto ">
+
+
+<ul class="navbar-nav-12 ">
   <li class="nav mr-auto">
-    <a class="nav-link mr-auto " href="<?php echo base_url('index.php/setup/logout'); ?>">Sair</a>
+    <a class="nav-link " href="<?php echo base_url('index.php/setup/logout'); ?>">Sair</a>
   </li>
 </ul>
 </nav>
@@ -39,6 +41,8 @@
           </a>
         </li>
         <li class="nav-item">
+          
+          
           <a class="nav-link" href="<?php echo base_url('index.php/livro/pesquisar'); ?>">
             <span data-feather="users"></span>
             Pesquisar livro
@@ -52,9 +56,9 @@
         </li>
        
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="<?php echo base_url('index.php/pdfs'); ?>">
             <span data-feather="layers"></span>
-            Livros pendentes
+            Livros em pdfs
           </a>
         </li>
       </ul>

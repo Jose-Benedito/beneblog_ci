@@ -8,6 +8,8 @@ $route['translate_uri_dashes'] = FALSE;
 
 
 $route['/'] = 'Paginas';
+$route['/'] = 'Pdf';
+$route['pdfs'] = 'Pdf/pdfs';
 
 $route['listar'] = 'Livro/listar';     // Requer parámetros 9caso não tenha, carrega a home)
 
