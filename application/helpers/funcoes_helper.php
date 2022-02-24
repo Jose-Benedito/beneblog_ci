@@ -44,6 +44,21 @@ if(!function_exists('config_upload')):
 	}
 endif;
 
+if(!function_exists('config_upload_pdf')):
+	//define as configurações para upload de imagens/arquivos
+	function config_upload_pdf($path='./uploads/', $types='pdf', $size=8192){
+		if(!file_exists($path)):
+			mkdir($path, 0777, true);
+		
+		endif;
+		$config['upload_path']= $path;
+		$config['allowed_types'] = $types;
+		$config['max_size'] = $size;
+		return $config;
+	}
+endif;
+
+
 if(!function_exists('to_bd')):
 	//codifica o html para salvar no banco de dados
 	function to_bd($string=NULL){

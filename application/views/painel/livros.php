@@ -50,9 +50,9 @@
                                         
                         <?php
                             endforeach;
-                      //  else :
+                       // else :
                         //    echo '<p>Nenhum post cadastrado!</p>';
-                       // endif;
+                     //   endif;
 
 
                         ?>
@@ -62,7 +62,7 @@
                 <ul class="pagination ">
                     <li class="page-link"><?php echo $this->pagination->create_links(); ?></li>
                 </ul>
-            </nav>
+            </nav> 
         <?php
                 else :
                     echo '<div class="msg-box"><p>Nenhum post cadastrado!</p></div>';
@@ -71,17 +71,33 @@
 
 
             case 'pesquisar':
+
+                ?>
+
+                <div class="col-md-12">
+                    <form class="form" method="GET" action="pesquisar">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <input type="text" name="pesquisar" placeholder="Pesquisar por título">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-success ">Pesquisar</button>
+                                
+                            </div>   
+                        </div>     
+                    </form>
+
+
+
+                </div>
       
-                    echo form_open_multipart();
-                    echo form_input('pesquisar', set_value('pesquisar'));
-                    echo form_submit('enviar', 'Pesquisar', array('class' => 'botao btn-primary'));
-                    echo form_close();
+                <?php
                 
                 
             
                 if (isset($livros) && sizeof($livros) > 0) :?>
                         <?php
-                     if ($livros = $this->livro->busca(3)) :
+                     if ($livros = $this->livro->busca(4)) :
                             foreach ($livros as $linha) :
                         ?>
       
@@ -120,6 +136,11 @@
                 </table>
           
                 </div>
+         <!--   <nav aria-label="">
+                <ul class="pagination ">
+                    <li class="page-link"><?php echo $this->pagination->create_links(); ?></li>
+                </ul>
+            </nav> -->
                    
 
         <?php
@@ -261,8 +282,8 @@
       
             <img style="width: 210px; height: 260px;" src="<?php echo base_url('uploads/'.$livros->imagem);?>" alt=""/>
             <p class="lead"><?php echo resumo_post($livros->descricao); ?>...</p>
-            
-            
+         
+      
          
 
             <?php
@@ -270,6 +291,7 @@
             echo form_open_multipart();
             echo form_input('pesquisar', set_value('pesquisar'));
             echo form_submit('enviar', 'Buscar nomes', array('class' => 'botao btn btn-primary btn-m'));
+            
             echo form_close(); 
             ?>
            
@@ -292,7 +314,7 @@
 
 
 
-        <form class="form">
+        <form class="form" id="form">
         
           <label for="Nome">Nome:</label>
           <input type="text" id="nome" name="nome" value="<?php echo $linha->nome ?>"/>
@@ -306,6 +328,7 @@
           <input type="text" id="titulo" name="titulo" value="<?php echo $livros->titulo ?>"/>
           <label for="Data de entrega">Data de devolução</label>
           <input id="date" type="date" name="data_entrega" value="2022-02-01">
+          <button class="btn btn-primary" type="button"  onclick="apagaForm()">Limpa</button>
           <button type="submit" class="btn btn-success ">Salvar</button>
           </form>
              
@@ -331,5 +354,11 @@
 </div>
 
 
-
+<script>
+function apagaForm() {
+	document.getElementById('nome').value=('');
+	document.getElementById('ra').value=('');
+	document.getElementById('turma').value=('');
+}
+</script>
 <?php $this->load->view('commons/footer') ?>

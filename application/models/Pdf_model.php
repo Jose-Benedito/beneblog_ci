@@ -54,8 +54,8 @@ class Pdf_model extends CI_Model {
             return NULL;
         endif;
     }
-    public function get_livro($id=0){
-        $this->db->where('livro_id', $id); // retorna dados pelo id escolhido
+    public function get_pdf($id=0){
+        $this->db->where('id', $id); // retorna dados pelo id escolhido
         $query = $this->db->get('pdf', 1);
         if($query->num_rows() == 1):
             $row = $query->row();
@@ -71,7 +71,7 @@ class Pdf_model extends CI_Model {
     
        $termo = $this->input->post('pesquisar');
        $this->db->select('*');
-        $this->db->like('nome',$termo);
+        $this->db->like('titulo',$termo);
        $query = $this->db->get('pdf');
    
      return $query->result(); //retorna os resultados da consulta
@@ -86,7 +86,7 @@ class Pdf_model extends CI_Model {
 
 
     // para edição da modal de empréstimo de livro
-    public function editar($dados){
+ /*   public function editar($dados){
 
 
         $id = $this->input->post('id');
@@ -121,7 +121,7 @@ class Pdf_model extends CI_Model {
 
         return $this->db->get('pdf')->result();
 
-    }
+    } */
 
 
 }

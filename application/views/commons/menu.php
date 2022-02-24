@@ -25,7 +25,7 @@
         <li class="nav-item">
           <a class="nav-link active"  href="<?php echo base_url('index.php/'); ?>">
             <span data-feather="home"></span>
-            Página Inicial <span class="sr-only">(current)</span>
+            <i class="fa-solid fa-house">home</i> <span class="sr-only">(current)</span>
           </a>
         </li>
         <li class="nav-item">
@@ -37,15 +37,15 @@
         <li class="nav-item">
           <a class="nav-link" href="<?php echo base_url('index.php/cadastrar_user'); ?>">
             <span data-feather="shopping-cart"></span>
-            Cadastrar usuários
+            <i class="fa-solid fa-address-book" style="padding-right:8px;">  Cadastrar</i>
           </a>
         </li>
         <li class="nav-item">
           
-          
           <a class="nav-link" href="<?php echo base_url('index.php/livro/pesquisar'); ?>">
             <span data-feather="users"></span>
-            Pesquisar livro
+            <i class="fa-solid fa-book-open" style="padding-right:8px;">  Pesquisar livro</i>
+          
           </a>
         </li>
         <li class="nav-item">
@@ -56,9 +56,9 @@
         </li>
        
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('index.php/pdfs'); ?>">
+          <a class="nav-link" href="<?php echo base_url('index.php/pdf/listagem'); ?>">
             <span data-feather="layers"></span>
-            Livros em pdfs
+            <i class="fa-solid fa-file-pdf"> Livros em pdfs</i>
           </a>
         </li>
       </ul>
@@ -80,6 +80,18 @@
           <a class="nav-link" href="<?php echo base_url('index.php/livro/listar'); ?>">
             <span data-feather="users"></span>
             Editar dados de livros
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo base_url('index.php/pdf/cadastrar'); ?>">
+            <span data-feather="users"></span>
+            Cadastrar Pdfs
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo base_url('index.php/pdfs'); ?>">
+            <span data-feather="users"></span>
+            Editar dados de Pdfs
           </a>
         </li>
         <li class="nav-item">
