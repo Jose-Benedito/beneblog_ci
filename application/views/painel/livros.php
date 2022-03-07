@@ -1,4 +1,4 @@
-<?php $this->load->view('painel/header'); ?>
+<?php $this->load->view('commons/header'); ?>
 
 
 <div class="container ">
@@ -75,12 +75,29 @@
                 ?>
 
                 <div class="col-md-12">
-                    <form class="form" method="GET" action="pesquisar">
+                    <form class="form m-4" method="GET" action="pesquisar">
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-6">
                                 <input type="text" name="pesquisar" placeholder="Pesquisar por título">
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
+                                 <input type="text" name="autor" placeholder="Pesquisar por autor">
+                            </div>
+                            
+                            <div class="col-md-6">
+                              <select type="text" id="genero" name="genero" value="genero">
+                                <option value="drama">Drama</option>
+                                <option value="romance">Romance</option>
+                                <option value="ficção ">Ficção</option>
+                                <option value="aventura">Aventura</option>
+                                <option value="hq">HQ</option>
+                                <option value="jornalístico">Jornalístico</option>
+                                <option value="suspense">Suspense</option>
+                                <option value="Poema">Poema</option>
+                                <option value="infanto juvenil">Infanto juvenil</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
                                 <button type="submit" class="btn btn-success ">Pesquisar</button>
                                 
                             </div>   
@@ -101,7 +118,7 @@
                             foreach ($livros as $linha) :
                         ?>
       
-                <table class="table col-sm-4">
+                <table class="table col-sm-8">
                     <thead>
                         <th >Capa</th>
                         <th >Título</th>

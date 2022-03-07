@@ -96,7 +96,8 @@ class Livro extends CI_Controller{
      
         //carrega a view
         $dados['titulo'] = 'BNTH - Listagem de livros';
-        
+        $dados['autor'] =   $this->input->get();
+        $dados['genero'] = $this->input->get();
         $dados['h2'] = 'Buscar livro';
         $dados['tela'] = 'pesquisar'; //para carregar qual o tipo da view
        $dados['livros'] = $this->livro->busca();

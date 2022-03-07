@@ -68,10 +68,21 @@ class Livros_model extends CI_Model {
     
 
    public function busca($limit=0, $offset=0){
-    
-       $termo = $this->input->get('pesquisar');
+     
+       if( $termo = $this->input->get('pesquisar')):
+           $this->db->like('titulo',$termo);
+       elseif( $termo = $this->input->get('autor')):
+
+           $this->db->like('autor', $termo);
+       else:
+         $termo = $this->input->get('genero');
+         $this->db->like('genero',$termo);
+      endif; 
        $this->db->select('*');
-        $this->db->like('titulo',$termo);
+
+     // $this->db->like('autor', $termoA);
+
+       //$this->db->like('genero',$termoB);
         $this->db->order_by('id', 'desc');
        $query = $this->db->get('livros', $limit);
    
