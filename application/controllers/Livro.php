@@ -18,6 +18,12 @@ class Livro extends CI_Controller{
     public function index($pages=0){
         redirect('livro/listar', 'refresh');
     }
+    public function reservar(){
+        $dados['titulo']= 'Reservar livro';
+        $dados['h2'] = 'Reserva de livro';
+        $this->load->view('painel/reservar', $dados);
+
+    }
     public function listar($pages=0){
         //verifica se o usuário está logado
         verifica_login();
@@ -353,8 +359,10 @@ class Livro extends CI_Controller{
             
             if($this->user->salvar($dados_insert)): //atualiza no bd
                 
-                set_msg('<p>Retirada registrada com sucesso!</p>');
-               redirect('user/listar');
+                set_msg('<p>Reserva registrada com sucesso!</p>
+                <p>Retire seu livro com o administrador da sala de leitura. </p>');
+
+               redirect('livro/reservar','refresh');
                 
             else:
                 set_msg('<p>Erro! Nenhuma ação foi realizada.</p>');
