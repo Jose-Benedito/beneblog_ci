@@ -15,11 +15,19 @@ class Visitantes extends CI_Controller
 
 
 
-	public function index($pages=0)
+	public function index()
 
 	{
 
-		redirect('Visitantes/listar', 'refresh');
+		
+		$dados['titulo'] = 'BNTH - Listagem de visitantes';
+		$dados['h2'] = 'Edição de usuários cadastrados';
+
+		$dados['tela'] = 'listar'; //para carregar qual o tipo da view
+	//	$dados['visita'] = $this->visitante->get();
+	//	$this->load->view('/visitantes', $dados);
+		redirect('/visitantes/listar', $dados);
+	
 
 
 
@@ -128,27 +136,19 @@ class Visitantes extends CI_Controller
 
 		$dados['titulo'] = 'BNTH - sala de leitura';
 		$dados['h2'] = 'Controle de uso da sala de  leitura';
-		//  $dados['tela'] = 'editar'; //para carregar qual o tipo da view
+		$dados['tela'] = 'salvar'; //para carregar qual o tipo da view
 		$this->load->view('/visitantes', $dados);
 	}
 	public function editar()
 	{
 
 		$id = $this->input->post('id');
-		//tentativas
-		/*  $nome = $this->input->post('nome');
-	  $funcao = $this->input->post('funcao');
-	  $hora_ent = $this->input->post('hora_ent');
-	  $hora_saida = $this->input->post('hora_saida');
-
-	*/ // $dados_update = [$nome, $funcao, $hora_ent, $hora_saida];
-		$this->visitante->get_single($id);
-
+		
 		if ($id > 0) :
 			//id informado, continuar com a edição
-			if ($postagem = $this->visitante->get_single($id)) : // método da model
-				$dados['usuario'] = $postagem;
-				$dados_update['id'] = $postagem->id;
+			if ($visita = $this->visitante->get_single($id)) : // método da model
+				$dados['usuario'] = $visita;
+				$dados_insert['id'] = $visita->id;
 			else :
 				set_msg('<p>Usuário inexistente! Escolha um nome para editar.</p>');
 				redirect('/visitantes', 'refresh');
@@ -178,9 +178,15 @@ class Visitantes extends CI_Controller
 			$dados_insert['hora_saida'] = to_bd($dados_form['hora_saida']);
 
 
+			// salva  no Banco de dados
+			if ($id = $this->visitante->editar($dados_insert)) :
+				set_msg('<p>Vistante editado com sucesso!</p>');
+				redirect('/visitantes', 'refresh');
+			else :
+				set_msg('<p> Erro! Visitante não foi editado.</p>');
+			endif;
 
-			$this->visitante->editar($dados_update); //atualiza no bd
-			redirect('Visitantes/listar', 'refresh');
+			
 		endif;
 
 	
@@ -192,7 +198,7 @@ class Visitantes extends CI_Controller
 
 		$dados['titulo'] = 'BNTH - sala de leitura';
 		$dados['h2'] = 'Controle de acesso a sala de  leitura';
-		//  $dados['tela'] = 'editar'; //para carregar qual o tipo da view
+	//	$dados['tela'] = 'editar'; //para carregar qual o tipo da view
 		$this->load->view('/visitantes', $dados);
 	}
 

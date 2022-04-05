@@ -11,7 +11,6 @@
 
     <link rel="stylesheet" href="<?php echo base_url('assets/css/servico.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/painel.css'); ?>"> 
-    <script  src="<?php echo base_url('assets/js/my.js'); ?>"></script>
 
     <title><?php echo $titulo ; ?></title>
 </head>

@@ -11,8 +11,14 @@
           endif;
           
           ?>
-<!-- Modal Editar -->
-<div class="modal fade" id="#" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+
+<!-- =====================================NOVO (SALVAR)==================================================================-->
+
+
+<!-- Modal Registrar -->
+<div class="modal fade" id="visitanteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -23,16 +29,16 @@
       </div>
       <!--Formulário -->
    
-      <form action="visitantes/editar" method="POST">
+      <form action="salvar" method="POST">
       <div class="modal-body">
-                    <input type="hidden" name="update_id" id="update_id">
+                    
                     <div class="form-group">
                       <label>Nome</label>
-                      <input type="text" name="nome" id="nome"  value="nome" class="form-control" placeholder="Nome">
+                      <input type="text" name="nome" id="nome"   class="form-control" placeholder="Nome">
                     </div>
                    <div class="form-group">
                       <label>Função</label>
-                      <select name="funcao" id="funcao" value="funcao" >
+                      <select name="funcao" id="funcao" >
                         <option value="coordenador">Coordenador</option>
                         <option value="professor">Professor</option>
                         <option value="agente">Agente</option>
@@ -54,64 +60,6 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit"  class="btn btn-primary editbtn " onclick="editarVisita()">Atualizar</button>
-                  </div>
-                </form>
-          
-        
-               
-    </div>
-  </div>
-</div>
-
-
-
-<!-- =======================================================================================================-->
-
-
-<!-- Modal Registrar -->
-<div class="modal fade" id="visitanteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Visitante</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <!--Formulário -->
-   
-      <form action="salvar" method="POST">
-      <div class="modal-body">
-                    
-                    <div class="form-group">
-                      <label>Nome</label>
-                      <input type="text" name="nome" id="nome"  value="nome" class="form-control" placeholder="Nome">
-                    </div>
-                   <div class="form-group">
-                      <label>Função</label>
-                      <select name="funcao" id="funcao" >
-                        <option value="coordenador">Coordenador</option>
-                        <option value="professor">Professor</option>
-                        <option value="agente">Agente</option>
-                        <option value="proatec">Proatec</option>
-                        <option value="aluno_gremio">Aluno/grêmio</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label>Hora de entrada</label>
-                      <input type="time" name="hora_ent" id="hora_ent" class="form-control" placeholder="hora de entrada">
-                    </div> -->
-                    <div class="form-group">
-                      <label>Hora de saída</label>
-                      <input type="time" name="hora_saida" id="hora_saida" value="hora_saida"class="form-control" placeholder="hora de saída">
-                    </div>
-                 
-                    
-                    
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" name="salvar" class="btn btn-primary ">Salvar</button>
                   </div>
                 </form>
@@ -122,7 +70,7 @@
   </div>
 </div>
 
-
+<!-- ==============================LISTAGEM================================-->
         <div class="container ">
             <p style="text-align:right"><?php echo date("d/m/Y"); ?>
         </div>
@@ -153,13 +101,13 @@
               <td>
              <!-- Button trigger modal editar -->
               <button type="button" class="btn btn-outline-primary " 
-              data-toggle="modal" 
-              data-target="#editarModal" 
-              data-whatever="<?php echo $usuario->id?>"
-              data-whatevernome="<?php echo $usuario->nome?>"
-              data-whateverfuncao="<?php echo $usuario->funcao?>"
-              data-whateverhoraent="<?php echo $usuario->hora_ent?>"
-              data-whateverhorasaida="<?php echo $usuario->hora_saida?>">
+                  data-toggle="modal" 
+                  data-target="#editarModal" 
+                  data-whatever="<?php echo $usuario->id?>"
+                  data-whatevernome="<?php echo $usuario->nome?>"
+                  data-whateverfuncao="<?php echo $usuario->funcao?>"
+                  data-whateverhoraent="<?php echo $usuario->hora_ent?>"
+                  data-whateverhorasaida="<?php echo $usuario->hora_saida?>">
                   Atualizar
                 </button>
               </td>
@@ -174,7 +122,7 @@
               <?php endforeach; ?>
                   </table>
                   <?php else: ?>
-                    Sem livro
+                    Sem visitante
                 <?php endif; ?>
                     
                 
@@ -203,7 +151,8 @@
 
 </div>
 
-<!--=====================================33333333========================================= -->
+<!--=====================================EDITAR========================================= -->
+<!-- Modal Editar -->
 
 <div class="modal fade" id="editarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -215,24 +164,31 @@
         </button>
       </div>
       <div class="modal-body">
+
         <form action="editar" method="POST">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Nome:</label>
-            <input name="nome" type="text" class="form-control" id="recipient-name">
+            <input name="nome" type="text" class="form-control" id="nome">
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Funçao:</label>
-            <input name="funcao" class="form-control" id="funcao-text">
+                      <select name="funcao" id="funcao" >
+                        <option value="coordenador">Coordenador</option>
+                        <option value="professor">Professor</option>
+                        <option value="agente">Agente</option>
+                        <option value="proatec">Proatec</option>
+                        <option value="aluno_gremio">Aluno/grêmio</option>
+                      </select>
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Hora de entrada:</label>
-            <input name="hora_ent" type="time" class="form-control" id="hora_ent-text"></textarea>
+            <input name="hora_ent" type="time" class="form-control" id="hora_ent"></textarea>
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Hora de saída:</label>
-            <input name="hora_saida" type="time" class="form-control" id="hora_saida-text"></textarea>
+            <input name="hora_saida" type="time" class="form-control" id="hora_saida"></textarea>
           </div>
-          <input name="id" type="hidden" id="id_visita">
+          <input name="id" type="hidden" id="id">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -245,7 +201,7 @@
 
 
 
-<!--=====================================33333333========================================= -->
+<!--=====================================JAVASCRIPT========================================= -->
 
 <script  src="<?php echo base_url('assets/js/jquery.js'); ?>"></script>
 <script  src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
@@ -255,7 +211,7 @@
 <script>
 $('#editarModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal
-        var recipient = button.data('whatever') 
+        var recipientid = button.data('whatever') 
         var recipientnome = button.data('whatevernome')
         var recipientfuncao = button.data('whateverfuncao') 
         var recipienthoraent = button.data('whateverhoraent') 
@@ -263,13 +219,13 @@ $('#editarModal').on('show.bs.modal', function (event) {
         // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
         // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
         var modal = $(this)
-        modal.find('.modal-title').text('Registro: visitante ' + recipient)
-        modal.find('.modal-body input').val(recipient)
-        modal.find('#id_visita').val(recipient)
-        modal.find('#recipient-name').val(recipientnome)
-        modal.find('#funcao-text').val(recipientfuncao)
-        modal.find('#hora_ent-text').val(recipienthoraent)
-        modal.find('#hora_saida-text').val(recipienthorasaida)
+        modal.find('.modal-title').text('Registro: visitante ' + recipientid)
+        modal.find('.modal-body input').val(recipientid)
+        modal.find('#id').val(recipientid)
+        modal.find('#nome').val(recipientnome)
+        modal.find('#funcao').val(recipientfuncao)
+        modal.find('#hora_ent').val(recipienthoraent)
+        modal.find('#hora_saida').val(recipienthorasaida)
 })
 
 
