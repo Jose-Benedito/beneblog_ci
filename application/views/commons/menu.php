@@ -71,11 +71,23 @@
         </a>
       </h6>
       <ul>
+      <li class="nav-item">
+          <a class="nav-link" href="http://beneblog.benethowen.com/">
+            <span data-feather="layers"></span>
+             <i class="fa-solid fa-blog" style="padding:5px;" ></i>beneblog
+          </a>
+      </li>
          
       <li class="nav-item">
           <a class="nav-link" href="http://pedranews.benethowen.com/">
             <span data-feather="layers"></span>
-             <i class="fa-solid fa-file-pdf" style="padding:5px;" ></i>PedraNews
+             <i class="fa-solid fa-newspaper" style="padding:5px;" ></i>PedraNews
+          </a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="<?php echo base_url('index.php/user/horarios'); ?>">
+            <span data-feather="layers"></span>
+             <i class="fa-solid fa-calendar-check" style="padding:5px;" ></i>Horários de aula
           </a>
       </li>
       </ul>
