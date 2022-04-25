@@ -13,7 +13,7 @@
 
 <ul class="navbar-nav-12 ">
   <li class="nav mr-auto">
-    <a class="nav-link " href="<?php echo base_url('index.php/setup/login'); ?>">Login</a>
+    <a class="nav-link " href="<?php echo base_url('index.php/setup/login'); ?>">Administrativo</a>
   </li>
 </ul>
 <ul class="navbar-nav-12 ">
@@ -65,63 +65,22 @@
       </ul>
       
       <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-        <span>Administrativo</span>
+        <span>Links</span>
         <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
           <span data-feather="plus-circle"></span>
         </a>
       </h6>
-      <ul class="nav flex-column mb-2">
-
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('index.php/setup/alterar'); ?>">
-            <span data-feather="file-text"></span>
-             <i class="fa-solid fa-pen-to-square" style="padding:5px;" ></i>
-            Alterar ou criar login
+      <ul>
+         
+      <li class="nav-item">
+          <a class="nav-link" href="http://pedranews.benethowen.com/">
+            <span data-feather="layers"></span>
+             <i class="fa-solid fa-file-pdf" style="padding:5px;" ></i>PedraNews
           </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('index.php/visitantes'); ?>">
-            <span data-feather="file-text"></span>
-           <i class="fa-solid fa-door-open"></i> Controle de acesso da sala de leitura
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('index.php/cadastro_livros'); ?>">
-            <span data-feather="shopping-cart"></span>
-           <i class="fa-solid fa-book"style="padding:5px;"></i> Cadastrar livros
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('index.php/livro/listar'); ?>">
-            <span data-feather="users"></span>
-
-             <i class="fa-solid fa-pen-to-square" style="padding:5px;" ></i>
-            Editar dados de livros
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('index.php/pdf/cadastrar'); ?>">
-            <span data-feather="users"></span>
-             <i class="fa-solid fa-file-pdf" style="padding:5px;" ></i>
-            Cadastrar Pdfs
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('index.php/pdfs'); ?>">
-            <span data-feather="users"></span>
-             <i class="fa-solid fa-square-pen" style="padding:5px;" ></i>
-            Editar dados de Pdfs
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('index.php/user/listar'); ?>">
-            <span data-feather="bar-chart-2"></span>
-           <i class="fa-solid fa-id-badge" style="padding:5px;"></i> Controle de Retirada
-          </a>
-        </li>
-        
+      </li>
       </ul>
+    
+     
     </div>
   </nav>
 

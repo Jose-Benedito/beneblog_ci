@@ -23,6 +23,15 @@ class Paginas extends CI_Controller {
         $this->load->view('home', $dados);
         
     }
+    public function admin()
+    {
+        $dados['titulo'] = 'BNTH - Setup do sistema';
+        $dados['h2'] = 'Biblioteca Digital Pedra Branca';
+    $dados['desc'] = "Exercício de exemplo do capítulo 5 do livro Codeigniter";
+    
+        $this->load->view('admin', $dados);
+        
+    }
 
     public function empresa(){
 

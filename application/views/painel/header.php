@@ -17,7 +17,7 @@
 
 <body >
    
-    <?php $this->load->view('commons/menu') ?>
+    <?php $this->load->view('painel/menu_adm') ?>
     
        
             

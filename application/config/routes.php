@@ -41,3 +41,4 @@ $route['controle_livros/(:num)'] = 'Paginas/postagem/$1';  // carrega a página 
 //carrega a página de login do sistema
 $route['login'] = 'Setup/login';
 $route['painel'] = 'Setup/login';
+$route['admin'] = 'Paginas/admin';

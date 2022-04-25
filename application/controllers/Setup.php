@@ -88,7 +88,7 @@ class Setup extends CI_Controller {
                       $this->session->set_userdata('user_email', $this->option->get_options('user_email'));
                       // Fazer o redirect para a home do painel
                      //debug: var_dump($_SESSION);
-                          redirect('setup/alterar' , 'reflesh');
+                          redirect('admin' , 'reflesh');
                 else:
                     //senha incorreta
                     set_msg('<p> Senha incorreta!</p>');
