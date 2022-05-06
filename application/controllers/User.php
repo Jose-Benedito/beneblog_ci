@@ -133,10 +133,6 @@ class User extends CI_Controller{
     //Faz a listagem de livros emprestados
     
     public function emprestar_Livro(){
-
-
-
-
  
         $usuarioModel = $this->user->get_single();
         $userModel = $this->user->get();
@@ -144,15 +140,11 @@ class User extends CI_Controller{
         $dados['dadosUsuario'] = $userModel;
     
         $dados[ 'dadoLivro'] = $this->livros->get_user($usuarioModel);
-
-       
-
-
         
         $dados['titulo'] = 'BNTH - Retirada de livros';
         $dados['h2'] = 'Retirada de livro';
     
-        $this->load->view('user/listar', $dados);
+        $this->load->view('listar', $dados);
      
     
     }

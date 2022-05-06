@@ -70,7 +70,7 @@
           <span data-feather="plus-circle"></span>
         </a>
       </h6>
-      <ul>
+      <ul class="nav flex-column mb-2">
       <li class="nav-item">
           <a class="nav-link" href="http://beneblog.benethowen.com/">
             <span data-feather="layers"></span>

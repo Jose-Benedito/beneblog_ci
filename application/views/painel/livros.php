@@ -23,28 +23,28 @@
                    // if ($livros = $this->livro->page_livros()) :
                         foreach ($livros as $linha) :
                             ?>
-                                    <table class="table">
-                                        <thead>
-                                            <th >Capa</th>
-                                            <th>Título</th>
-                                            <th>Gênero</th>
-                                            <th>Autor</th>
-                                            <th>Qte</th>
-                                            
-                                            </thead>
-                                            <tr>
-                                                <td><img style="width: 50px; height: 80px;" src="<?php echo base_url('uploads/' . $linha->imagem); ?>" alt="" />
-                                                </td>
-                                                <td><?php echo to_html($linha->titulo); ?></td>
-                                                <td><?php echo to_html($linha->genero); ?></td>
-                                                <td><?php echo to_html($linha->autor); ?></td>
-                                                <td><?php echo to_html($linha->unidade); ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td><button class="btn btn-outline-success " ><?php echo anchor('livro/editar/' . $linha->id,'Editar'); ?></button></td>
-                                                <td><button class="btn btn-outline-danger"><?php echo anchor('livro/excluir/' . $linha->id, 'Excluir'); ?></button></td>
-                                                <td><button class="btn btn-outline-primary"><?php echo anchor('livro/emprestarLivro/' . $linha->id,'Retirar'); ?></button></td>
-                                            </tr>
+                <table class="table">
+                    <thead>
+                        <th >Capa</th>
+                        <th>Título</th>
+                        <th>Gênero</th>
+                        <th>Autor</th>
+                        <th>Qte</th>
+                        
+                    </thead>
+                        <tr>
+                            <td><img style="width: 50px; height: 80px;" src="<?php echo base_url('uploads/' . $linha->imagem); ?>" alt="" />
+                            </td>
+                            <td><?php echo to_html($linha->titulo); ?></td>
+                            <td><?php echo to_html($linha->genero); ?></td>
+                            <td><?php echo to_html($linha->autor); ?></td>
+                            <td><?php echo to_html($linha->unidade); ?></td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn btn-outline-success " ><?php echo anchor('livro/editar/' . $linha->id,'Editar'); ?></button></td>
+                            <td><button class="btn btn-outline-danger"><?php echo anchor('livro/excluir/' . $linha->id, 'Excluir'); ?></button></td>
+                            <td><button class="btn btn-outline-primary"><?php echo anchor('livro/emprestarLivro/' . $linha->id,'Retirar'); ?></button></td>
+                        </tr>
                                                 
                                              
                                         
@@ -56,7 +56,7 @@
 
 
                         ?>
-                    </table>
+                </table>
             </div>
             <nav aria-label="">
                 <ul class="pagination ">

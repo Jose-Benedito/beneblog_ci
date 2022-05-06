@@ -11,7 +11,7 @@ $route['/'] = 'Paginas';
 $route['/'] = 'Pdf';
 $route['pdfs'] = 'Pdf/pdfs';
 
-$route['listar'] = 'Livro/listar';     // Requer parámetros 9caso não tenha, carrega a home)
+$route['listar'] = 'User/listar';     // Requer parámetros 9caso não tenha, carrega a home)
 
 $route['listar/(:num)'] = 'Livro/listar/$1'; 
 
