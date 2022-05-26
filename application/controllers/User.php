@@ -67,6 +67,21 @@ class User extends CI_Controller{
         $this->load->view('/emprestar_livro', $dados);
 
     }
+    public function pesquisar_user(){
+        //verifica se o usuário está logado
+        verifica_login();
+  
+     
+     
+        //carrega a view
+        $dados['titulo'] = 'BNTH - Listagem de empréstimo';
+     //   $dados['pesquisar'] =   $this->input->get();
+     //   $dados['title'] = $this->input->get();
+        $dados['h2'] = 'Buscar emprétimo';
+   
+       $dados['user'] = $this->user->busca();
+       $this->load->view('/emprestar_livro', $dados);
+    }
  
     public function cadastrar_users(){
         //verifica se o usuário está logado

@@ -3,6 +3,25 @@
 
 <div class="container">
   <h2 class=" jumbotron text-center "><?php echo $h2; ?></h2>
+
+  
+      <form class="form m-4" method="GET" action="pesquisar_user">
+              <div class="row">
+                  <div class="col-md-6">
+                      <input type="text" name="pesquisar" placeholder="Pesquisar por nome">
+                  </div>
+                  <div class="col-md-6">
+                        <input type="text" name="title" placeholder="Pesquisar por título do livro ">
+                  </div>
+                  
+                
+                  <div class="col-md-6">
+                      <button type="submit" class="btn btn-success ">Pesquisar</button>
+                      
+                  </div>   
+              </div>     
+          </form>
+                    
           <?php
           if ($msg = get_msg()) :
             echo '<div class="msg-box">' . $msg . '</div>';
@@ -32,7 +51,7 @@
               <td><?php echo $usuario->user_nome?></td>
               <td><?php echo $usuario->user_turma ?></td>
               <td><?php echo $usuario->titulo_livro ?></td>
-              <td><?php echo $usuario->user_status?></td> 
+              <td id="status" ><?php echo $usuario->user_status?></td> 
               
                
               
@@ -52,7 +71,7 @@
               data-whatevertlivro="<?php echo $usuario->titulo_livro?>"
               data-whateverdataret="<?php echo $usuario->user_data?>"
               data-whateverdataent="<?php echo $usuario->data_entrega?>"
-              data-whateverstatus="<?php echo $usuario->user_status?>">
+              data-whateverstatus="<?php echo $usuario->user_status?>" >
                   Atualizar
                 </button>
               </td>
@@ -130,7 +149,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-          <button type="submit" class="btn btn-primary">Editar</button>
+          <button type="submit" class="btn btn-primary" onclick="verde();">Editar</button>
         </div>
       </form>
     </div>

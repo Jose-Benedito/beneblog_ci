@@ -68,10 +68,17 @@ class Usuario_model extends CI_Model {
     
 
    public function busca(){
-    
-       $termo = $this->input->post('pesquisar');
-       $this->db->select('*');
-        $this->db->like('nome',$termo);
+
+    if( $termo = $this->input->get('pesquisar')):
+        $this->db->like('user_nome',$termo);
+  
+    else:
+      $termo = $this->input->get('title');
+      $this->db->like('titulo_livro',$termo);
+   endif; 
+        $this->db->select('*');
+
+        $this->db->order_by('id', 'desc');
        $query = $this->db->get('usuarios');
    
      return $query->result(); //retorna os resultados da consulta

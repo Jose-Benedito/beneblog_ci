@@ -97,3 +97,5 @@
   </nav>
 
   <main role="main" class="col-md-8 ml-sm-12 col-lg-10 px-md-4"> 
+
+  <h5 align="right">Visitante nª: <?php include('contador.php'); ?></h5>

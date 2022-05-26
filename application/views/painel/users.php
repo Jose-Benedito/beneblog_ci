@@ -20,6 +20,25 @@
 
         switch ($tela):
             case 'listar':
+                ?>
+                <form class="form m-4" method="GET" action="pesquisar">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" name="pesquisar" placeholder="Pesquisar por título">
+                            </div>
+                            <div class="col-md-6">
+                                 <input type="text" name="autor" placeholder="Pesquisar por autor">
+                            </div>
+                            
+                          
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-success ">Pesquisar</button>
+                                
+                            </div>   
+                        </div>     
+                    </form>
+                    ?>
+                    <?php
                 if (isset($leitor) && sizeof($leitor) > 0) :
         ?>
                     <table>
@@ -71,37 +90,37 @@
             
                 if (isset($livros) && sizeof($livros) > 0) :
                     ?>
-                                <table>
-                                    <thead>
-                                        <th align="left">Título</th>
-                                        <th align="right">Ações</th>
-                                    </thead>
-            
-                                </table>
-                                <div class="col-md-4">
-                                    <?php
-                                    if ($livros = $this->livro->busca()) :
-                                        foreach ($livros as $linha) :
-                                    ?>
-                                            <li>
-                                                <img style="width: 100px; height: 150px;" src="<?php echo base_url('uploads/' . $linha->imagem); ?>" alt="" />
-                                                <h4><?php echo to_html($linha->titulo); ?></h4>
-                                                <p><?php echo ($linha->genero); ?>
-            
-                                                    <td align="right" class="acoes"><?php echo anchor('livro/editar/' . $linha->id, 'Editar'); ?> |
-                                                        <?php echo anchor('user/excluir/' . $linha->id, 'Excluir'); ?> |
-                                                        <?php echo anchor('user/' . $linha->id, 'Ver', array('target' => '_blank')); ?> </td>
-                                            </li>
-                                    <?php
-                                        endforeach;
-                                    else :
-                                        echo '<p>Nenhum post cadastrado!</p>';
-                                    endif;
-            
-            
-                                    ?>
-            
-                                </div>
+                    <table>
+                        <thead>
+                            <th align="left">Título</th>
+                            <th align="right">Ações</th>
+                        </thead>
+
+                    </table>
+                    <div class="col-md-4">
+                        <?php
+                        if ($livros = $this->livro->busca()) :
+                            foreach ($livros as $linha) :
+                        ?>
+                        <li>
+                            <img style="width: 100px; height: 150px;" src="<?php echo base_url('uploads/' . $linha->imagem); ?>" alt="" />
+                            <h4><?php echo to_html($linha->titulo); ?></h4>
+                            <p><?php echo ($linha->genero); ?>
+
+                                <td align="right" class="acoes"><?php echo anchor('livro/editar/' . $linha->id, 'Editar'); ?> |
+                                <?php echo anchor('user/excluir/' . $linha->id, 'Excluir'); ?> |
+                                <?php echo anchor('user/' . $linha->id, 'Ver', array('target' => '_blank')); ?> </td>
+                        </li>
+                        <?php
+                            endforeach;
+                        else :
+                            echo '<p>Nenhum post cadastrado!</p>';
+                        endif;
+
+
+                        ?>
+
+                    </div>
                     <?php
                             else :
                                 echo '<div class="msg-box"><p>Nenhum post cadastrado!</p></div>';
